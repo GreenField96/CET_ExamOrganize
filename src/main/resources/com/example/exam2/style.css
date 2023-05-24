@@ -1,0 +1,95 @@
+
+.logout_button{
+	-fx-font-size: 15;
+	-fx-background-radius:20;
+	-fx-background-color:  red;
+	-fx-font-family:Verdana, Geneva, Tahoma, sans-serif;
+	-fx-effect: dropshadow(two-pass-box , #FFFF, 3,3,1,4);
+}
+#textField{
+	-fx-font-size: 15;
+	-fx-alignment:center;
+	-fx-background-radius:20;
+	-fx-background-color:  #398AB9;
+	-fx-font-family:Verdana, Geneva, Tahoma, sans-serif;
+}
+#main_button{
+	-fx-border: 0;
+	-fx-font-family:Verdana, Geneva, Tahoma, sans-serif;
+	-fx-font-size: 15;
+	-fx-background-color: #6096B4;
+	-fx-background-radius:20;
+    -fx-effect: dropshadow(two-pass-box , #FFFF, 5,5,1,5);
+}
+#main_button:pressed:hover {
+	-fx-background-color: #EEE9DA;
+	-fx-background-radius:40;
+}
+#rightForm{
+    -fx-background-color: linear-gradient(to bottom right , #FFFF , #1C658C );
+    -fx-border-radius: 20 20 20 20;
+    -fx-border: 3;
+    -fx-border-color:#FFFF;
+}
+#search_button{
+    -fx-effect: dropshadow(two-pass-box , #FFFF, 5,5,1,5);
+	-fx-border: 1;
+	-fx-border-color:white;
+	-fx-border-radius:20;
+	-fx-font-family:Verdana, Geneva, Tahoma, sans-serif;
+	-fx-font-size: 15;
+	-fx-background-color: #398AB9;
+	-fx-background-radius:20;
+}
+#inputFiled{
+    -fx-effect: dropshadow(two-pass-box , #FFFF, 5,5,1,5);
+	-fx-border: 1;
+	-fx-border-color:Gray;
+	-fx-border-radius:20;
+	-fx-font-family:Verdana, Geneva, Tahoma, sans-serif;
+	-fx-font-size: 15;
+	-fx-background-color: #FFFF;
+	-fx-background-radius:20;
+}
+#choiceField{
+-fx-effect: dropshadow(two-pass-box , #FFFF, 5,5,1,5);
+	-fx-border: 1;
+	-fx-border-color:Gray;
+	-fx-font-size: 15;
+	-fx-alignment:left;
+	-fx-background-radius:10;
+	-fx-background-color:  #FFFF;
+	-fx-font-family:Verdana, Geneva, Tahoma, sans-serif;
+}
+
+#insert_button{
+	-fx-effect: dropshadow(two-pass-box , #FFFF, 5,5,1,5);
+    -fx-border: 1;
+    -fx-border-color:#FFFF;
+    -fx-border-radius:20;
+	-fx-font-family:Verdana, Geneva, Tahoma, sans-serif;
+	-fx-font-size: 15;
+	-fx-background-color: #6096B4;
+	-fx-background-radius:20;
+    -fx-effect: dropshadow(two-pass-box , #FFFF, 5,5,1,5);
+}
+#insert_button:pressed:hover {
+	-fx-background-color: #EEE9DA;
+	-fx-background-radius:40;
+}
+#ColumnTable{
+    -fx-alignment: BASELINE_CENTER;
+    -fx-border: 1;
+    -fx-border-color:#FFFF;
+    -fx-border-radius:20;
+	-fx-font-family:Verdana, Geneva, Tahoma, sans-serif;
+	-fx-font-size: 12;
+}
+#TabePane{
+	-fx-font-size: 13;
+	-fx-alignment:center;
+	-fx-background-color:  White;
+	-fx-font-family:Verdana, Geneva, Tahoma, sans-serif;
+ }
+
+

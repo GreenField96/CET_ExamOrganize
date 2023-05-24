@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import io.github.palexdev.materialfx.controls.MFXButton?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+
+<AnchorPane fx:id="base" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="645.0" prefWidth="1300.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.exam2.HelloController">
+   <children>
+      <HBox prefHeight="645.0" prefWidth="1300.0">
+         <children>
+            <VBox fx:id="mainStage" prefHeight="645.0" prefWidth="1100.0" />
+            <VBox id="rightForm" alignment="CENTER" prefHeight="645.0" prefWidth="300.0">
+               <children>
+                  <ImageView blendMode="LIGHTEN" fitHeight="167.0" fitWidth="275.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@cet.logo.png" />
+                     </image>
+                     <VBox.margin>
+                        <Insets left="70.0" right="-40.0" top="-30.0" />
+                     </VBox.margin>
+                  </ImageView>
+                  <MFXButton id="main_button" graphicTextGap="56.0" onAction="#addCommitteStage" prefHeight="60.0" prefWidth="227.0" text="ادخال بيانات لجنة" textFill="WHITE">
+                     <graphic>
+                        <FontIcon iconColor="WHITE" iconLiteral="bi-card-checklist" iconSize="31" wrappingWidth="37.0" />
+                     </graphic>
+                     <VBox.margin>
+                        <Insets top="-10.0" />
+                     </VBox.margin>
+                  </MFXButton>
+                  <MFXButton id="main_button" graphicTextGap="1.0" onAction="#addPaperMovementStageDelivery" prefHeight="60.0" prefWidth="227.0" text="أستلام/تسليم اوراق الاجابة" textAlignment="RIGHT" textFill="WHITE">
+                     <graphic>
+                        <FontIcon iconColor="WHITE" iconLiteral="anto-inbox" iconSize="31" wrappingWidth="37.0" />
+                     </graphic>
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </MFXButton>
+                  <MFXButton id="main_button" onAction="#addEmployeeStage" prefHeight="60.0" prefWidth="227.0" text="ادخال بيانات موظف/دكتور" textFill="#FFFF">
+                     <graphic>
+                        <FontIcon iconColor="WHITE" iconLiteral="anto-user-add" iconSize="31" textAlignment="RIGHT" wrappingWidth="37.0" />
+                     </graphic>
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </MFXButton>
+                  <MFXButton id="search_button" graphicTextGap="59.0" prefHeight="60.0" prefWidth="226.0" text="بحت عن لجنة" textFill="WHITE">
+                     <graphic>
+                        <FontIcon iconColor="WHITE" iconLiteral="anto-file-search" iconSize="31" wrappingWidth="37.0" />
+                     </graphic>
+                     <VBox.margin>
+                        <Insets bottom="10.0" top="10.0" />
+                     </VBox.margin>
+                  </MFXButton>
+                  <MFXButton id="search_button" graphicTextGap="8.0" onAction="#showEmployeeStage" prefHeight="60.0" prefWidth="227.0" text="البحت عن موظف/دكتور" textFill="#FFFF">
+                     <graphic>
+                        <FontIcon iconColor="WHITE" iconLiteral="anto-search" iconSize="31" textAlignment="RIGHT" wrappingWidth="37.0" />
+                     </graphic>
+                     <VBox.margin>
+                        <Insets bottom="10.0" />
+                     </VBox.margin>
+                  </MFXButton>
+                  <MFXButton id="search_button" graphicTextGap="27.0" prefHeight="60.0" prefWidth="226.0" text="البحت عن أوراق أجابة" textFill="#FFFF">
+                     <graphic>
+                        <FontIcon iconColor="WHITE" iconLiteral="anto-user-add" iconSize="31" textAlignment="RIGHT" wrappingWidth="37.0" />
+                     </graphic>
+                     <VBox.margin>
+                        <Insets bottom="10.0" />
+                     </VBox.margin>
+                  </MFXButton>
+                  <MFXButton onAction="#onClickLogout" prefHeight="60.0" prefWidth="60.0" styleClass="logout_button" text=" " textFill="WHITE">
+                     <graphic>
+                        <FontIcon fx:id="logout" iconColor="WHITE" iconLiteral="anto-logout" iconSize="30" onKeyPressed="#onClickLogout" textAlignment="CENTER" />
+                     </graphic>
+                     <padding>
+                        <Insets left="10.0" />
+                     </padding>
+                     <VBox.margin>
+                        <Insets left="170.0" top="10.0" />
+                     </VBox.margin>
+                  </MFXButton>
+               </children>
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+            </VBox>
+         </children>
+      </HBox>
+
+   </children>
+</AnchorPane>

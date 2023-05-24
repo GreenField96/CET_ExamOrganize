@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import io.github.palexdev.materialfx.controls.MFXButton?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+
+<VBox fx:id="mainStage" prefHeight="655.0" prefWidth="1200.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.exam2.showEmployeeController">
+   <children>
+      <HBox prefHeight="100.0" prefWidth="200.0" />
+      <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <TextField id="inputFiled" fx:id="searchInput" alignment="CENTER_RIGHT" prefHeight="41.0" prefWidth="300.0" promptText="بحت بالاسم , رقم الهاتف">
+               <font>
+                  <Font size="15.0" />
+               </font>
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+            </TextField>
+            <MFXButton id="insert_button" onAction="#querySearch" prefHeight="48.0" prefWidth="121.0" text="بحت" textAlignment="CENTER" textFill="WHITE">
+               <graphic>
+                  <FontIcon iconColor="WHITE" iconLiteral="anto-search" iconSize="31" wrappingWidth="37.0" />
+               </graphic>
+               <HBox.margin>
+                  <Insets left="30.0" right="30.0" />
+               </HBox.margin>
+            </MFXButton>
+         </children>
+      </HBox>
+      <HBox prefHeight="294.0" prefWidth="740.0">
+         <children>
+            <VBox fx:id="mainStage1" prefHeight="655.0" prefWidth="400.0" stylesheets="@style.css">
+               <children>
+                  <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <TextField id="inputFiled" fx:id="nameTextField" alignment="CENTER_RIGHT" prefHeight="41.0" prefWidth="237.0" promptText="مندر المبروك الجبالي">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                        </TextField>
+                        <Label id="textField" depthTest="DISABLE" prefHeight="41.0" prefWidth="86.0" text="الاسم بالكامل" textFill="WHITE">
+                           <HBox.margin>
+                              <Insets left="5.0" right="5.0" />
+                           </HBox.margin>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <TextField id="inputFiled" fx:id="phoneNumberTextField" prefHeight="41.0" prefWidth="238.0" promptText="0928515299">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                        </TextField>
+                        <Label id="textField" prefHeight="41.0" prefWidth="86.0" text="رقم الهاتف" textFill="WHITE">
+                           <HBox.margin>
+                              <Insets left="5.0" right="5.0" />
+                           </HBox.margin>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <TextField id="inputFiled" fx:id="emailTextField" prefHeight="41.0" prefWidth="239.0" promptText="example@gmail.com">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </TextField>
+                        <Label id="textField" prefHeight="41.0" prefWidth="85.0" style="-fx-alignment: center;" text="الايميل" textAlignment="CENTER" textFill="WHITE">
+                           <HBox.margin>
+                              <Insets left="5.0" right="5.0" />
+                           </HBox.margin>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <ChoiceBox id="choiceField" fx:id="workAsChoiceBox" opacity="0.86" prefHeight="31.0" prefWidth="209.0" />
+                        <Label id="textField" prefHeight="41.0" prefWidth="86.0" style="-fx-alignment: center;" text="صفته" textAlignment="CENTER" textFill="WHITE">
+                           <HBox.margin>
+                              <Insets left="5.0" right="5.0" />
+                           </HBox.margin>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="450.0">
+                     <children>
+                        <MFXButton id="insert_button" onAction="#deleteEmployeeData" prefHeight="48.0" prefWidth="121.0" style="-fx-background-color: red;" text="حدف" textFill="WHITE">
+                           <graphic>
+                              <FontIcon iconColor="WHITE" iconLiteral="antf-close-circle" iconSize="31" wrappingWidth="37.0" />
+                           </graphic>
+                        </MFXButton>
+                        <HBox prefHeight="59.0" prefWidth="45.0" />
+                        <MFXButton id="insert_button" onAction="#updateEmployeeData" prefHeight="48.0" prefWidth="121.0" text="تحديت" textFill="WHITE">
+                           <graphic>
+                              <FontIcon iconColor="WHITE" iconLiteral="antf-check-circle" iconSize="31" wrappingWidth="37.0" />
+                           </graphic>
+                           <HBox.margin>
+                              <Insets right="40.0" />
+                           </HBox.margin>
+                        </MFXButton>
+                     </children>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </HBox>
+               </children>
+            </VBox>
+            <VBox prefHeight="294.0" prefWidth="744.0">
+               <children>
+                  <TableView fx:id="EmployeeTableView" onMouseClicked="#getId" prefHeight="294.0" prefWidth="744.0">
+                    <columns>
+                      <TableColumn id="ColumnTable" fx:id="PhoneNumber" prefWidth="129.0" text="رقم الهاتف" />
+                      <TableColumn id="ColumnTable" fx:id="WorkAs" minWidth="0.0" prefWidth="105.0" text="يعمل ك" />
+                      <TableColumn id="ColumnTable" fx:id="Email" prefWidth="174.0" text="الايميل" />
+                      <TableColumn id="ColumnTable" fx:id="Name" prefWidth="195.0" text="الاسم" />
+                      <TableColumn id="ColumnTable" fx:id="Id" prefWidth="130.0" text="#" />
+                    </columns>
+                     <VBox.margin>
+                        <Insets left="5.0" right="5.0" />
+                     </VBox.margin>
+                  </TableView>
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <HBox prefHeight="100.0" prefWidth="64.0" />
+         </children>
+         <VBox.margin>
+            <Insets />
+         </VBox.margin>
+      </HBox>
+   </children>
+</VBox>
