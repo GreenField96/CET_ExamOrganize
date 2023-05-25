@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import org.kordamp.ikonli.javafx.FontIcon?>
 
-<AnchorPane fx:id="base" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="645.0" prefWidth="1300.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.exam2.HelloController">
+<AnchorPane fx:id="base" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="645.0" prefWidth="1300.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.exam2.HelloController">
    <children>
       <HBox prefHeight="645.0" prefWidth="1300.0">
          <children>
@@ -48,7 +48,7 @@
                         <Insets top="10.0" />
                      </VBox.margin>
                   </MFXButton>
-                  <MFXButton id="search_button" graphicTextGap="59.0" prefHeight="60.0" prefWidth="226.0" text="بحت عن لجنة" textFill="WHITE">
+                  <MFXButton id="search_button" graphicTextGap="59.0" onAction="#manageCoursesStage" prefHeight="60.0" prefWidth="226.0" text="ادارة المواد     " textFill="WHITE">
                      <graphic>
                         <FontIcon iconColor="WHITE" iconLiteral="anto-file-search" iconSize="31" wrappingWidth="37.0" />
                      </graphic>
@@ -56,7 +56,7 @@
                         <Insets bottom="10.0" top="10.0" />
                      </VBox.margin>
                   </MFXButton>
-                  <MFXButton id="search_button" graphicTextGap="8.0" onAction="#showEmployeeStage" prefHeight="60.0" prefWidth="227.0" text="البحت عن موظف/دكتور" textFill="#FFFF">
+                  <MFXButton id="search_button" graphicTextGap="8.0" onAction="#showEmployeeStage" prefHeight="60.0" prefWidth="227.0" text="أدارة الموظفين/دكاترة    " textFill="#FFFF">
                      <graphic>
                         <FontIcon iconColor="WHITE" iconLiteral="anto-search" iconSize="31" textAlignment="RIGHT" wrappingWidth="37.0" />
                      </graphic>

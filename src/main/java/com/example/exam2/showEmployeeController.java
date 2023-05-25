@@ -2,8 +2,6 @@ package com.example.exam2;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.collections.transformation.FilteredList;
-import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -13,9 +11,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
 import java.net.URL;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -93,20 +89,31 @@ public class showEmployeeController implements Initializable{
 
         emp.update(IdRow,nameTextField.getText(),emailTextField.getText(), workAsChoiceBox.getValue(),phoneNumberTextField.getText());
         querySearch();
-        nameTextField.setText("");
-        emailTextField.setText("");
-        phoneNumberTextField.setText("");
-        workAsChoiceBox.setValue("");
+
+        cleanEmployeeData();
     }
     @FXML
     public void deleteEmployeeData(ActionEvent event) throws SQLException {
         emp.delete(IdRow);
         querySearch();
 
+        cleanEmployeeData();
+    }
+    @FXML
+    public void insertEmployeeData() throws SQLException {
+        EmployeeModel emp = new EmployeeModel();
+
+        emp.insert(new EmployeeTable(nameTextField.getText(),emailTextField.getText(),phoneNumberTextField.getText(),workAsChoiceBox.getValue()));
+        emp.store();
+
+        querySearch();
+        cleanEmployeeData();
+    }
+    @FXML
+    public void cleanEmployeeData(){
         nameTextField.setText("");
         emailTextField.setText("");
         phoneNumberTextField.setText("");
         workAsChoiceBox.setValue("");
     }
-
 }

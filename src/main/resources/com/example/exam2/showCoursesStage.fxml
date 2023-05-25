@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import io.github.palexdev.materialfx.controls.MFXButton?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+
+<VBox fx:id="mainStage" prefHeight="655.0" prefWidth="1200.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.exam2.showCoursesController">
+   <children>
+      <HBox prefHeight="100.0" prefWidth="200.0" />
+      <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <TextField id="inputFiled" fx:id="searchInput" alignment="CENTER_RIGHT" prefHeight="41.0" prefWidth="300.0" promptText="بحت بأسم المادة او رقم المادة">
+               <font>
+                  <Font size="15.0" />
+               </font>
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+            </TextField>
+            <MFXButton id="insert_button" onAction="#querySearch" prefHeight="48.0" prefWidth="121.0" text="بحت" textAlignment="CENTER" textFill="WHITE">
+               <graphic>
+                  <FontIcon iconColor="WHITE" iconLiteral="anto-search" iconSize="31" wrappingWidth="37.0" />
+               </graphic>
+               <HBox.margin>
+                  <Insets left="30.0" right="30.0" />
+               </HBox.margin>
+            </MFXButton>
+         </children>
+      </HBox>
+      <HBox alignment="CENTER_RIGHT" prefHeight="294.0" prefWidth="740.0">
+         <children>
+            <VBox fx:id="mainStage1" prefHeight="655.0" prefWidth="450.0" stylesheets="@style.css">
+               <children>
+                  <HBox alignment="CENTER_RIGHT" prefHeight="60.0" prefWidth="200.0">
+                     <children>
+                        <TextField id="inputFiled" fx:id="courseNameTextField" alignment="CENTER_RIGHT" prefHeight="41.0" prefWidth="237.0" promptText="الجبر الخطي">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                        </TextField>
+                        <Label id="textField" depthTest="DISABLE" prefHeight="41.0" prefWidth="86.0" text="الاسم المادة" textFill="WHITE">
+                           <HBox.margin>
+                              <Insets left="5.0" right="5.0" />
+                           </HBox.margin>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" prefHeight="36.0" prefWidth="400.0">
+                     <children>
+                        <MFXButton id="insert_button" onAction="#cleanCourseData" prefHeight="43.0" prefWidth="186.0" style="-fx-background-color: red; -fx-opacity: 0.9;" text=" تنظيف المدخلات" textFill="WHITE">
+                           <graphic>
+                              <FontIcon iconColor="WHITE" iconLiteral="antf-close-circle" iconSize="31" textAlignment="CENTER" wrappingWidth="37.0" />
+                           </graphic>
+                           <HBox.margin>
+                              <Insets left="75.0" />
+                           </HBox.margin>
+                        </MFXButton>
+                     </children>
+                     <padding>
+                        <Insets left="10.0" />
+                     </padding>
+                  </HBox>
+                  <HBox alignment="CENTER_RIGHT" prefHeight="60.0" prefWidth="200.0">
+                     <children>
+                        <TextField id="inputFiled" fx:id="courseNumberTextField" prefHeight="41.0" prefWidth="238.0" promptText="GS202">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                        </TextField>
+                        <Label id="textField" prefHeight="41.0" prefWidth="86.0" text="رقم المادة" textFill="WHITE">
+                           <HBox.margin>
+                              <Insets left="5.0" right="5.0" />
+                           </HBox.margin>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="450.0">
+                     <children>
+                        <MFXButton id="insert_button" onAction="#deleteCourseData" prefHeight="48.0" prefWidth="110.0" style="-fx-background-color: red;" text="حدف" textFill="WHITE">
+                           <graphic>
+                              <FontIcon iconColor="WHITE" iconLiteral="antf-close-circle" iconSize="31" wrappingWidth="37.0" />
+                           </graphic>
+                        </MFXButton>
+                        <HBox prefHeight="90.0" prefWidth="21.0" />
+                        <MFXButton id="insert_button" onAction="#updateCourseData" prefHeight="48.0" prefWidth="110.0" text="تحديت" textFill="WHITE">
+                           <graphic>
+                              <FontIcon iconColor="WHITE" iconLiteral="antf-check-circle" iconSize="31" wrappingWidth="37.0" />
+                           </graphic>
+                           <HBox.margin>
+                              <Insets right="13.0" />
+                           </HBox.margin>
+                        </MFXButton>
+                        <MFXButton id="insert_button" onAction="#addCourseData" prefHeight="48.0" prefWidth="110.0" style="-fx-background-color: #1C658C;" text="أضافة" textFill="WHITE">
+                           <graphic>
+                              <FontIcon iconColor="WHITE" iconLiteral="antf-plus-circle" iconSize="31" wrappingWidth="37.0" />
+                           </graphic>
+                        </MFXButton>
+                     </children>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </HBox>
+               </children>
+               <padding>
+                  <Insets right="30.0" />
+               </padding>
+            </VBox>
+            <VBox alignment="CENTER_RIGHT" prefHeight="294.0" prefWidth="600.0">
+               <children>
+                  <TableView fx:id="CoursesTableView" nodeOrientation="LEFT_TO_RIGHT" onMouseClicked="#getId" prefHeight="294.0" prefWidth="580.0">
+                    <columns>
+                      <TableColumn id="ColumnTable" fx:id="courseNumber" prefWidth="217.0" text="رقم المادة" />
+                      <TableColumn id="ColumnTable" fx:id="courseName" prefWidth="244.0" text="أسم المادة" />
+                      <TableColumn id="ColumnTable" fx:id="courseId" prefWidth="148.0" text="#" />
+                    </columns>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </TableView>
+               </children>
+               <padding>
+                  <Insets right="10.0" />
+               </padding>
+            </VBox>
+         </children>
+      </HBox>
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <HBox prefHeight="100.0" prefWidth="64.0" />
+         </children>
+         <VBox.margin>
+            <Insets />
+         </VBox.margin>
+      </HBox>
+   </children>
+</VBox>

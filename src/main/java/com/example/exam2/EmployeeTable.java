@@ -7,7 +7,7 @@ public class EmployeeTable {
     private String name;
     private String phone_number;
     private String work_as;
-    private String email;cd cd
+    private String email;
 
     EmployeeTable(String name , String email , String phone_number , String work_as){
         this.name = name;

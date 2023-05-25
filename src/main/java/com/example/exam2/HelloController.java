@@ -16,7 +16,7 @@ public class HelloController {
     private VBox showEmployeeStage;
     private VBox addCommitteStage;
     private VBox addPaperMovementStageDelivery;
-
+    private VBox manageCoursesStage;
     @FXML
     private void onClickLogout() {
         Stage stage = (Stage) base.getScene().getWindow();
@@ -70,6 +70,20 @@ public class HelloController {
                 addPaperMovementStageDelivery = fxml.load();
             }
             mainStage.getChildren().setAll(addPaperMovementStageDelivery);
+        }catch (Exception e){
+            log.logException(e);
+        }
+    }
+
+    @FXML
+    public void manageCoursesStage(){
+        try {
+            if(manageCoursesStage == null) {
+                FXMLLoader fxml = new FXMLLoader();
+                fxml.setLocation(getClass().getResource("showCoursesStage.fxml"));
+                manageCoursesStage = fxml.load();
+            }
+            mainStage.getChildren().setAll(manageCoursesStage);
         }catch (Exception e){
             log.logException(e);
         }

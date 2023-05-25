@@ -12,7 +12,7 @@
 <?import javafx.scene.text.Font?>
 <?import org.kordamp.ikonli.javafx.FontIcon?>
 
-<VBox fx:id="mainStage" prefHeight="655.0" prefWidth="1200.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.exam2.showEmployeeController">
+<VBox fx:id="mainStage" prefHeight="655.0" prefWidth="1200.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.exam2.showEmployeeController">
    <children>
       <HBox prefHeight="100.0" prefWidth="200.0" />
       <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0">
@@ -87,31 +87,55 @@
                         </Label>
                      </children>
                   </HBox>
-                  <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0">
+                  <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="300.0">
                      <children>
-                        <ChoiceBox id="choiceField" fx:id="workAsChoiceBox" opacity="0.86" prefHeight="31.0" prefWidth="209.0" />
-                        <Label id="textField" prefHeight="41.0" prefWidth="86.0" style="-fx-alignment: center;" text="صفته" textAlignment="CENTER" textFill="WHITE">
+                        <MFXButton id="insert_button" onAction="#cleanEmployeeData" prefHeight="32.0" prefWidth="46.0" style="-fx-background-color: red; -fx-opacity: 0.9;" text=" " textFill="WHITE">
+                           <graphic>
+                              <FontIcon iconColor="WHITE" iconLiteral="antf-close-circle" iconSize="25" textAlignment="CENTER" wrappingWidth="37.0" />
+                           </graphic>
                            <HBox.margin>
-                              <Insets left="5.0" right="5.0" />
+                              <Insets left="75.0" />
+                           </HBox.margin>
+                        </MFXButton>
+                        <ChoiceBox id="choiceField" fx:id="workAsChoiceBox" opacity="0.86" prefHeight="31.0" prefWidth="170.0">
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                           <HBox.margin>
+                              <Insets left="5.0" />
+                           </HBox.margin></ChoiceBox>
+                        <Label id="textField" prefHeight="41.0" prefWidth="100.0" style="-fx-alignment: center;" text="صفته" textAlignment="CENTER" textFill="WHITE">
+                           <HBox.margin>
+                              <Insets left="15.0" right="5.0" />
                            </HBox.margin>
                         </Label>
                      </children>
                   </HBox>
+                  <HBox alignment="CENTER_LEFT" prefHeight="20.0" prefWidth="400.0">
+                     <padding>
+                        <Insets left="10.0" />
+                     </padding>
+                  </HBox>
                   <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="450.0">
                      <children>
-                        <MFXButton id="insert_button" onAction="#deleteEmployeeData" prefHeight="48.0" prefWidth="121.0" style="-fx-background-color: red;" text="حدف" textFill="WHITE">
+                        <MFXButton id="insert_button" onAction="#deleteEmployeeData" prefHeight="48.0" prefWidth="110.0" style="-fx-background-color: red;" text="حدف" textFill="WHITE">
                            <graphic>
                               <FontIcon iconColor="WHITE" iconLiteral="antf-close-circle" iconSize="31" wrappingWidth="37.0" />
                            </graphic>
                         </MFXButton>
-                        <HBox prefHeight="59.0" prefWidth="45.0" />
-                        <MFXButton id="insert_button" onAction="#updateEmployeeData" prefHeight="48.0" prefWidth="121.0" text="تحديت" textFill="WHITE">
+                        <HBox prefHeight="59.0" prefWidth="19.0" />
+                        <MFXButton id="insert_button" onAction="#updateEmployeeData" prefHeight="48.0" prefWidth="110.0" text="تحديت" textFill="WHITE">
                            <graphic>
                               <FontIcon iconColor="WHITE" iconLiteral="antf-check-circle" iconSize="31" wrappingWidth="37.0" />
                            </graphic>
                            <HBox.margin>
-                              <Insets right="40.0" />
+                              <Insets right="15.0" />
                            </HBox.margin>
+                        </MFXButton>
+                        <MFXButton id="insert_button" onAction="#insertEmployeeData" prefHeight="48.0" prefWidth="110.0" style="-fx-background-color: #1C658C;" text="أضافة" textFill="WHITE">
+                           <graphic>
+                              <FontIcon iconColor="WHITE" iconLiteral="antf-plus-circle" iconSize="31" wrappingWidth="37.0" />
+                           </graphic>
                         </MFXButton>
                      </children>
                      <VBox.margin>
