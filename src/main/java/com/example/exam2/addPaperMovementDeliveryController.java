@@ -1,7 +1,6 @@
 package com.example.exam2;
 
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableArray;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -124,11 +123,11 @@ public class addPaperMovementDeliveryController implements Initializable {
         Committes = comm.selectSpecificData(numberRoomTextField.getText(),courseTextField.getText(),date);
 
         idCommitteCol.setCellValueFactory(new PropertyValueFactory<>("IdCol"));
-        courseCommitteCol.setCellValueFactory(new PropertyValueFactory<>("CourseCol"));
+        courseCommitteCol.setCellValueFactory(new PropertyValueFactory<>("courseName"));
         dateCommitteCol.setCellValueFactory(new PropertyValueFactory<>("DateCol"));
-        specificCommitteCol.setCellValueFactory(new PropertyValueFactory<>("SpecificCol"));
+        specificCommitteCol.setCellValueFactory(new PropertyValueFactory<>("NumberAnswerPaperCol"));
         numberOfRoomCommitteCol.setCellValueFactory(new PropertyValueFactory<>("ClassNumberCol"));
-        numberOfPaperCommitteCol.setCellValueFactory(new PropertyValueFactory<>("NumberAnswerPaperCol"));
+        numberOfPaperCommitteCol.setCellValueFactory(new PropertyValueFactory<>("SpecificCol"));
         ObservableArrayCommitte =  FXCollections.observableArrayList(Committes);
         committeTableView.setItems(ObservableArrayCommitte);
     }

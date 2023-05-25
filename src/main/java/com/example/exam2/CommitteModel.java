@@ -8,9 +8,11 @@ public class CommitteModel{
     private ExceptionLogger log = ExceptionLogger.getInstance();
     private ArrayList<CommitteTable> committes;
     private ArrayList<studentAbsenceTable> students;
+    private CourseModel courseModel;
     CommitteModel(){
         committes = new ArrayList<>();
         students = new ArrayList<>();
+        courseModel = new CourseModel();
     }
 
     public ArrayList<studentAbsenceTable> getStudentAbsence(){
@@ -27,7 +29,7 @@ public class CommitteModel{
             for (CommitteTable committe : committes) {
                 statement.setString(1, committe.getClassNumberCol());
                 statement.setString(2, committe.getDateCol());
-                statement.setString(3, committe.getCourseCol());
+                statement.setInt(3, committe.getCourseCol());
                 statement.setString(4,  committe.getSemesterCol());
                 statement.setString(5,  committe.getSpecificCol());
                 statement.setString(6,  committe.getNumberAnswerPaperCol());
@@ -86,10 +88,13 @@ public class CommitteModel{
         Connection connection = null;
         PreparedStatement statement = null;
         date = date.replace('/','-');
-//        System.out.println(date);
         try {
+            courseModel.searchOnTable(course);
             connection = db.getDBConnection();
-            String query = "SELECT * FROM committe WHERE class LIKE '%"+ Class +"%' AND date LIKE '%"+ date +"%' AND course LIKE '%"+ course +"%'";
+            String query = "SELECT " +
+                    " committe.id,committe.class,committe.date,committe.course,committe.semester,committe.specification,committe.number_answer_paper,course_name.id as courseId,course_name.courseName,course_name.courseNumber " +
+                    " FROM committe,course_name WHERE committe.class LIKE '%"+ Class +"%' AND committe.date LIKE '%"+ date +"%' AND course_name.courseName LIKE '%"+ course +"%' AND course_name.id = committe.course";
+
             statement = connection.prepareStatement(query);
             ResultSet resultSet = statement.executeQuery();
             while(resultSet.next())
@@ -98,10 +103,14 @@ public class CommitteModel{
                         resultSet.getInt("id") ,
                         resultSet.getNString("class") ,
                         resultSet.getDate("date").toLocalDate().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")) ,
-                        resultSet.getNString("course"),
+                        resultSet.getInt("course"),
                         resultSet.getNString("specification"),
-                        resultSet.getNString("number_answer_paper")
-                ));
+                        resultSet.getNString("semester"),
+                        resultSet.getNString("number_answer_paper"),
+                        resultSet.getInt("courseId") ,
+                        resultSet.getNString("courseName"),
+                        resultSet.getNString("courseNumber")
+                        ));
             }
         } catch (SQLException exception) {
             log.logException(exception);

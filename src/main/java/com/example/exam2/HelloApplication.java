@@ -34,7 +34,7 @@ public class HelloApplication extends Application {
 
         stage.initStyle(StageStyle.UNDECORATED);
         stage.getIcons().add(new Image(HelloApplication.class.getResourceAsStream("icon.png")));
-        stage.setTitle("نظام مراقبة الامتحانات");
+        stage.setTitle("نظام مراقبة سير الامتحانات");
         stage.setScene(scene);
         stage.show();
     }

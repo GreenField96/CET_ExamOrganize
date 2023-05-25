@@ -15,7 +15,7 @@
 <?import javafx.scene.text.Font?>
 <?import org.kordamp.ikonli.javafx.FontIcon?>
 
-<VBox prefWidth="1100.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.exam2.addCommitteController">
+<VBox prefWidth="1100.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.exam2.addCommitteController">
    <children>
       <ScrollPane prefWidth="1000.0">
          <content>
@@ -31,23 +31,6 @@
                                        <children>
                                           <DatePicker id="dateChoiceField" fx:id="dateDatePicker" nodeOrientation="RIGHT_TO_LEFT" prefHeight="31.0" prefWidth="238.0" promptText="تاريخ بدأ الامتحان" />
                                           <Label id="textField" prefHeight="41.0" prefWidth="86.0" style="-fx-alignment: center;" text="التاريخ" textAlignment="CENTER" textFill="WHITE">
-                                             <HBox.margin>
-                                                <Insets left="15.0" right="5.0" />
-                                             </HBox.margin>
-                                          </Label>
-                                       </children>
-                                    </HBox>
-                                    <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0">
-                                       <children>
-                                          <TextField id="courseTextFiled" fx:id="courseNameTextField" alignment="CENTER_RIGHT" prefHeight="41.0" prefWidth="238.0" promptText="أسم المادة الممتحنة">
-                                             <font>
-                                                <Font size="15.0" />
-                                             </font>
-                                             <HBox.margin>
-                                                <Insets />
-                                             </HBox.margin>
-                                          </TextField>
-                                          <Label id="textField" prefHeight="41.0" prefWidth="86.0" text="أسم المادة" textFill="WHITE">
                                              <HBox.margin>
                                                 <Insets left="15.0" right="5.0" />
                                              </HBox.margin>
@@ -136,6 +119,45 @@
                         <HBox alignment="CENTER_RIGHT" prefHeight="15.0" prefWidth="1000.0" />
                         <HBox alignment="CENTER_RIGHT" prefWidth="200.0">
                            <children>
+                              <TextField id="inputFiled" fx:id="searchCourseTextField" alignment="CENTER_RIGHT" prefHeight="41.0" prefWidth="300.0" promptText="بحت بأسم المادة او الرقم">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets bottom="10.0" top="20.0" />
+                                 </HBox.margin>
+                              </TextField>
+                              <MFXButton id="insert_button" onAction="#searchOnCourseTable" prefHeight="48.0" prefWidth="121.0" text="بحت" textAlignment="CENTER" textFill="WHITE">
+                                 <graphic>
+                                    <FontIcon iconColor="WHITE" iconLiteral="anto-search" iconSize="31" wrappingWidth="37.0" />
+                                 </graphic>
+                                 <HBox.margin>
+                                    <Insets left="30.0" right="30.0" top="10.0" />
+                                 </HBox.margin>
+                              </MFXButton>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER_RIGHT" prefWidth="300.0">
+                           <children>
+                              <VBox prefHeight="119.0" prefWidth="500.0">
+                                 <children>
+                                    <TableView fx:id="CoursesTableView" onMouseClicked="#getCourseId" prefHeight="91.0">
+                                       <columns>
+                                          <TableColumn id="ColumnTable" fx:id="courseNumber" prefWidth="180.0" text="رقم المادة" />
+                                          <TableColumn id="ColumnTable" fx:id="courseName" prefWidth="215.0" text="اسم المادة" />
+                                          <TableColumn id="ColumnTable" fx:id="courseId" prefWidth="94.0" text="#" />
+                                       </columns>
+                                       <VBox.margin>
+                                          <Insets left="5.0" right="5.0" />
+                                       </VBox.margin>
+                                    </TableView>
+                                    <HBox fx:id="courseNameTakenHbox" alignment="CENTER" prefHeight="30.0" />
+                                 </children>
+                              </VBox>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER_RIGHT" prefWidth="200.0">
+                           <children>
                               <TextField id="inputFiled" fx:id="searchTextField" alignment="CENTER_RIGHT" prefHeight="41.0" prefWidth="300.0" promptText="بحت عن مراقبين بالاسم , رقم الهاتف">
                                  <font>
                                     <Font size="15.0" />
@@ -164,7 +186,7 @@
                               <VBox fx:id="nameTakenVbox3" prefHeight="96.0" prefWidth="120.0" />
                               <VBox prefWidth="600.0">
                                  <children>
-                                    <TableView fx:id="EmployeeTableView" onMouseClicked="#getId" prefHeight="96.0" prefWidth="590.0">
+                                    <TableView fx:id="EmployeeTableView" onMouseClicked="#getُEmployeeId" prefHeight="96.0" prefWidth="590.0">
                                        <columns>
                                           <TableColumn id="ColumnTable" fx:id="phoneNumberEmployeeCol" prefWidth="190.66668701171875" text="رقم الهاتف" />
                                           <TableColumn id="ColumnTable" fx:id="workAsEmployeeCol" minWidth="0.0" prefWidth="129.66668701171875" text="يعمل ك" />
