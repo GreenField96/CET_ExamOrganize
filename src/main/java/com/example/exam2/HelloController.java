@@ -74,7 +74,6 @@ public class HelloController {
             log.logException(e);
         }
     }
-
     @FXML
     public void manageCoursesStage(){
         try {
