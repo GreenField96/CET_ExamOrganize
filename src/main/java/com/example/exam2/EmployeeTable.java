@@ -26,9 +26,6 @@ public class EmployeeTable {
         this.id = id;
         this.name = name;
     }
-    public void setId(int id) {
-        this.id = id;
-    }
     public int getId() {
         return id;
     }
@@ -38,13 +35,16 @@ public class EmployeeTable {
     public String getPhone_number() {
         return phone_number;
     }
-
     public String getWork_as() {
         return work_as;
     }
-
     public String getEmail() {
         return email;
     }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
 
 }

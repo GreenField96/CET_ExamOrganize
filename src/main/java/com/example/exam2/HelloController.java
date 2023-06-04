@@ -6,6 +6,9 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import java.io.IOException;
+
+
 public class HelloController {
     private static final ExceptionLogger log = ExceptionLogger.getInstance();
     @FXML
@@ -87,5 +90,16 @@ public class HelloController {
             log.logException(e);
         }
     }
+    @FXML
+    public void createReportStage() {
+        try {
+            new ProcessBuilder("cmd", "/c", " start https://127.0.0.1/exam_organize/").inheritIO().start().waitFor();
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 }
 

@@ -50,7 +50,7 @@
                   </MFXButton>
                   <MFXButton id="search_button" graphicTextGap="59.0" onAction="#manageCoursesStage" prefHeight="60.0" prefWidth="226.0" text="ادارة المواد     " textFill="WHITE">
                      <graphic>
-                        <FontIcon iconColor="WHITE" iconLiteral="anto-file-search" iconSize="31" wrappingWidth="37.0" />
+                        <FontIcon iconColor="WHITE" iconLiteral="anto-experiment" iconSize="31" wrappingWidth="37.0" />
                      </graphic>
                      <VBox.margin>
                         <Insets bottom="10.0" top="10.0" />
@@ -58,15 +58,15 @@
                   </MFXButton>
                   <MFXButton id="search_button" graphicTextGap="8.0" onAction="#showEmployeeStage" prefHeight="60.0" prefWidth="227.0" text="أدارة الموظفين/دكاترة    " textFill="#FFFF">
                      <graphic>
-                        <FontIcon iconColor="WHITE" iconLiteral="anto-search" iconSize="31" textAlignment="RIGHT" wrappingWidth="37.0" />
+                        <FontIcon iconColor="WHITE" iconLiteral="anto-user" iconSize="31" textAlignment="RIGHT" wrappingWidth="37.0" />
                      </graphic>
                      <VBox.margin>
                         <Insets bottom="10.0" />
                      </VBox.margin>
                   </MFXButton>
-                  <MFXButton id="search_button" graphicTextGap="27.0" prefHeight="60.0" prefWidth="226.0" text="البحت عن أوراق أجابة" textFill="#FFFF">
+                  <MFXButton id="search_button" graphicTextGap="27.0" onAction="#createReportStage" prefHeight="60.0" prefWidth="226.0" text="قائمة أنشاء التقارير    " textFill="#FFFF">
                      <graphic>
-                        <FontIcon iconColor="WHITE" iconLiteral="anto-user-add" iconSize="31" textAlignment="RIGHT" wrappingWidth="37.0" />
+                        <FontIcon iconColor="WHITE" iconLiteral="antf-printer" iconSize="31" textAlignment="RIGHT" wrappingWidth="37.0" />
                      </graphic>
                      <VBox.margin>
                         <Insets bottom="10.0" />

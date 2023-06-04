@@ -54,6 +54,40 @@
                                           </Label>
                                        </children>
                                     </HBox>
+                                    <HBox alignment="CENTER_RIGHT" prefHeight="99.0" prefWidth="381.0">
+                                       <children>
+                                          <ChoiceBox id="semesterChoiceField" fx:id="poeriodChoiceBox" prefHeight="31.0" prefWidth="213.0">
+                                             <opaqueInsets>
+                                                <Insets />
+                                             </opaqueInsets>
+                                             <HBox.margin>
+                                                <Insets right="20.0" />
+                                             </HBox.margin>
+                                          </ChoiceBox>
+                                          <Label id="textField" prefHeight="41.0" prefWidth="113.0" text="فترة الامتحان" textAlignment="CENTER" textFill="WHITE">
+                                             <HBox.margin>
+                                                <Insets left="5.0" right="5.0" />
+                                             </HBox.margin>
+                                          </Label>
+                                       </children>
+                                    </HBox>
+                                    <HBox alignment="CENTER_RIGHT" prefHeight="99.0" prefWidth="381.0">
+                                       <children>
+                                          <ChoiceBox id="semesterChoiceField" fx:id="semesterPeriodChoiceBox" prefHeight="31.0" prefWidth="213.0">
+                                             <opaqueInsets>
+                                                <Insets />
+                                             </opaqueInsets>
+                                             <HBox.margin>
+                                                <Insets right="20.0" />
+                                             </HBox.margin>
+                                          </ChoiceBox>
+                                          <Label id="textField" prefHeight="41.0" prefWidth="113.0" text="السيمستر" textAlignment="CENTER" textFill="WHITE">
+                                             <HBox.margin>
+                                                <Insets left="5.0" right="5.0" />
+                                             </HBox.margin>
+                                          </Label>
+                                       </children>
+                                    </HBox>
                                  </children>
                                  <HBox.margin>
                                     <Insets right="20.0" />
@@ -103,6 +137,23 @@
                                              </HBox.margin>
                                           </ChoiceBox>
                                           <Label id="textField" prefHeight="41.0" prefWidth="113.0" text="الفصل/السيم" textAlignment="CENTER" textFill="WHITE">
+                                             <HBox.margin>
+                                                <Insets left="5.0" right="5.0" />
+                                             </HBox.margin>
+                                          </Label>
+                                       </children>
+                                    </HBox>
+                                    <HBox alignment="CENTER_RIGHT" prefHeight="99.0" prefWidth="381.0">
+                                       <children>
+                                          <ChoiceBox id="semesterChoiceField" fx:id="yearChoiceBox" prefHeight="31.0" prefWidth="213.0">
+                                             <opaqueInsets>
+                                                <Insets />
+                                             </opaqueInsets>
+                                             <HBox.margin>
+                                                <Insets right="20.0" />
+                                             </HBox.margin>
+                                          </ChoiceBox>
+                                          <Label id="textField" prefHeight="41.0" prefWidth="113.0" text="لسنة" textAlignment="CENTER" textFill="WHITE">
                                              <HBox.margin>
                                                 <Insets left="5.0" right="5.0" />
                                              </HBox.margin>

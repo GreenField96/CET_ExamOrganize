@@ -32,7 +32,7 @@ import java.util.ResourceBundle;
     @FXML
     private DatePicker dateDatePicker;
     @FXML
-    private ChoiceBox<String> semesterChoiceBox,specificChoiceBox,groupNumberChoiceBox;
+    private ChoiceBox<String> semesterChoiceBox,specificChoiceBox,groupNumberChoiceBox,poeriodChoiceBox,semesterPeriodChoiceBox,yearChoiceBox;
     @FXML
     private TextField classNumberTextField,numberPaperTextField,searchTextField;
     @FXML
@@ -51,7 +51,7 @@ import java.util.ResourceBundle;
     private EmployeeModel emp;
     private Label monitorName;
     private Label studentName;
-    private ArrayList<EmployeeTable> MonitorsList = new ArrayList<>();
+    private ArrayList<EmployeeTable> MonitorsList;
     private ArrayList<studentAbsenceTable> students;
     private CommitteModel commModel = new CommitteModel();
     private int counterMonitors=0,counterStudentAbsence = 0;
@@ -111,11 +111,30 @@ import java.util.ResourceBundle;
         groupNumberChoiceBox.getItems().add("ثمانية عشر");
         groupNumberChoiceBox.getItems().add("تسعة عشر");
         groupNumberChoiceBox.getItems().add("عشرون");
+
+        poeriodChoiceBox.setValue("09:00-11:00");
+        poeriodChoiceBox.getItems().add("09:00-11:00");
+        poeriodChoiceBox.getItems().add("11:30-13:30");
+
         dateDatePicker.setValue(LocalDate.now());
+
+        yearChoiceBox.setValue(Integer.toString(LocalDate.now().getYear()));
+        int intYear = LocalDate.now().getYear();
+        intYear--;
+        for (int i=0;i<=3;i++) {
+            yearChoiceBox.getItems().add(Integer.toString(intYear++));
+        }
+
+        semesterPeriodChoiceBox.setValue("ربيعي");
+        semesterPeriodChoiceBox.getItems().add("ربيعي");
+        semesterPeriodChoiceBox.getItems().add("خريفي");
+        semesterPeriodChoiceBox.getItems().add("صيفي");
+
         emp = new EmployeeModel();
         Employees = new ArrayList<>();
         courseModel = new CourseModel();
         Courses = new ArrayList<>();
+        MonitorsList = new ArrayList<>();
     }
     @FXML
     public void searchOnEmployeeTable() throws SQLException {
@@ -140,7 +159,7 @@ import java.util.ResourceBundle;
 
         monitorName.setOnMouseClicked(MouseEvent -> {
             deleteMonitorFlag = true;
-            for (EmployeeTable monitor : MonitorsList) {
+            for (EmployeeTable monitor : MonitorsList){
                  if(MouseEvent.getSource().toString().contains(monitor.getName()) & deleteMonitorFlag) {
                      monitor.setId(-1);
                     deleteMonitorFlag = false;
@@ -210,11 +229,11 @@ import java.util.ResourceBundle;
     public void addFullCommitte() throws IOException {
         commModel.insert(new CommitteTable(
                 classNumberTextField.getText(),dateDatePicker.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")),
-                IdRow,semesterChoiceBox.getValue(),numberPaperTextField.getText(),specificChoiceBox.getValue()
+                IdRow,semesterChoiceBox.getValue(),numberPaperTextField.getText(),specificChoiceBox.getValue(),poeriodChoiceBox.getValue(),
+                yearChoiceBox.getValue(),semesterPeriodChoiceBox.getValue()
         ));
 
         commModel.store(MonitorsList);
-
         cancleAllInputCommitte();
     }
      @FXML

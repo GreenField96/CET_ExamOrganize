@@ -8,12 +8,15 @@ public class CommitteTable {
     private String numberAnswerPaperCol;
     private String specificCol;
     private String semesterCol;
+    private String periodCol;
+    private String yearCol;
+    private String semesterPeriodCol;
 
     private int courseId;
     private String courseName;
     private String courseNumber;
 
-    public CommitteTable(int idCol, String classNumberCol, String dateCol, int courseCol,String semesterCol, String numberAnswerPaperCol, String specificCol, int courseId, String courseName, String courseNumber) {
+    public CommitteTable(int idCol, String classNumberCol, String dateCol, int courseCol, String specificCol,String semesterCol, String numberAnswerPaperCol, int courseId, String courseName, String courseNumber) {
         this.idCol = idCol;
         this.classNumberCol = classNumberCol;
         this.dateCol = dateCol;
@@ -35,13 +38,17 @@ public class CommitteTable {
         this.numberAnswerPaperCol = numberAnswerPaperCol;
         this.specificCol = specificCol;
     }
-    public CommitteTable(String classNumberCol, String dateCol, int courseCol, String semesterCol, String numberAnswerPaperCol, String specificCol) {
+    public CommitteTable(String classNumberCol, String dateCol, int courseCol, String semesterCol, String numberAnswerPaperCol, String specificCol,String periodCol,String yearCol,String semesterPeriodCol) {
         this.classNumberCol = classNumberCol;
         this.dateCol = dateCol;
         this.courseCol = courseCol;
         this.semesterCol = semesterCol;
         this.numberAnswerPaperCol = numberAnswerPaperCol;
         this.specificCol = specificCol;
+        this.periodCol = periodCol;
+        this.yearCol = yearCol;
+        this.semesterPeriodCol = semesterPeriodCol;
+
     }
 
     // id,class,date,course,specification,number_answer_paper
@@ -72,17 +79,15 @@ public class CommitteTable {
         return numberAnswerPaperCol;
     }
     public String getSpecificCol(){ return specificCol;}
-
-
+    public String getPeriodCol() {return periodCol;}
     public int getCourseId() {
         return courseId;
     }
-    public String getCourseName() {
-        return courseName;
-    }
-    public String getCourseNumber() {
-        return courseNumber;
-    }
+    public String getYearCol() {return yearCol;}
+    public String getSemesterPeriodCol() {return semesterPeriodCol;}
+
+    public String getCourseName() {return courseName;}
+    public String getCourseNumber() {return courseNumber;}
 
     public void setCourseId(int courseId) {
         this.courseId = courseId;
@@ -93,7 +98,11 @@ public class CommitteTable {
     public void setCourseNumber(String courseNumber) {
         this.courseNumber = courseNumber;
     }
+    public void getYearCol(String yearCol) {this.yearCol = yearCol;}
+    public void getSemesterPeriodCol(String semesterPeriodCol) {this.semesterPeriodCol = semesterPeriodCol;}
 
+    public void getCourseName(String courseName) {this.courseName = courseName;}
+    public void getCourseNumber(String courseNumber) {this.courseNumber = courseNumber;}
 }
 
 

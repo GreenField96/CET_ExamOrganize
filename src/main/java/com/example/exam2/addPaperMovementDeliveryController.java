@@ -125,9 +125,9 @@ public class addPaperMovementDeliveryController implements Initializable {
         idCommitteCol.setCellValueFactory(new PropertyValueFactory<>("IdCol"));
         courseCommitteCol.setCellValueFactory(new PropertyValueFactory<>("courseName"));
         dateCommitteCol.setCellValueFactory(new PropertyValueFactory<>("DateCol"));
-        specificCommitteCol.setCellValueFactory(new PropertyValueFactory<>("NumberAnswerPaperCol"));
+        specificCommitteCol.setCellValueFactory(new PropertyValueFactory<>("SpecificCol"));
         numberOfRoomCommitteCol.setCellValueFactory(new PropertyValueFactory<>("ClassNumberCol"));
-        numberOfPaperCommitteCol.setCellValueFactory(new PropertyValueFactory<>("SpecificCol"));
+        numberOfPaperCommitteCol.setCellValueFactory(new PropertyValueFactory<>("NumberAnswerPaperCol"));
         ObservableArrayCommitte =  FXCollections.observableArrayList(Committes);
         committeTableView.setItems(ObservableArrayCommitte);
     }
@@ -136,6 +136,7 @@ public class addPaperMovementDeliveryController implements Initializable {
         Integer index = committeTableView.getSelectionModel().getSelectedIndex();
 
         committeId = String.valueOf(idCommitteCol.getCellData(index));
+
         idCommitte.setText(String.valueOf(idCommitteCol.getCellData(index)));
         courseCommitte.setText(courseCommitteCol.getCellData(index));
         dateCommitte.setText(dateCommitteCol.getCellData(index));

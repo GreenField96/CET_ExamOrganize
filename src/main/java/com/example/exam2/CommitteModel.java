@@ -24,7 +24,7 @@ public class CommitteModel{
         PreparedStatement statement = null;
         try {
             connection = db.getDBConnection();
-            String queryComitte = "INSERT INTO committe (class,date,course,semester,specification,number_answer_paper) VALUES (?,?,?,?,?,?)";
+            String queryComitte = "INSERT INTO committe (class,date,course,semester,specification,number_answer_paper,periodExam,year,semester_period) VALUES (?,?,?,?,?,?,?,?,?)";
             statement = connection.prepareStatement(queryComitte);
             for (CommitteTable committe : committes) {
                 statement.setString(1, committe.getClassNumberCol());
@@ -33,6 +33,9 @@ public class CommitteModel{
                 statement.setString(4,  committe.getSemesterCol());
                 statement.setString(5,  committe.getSpecificCol());
                 statement.setString(6,  committe.getNumberAnswerPaperCol());
+                statement.setString(7,  committe.getPeriodCol());
+                statement.setString(8,  committe.getYearCol());
+                statement.setString(9,  committe.getSemesterPeriodCol());
                 statement.addBatch();
             }
             statement.executeBatch();
@@ -100,14 +103,14 @@ public class CommitteModel{
             while(resultSet.next())
             {
                 committes.add(new CommitteTable(
-                        resultSet.getInt("id") ,
-                        resultSet.getNString("class") ,
+                        resultSet.getInt("id"),
+                        resultSet.getNString("class"),
                         resultSet.getDate("date").toLocalDate().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")) ,
                         resultSet.getInt("course"),
                         resultSet.getNString("specification"),
                         resultSet.getNString("semester"),
                         resultSet.getNString("number_answer_paper"),
-                        resultSet.getInt("courseId") ,
+                        resultSet.getInt("courseId"),
                         resultSet.getNString("courseName"),
                         resultSet.getNString("courseNumber")
                         ));
