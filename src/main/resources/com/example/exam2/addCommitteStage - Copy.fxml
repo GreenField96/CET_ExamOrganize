@@ -1,0 +1,407 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import io.github.palexdev.materialfx.controls.MFXButton?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+
+<VBox prefWidth="1100.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.exam2.addCommitteController">
+   <children>
+      <ScrollPane prefWidth="1000.0">
+         <content>
+            <HBox prefWidth="1000.0">
+               <children>
+                  <VBox prefWidth="1000.0">
+                     <children>
+                        <HBox alignment="CENTER_RIGHT" prefHeight="300.0" prefWidth="1000.0">
+                           <children>
+                              <VBox prefHeight="275.0" prefWidth="373.0">
+                                 <children>
+                                    <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0">
+                                       <children>
+                                          <DatePicker id="dateChoiceField" fx:id="dateDatePicker" nodeOrientation="RIGHT_TO_LEFT" prefHeight="31.0" prefWidth="238.0" promptText="تاريخ بدأ الامتحان" />
+                                          <Label id="textField" prefHeight="41.0" prefWidth="86.0" style="-fx-alignment: center;" text="التاريخ" textAlignment="CENTER" textFill="WHITE">
+                                             <HBox.margin>
+                                                <Insets left="15.0" right="5.0" />
+                                             </HBox.margin>
+                                          </Label>
+                                       </children>
+                                    </HBox>
+                                    <HBox alignment="CENTER_RIGHT" prefHeight="99.0" prefWidth="381.0">
+                                       <children>
+                                          <ChoiceBox id="specificChoiceField" fx:id="specificChoiceBox" prefHeight="31.0" prefWidth="213.0">
+                                             <opaqueInsets>
+                                                <Insets />
+                                             </opaqueInsets>
+                                             <HBox.margin>
+                                                <Insets right="20.0" />
+                                             </HBox.margin>
+                                          </ChoiceBox>
+                                          <Label id="textField" prefHeight="41.0" prefWidth="113.0" style="-fx-alignment: center;" text="التخصص" textAlignment="CENTER" textFill="WHITE">
+                                             <HBox.margin>
+                                                <Insets left="5.0" right="5.0" />
+                                             </HBox.margin>
+                                          </Label>
+                                       </children>
+                                    </HBox>
+                                    <HBox alignment="CENTER_RIGHT" prefHeight="99.0" prefWidth="381.0">
+                                       <children>
+                                          <ChoiceBox id="semesterChoiceField" fx:id="poeriodChoiceBox" prefHeight="31.0" prefWidth="213.0">
+                                             <opaqueInsets>
+                                                <Insets />
+                                             </opaqueInsets>
+                                             <HBox.margin>
+                                                <Insets right="20.0" />
+                                             </HBox.margin>
+                                          </ChoiceBox>
+                                          <Label id="textField" prefHeight="41.0" prefWidth="113.0" text="فترة الامتحان" textAlignment="CENTER" textFill="WHITE">
+                                             <HBox.margin>
+                                                <Insets left="5.0" right="5.0" />
+                                             </HBox.margin>
+                                          </Label>
+                                       </children>
+                                    </HBox>
+                                    <HBox alignment="CENTER_RIGHT" prefHeight="99.0" prefWidth="381.0">
+                                       <children>
+                                          <ChoiceBox id="semesterChoiceField" fx:id="semesterPeriodChoiceBox" prefHeight="31.0" prefWidth="213.0">
+                                             <opaqueInsets>
+                                                <Insets />
+                                             </opaqueInsets>
+                                             <HBox.margin>
+                                                <Insets right="20.0" />
+                                             </HBox.margin>
+                                          </ChoiceBox>
+                                          <Label id="textField" prefHeight="41.0" prefWidth="113.0" text="السيمستر" textAlignment="CENTER" textFill="WHITE">
+                                             <HBox.margin>
+                                                <Insets left="5.0" right="5.0" />
+                                             </HBox.margin>
+                                          </Label>
+                                       </children>
+                                    </HBox>
+                                 </children>
+                                 <HBox.margin>
+                                    <Insets right="20.0" />
+                                 </HBox.margin>
+                              </VBox>
+                              <VBox fx:id="mainStage1" alignment="CENTER_RIGHT" prefHeight="261.0" prefWidth="400.0" stylesheets="@style.css">
+                                 <children>
+                                    <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="400.0">
+                                       <children>
+                                          <TextField id="classNumberTextFiled" fx:id="classNumberTextField" alignment="CENTER_RIGHT" prefHeight="41.0" prefWidth="237.0" promptText="متال/ المسرح , 212">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                             <HBox.margin>
+                                                <Insets />
+                                             </HBox.margin>
+                                          </TextField>
+                                          <Label id="textField" depthTest="DISABLE" prefHeight="41.0" prefWidth="86.0" text="رقم القاعة" textFill="WHITE">
+                                             <HBox.margin>
+                                                <Insets left="15.0" right="5.0" />
+                                             </HBox.margin>
+                                          </Label>
+                                       </children>
+                                    </HBox>
+                                    <HBox alignment="CENTER_RIGHT" prefHeight="99.0" prefWidth="381.0">
+                                       <children>
+                                          <TextField id="numberAnswerPaperTextFiled" fx:id="numberPaperTextField" alignment="CENTER_RIGHT" prefHeight="41.0" prefWidth="239.0" promptText="العدد الكلي لأوراق الاجابة:40">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                          </TextField>
+                                          <Label id="textField" prefHeight="41.0" prefWidth="113.0" style="-fx-alignment: center;" text="عدد أوراق الاجابة" textAlignment="CENTER" textFill="WHITE">
+                                             <HBox.margin>
+                                                <Insets left="5.0" right="5.0" />
+                                             </HBox.margin>
+                                          </Label>
+                                       </children>
+                                    </HBox>
+                                    <HBox alignment="CENTER_RIGHT" prefHeight="99.0" prefWidth="381.0">
+                                       <children>
+                                          <ChoiceBox id="semesterChoiceField" fx:id="semesterChoiceBox" prefHeight="31.0" prefWidth="213.0">
+                                             <opaqueInsets>
+                                                <Insets />
+                                             </opaqueInsets>
+                                             <HBox.margin>
+                                                <Insets right="20.0" />
+                                             </HBox.margin>
+                                          </ChoiceBox>
+                                          <Label id="textField" prefHeight="41.0" prefWidth="113.0" text="الفصل/السيم" textAlignment="CENTER" textFill="WHITE">
+                                             <HBox.margin>
+                                                <Insets left="5.0" right="5.0" />
+                                             </HBox.margin>
+                                          </Label>
+                                       </children>
+                                    </HBox>
+                                    <HBox alignment="CENTER_RIGHT" prefHeight="99.0" prefWidth="381.0">
+                                       <children>
+                                          <ChoiceBox id="semesterChoiceField" fx:id="yearChoiceBox" prefHeight="31.0" prefWidth="213.0">
+                                             <opaqueInsets>
+                                                <Insets />
+                                             </opaqueInsets>
+                                             <HBox.margin>
+                                                <Insets right="20.0" />
+                                             </HBox.margin>
+                                          </ChoiceBox>
+                                          <Label id="textField" prefHeight="41.0" prefWidth="113.0" text="لسنة" textAlignment="CENTER" textFill="WHITE">
+                                             <HBox.margin>
+                                                <Insets left="5.0" right="5.0" />
+                                             </HBox.margin>
+                                          </Label>
+                                       </children>
+                                    </HBox>
+                                 </children>
+                                 <HBox.margin>
+                                    <Insets />
+                                 </HBox.margin>
+                              </VBox>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER_RIGHT" prefHeight="15.0" prefWidth="1000.0" />
+                        <HBox alignment="CENTER_RIGHT" prefWidth="200.0">
+                           <children>
+                              <TextField id="inputFiled" fx:id="searchCourseTextField" alignment="CENTER_RIGHT" prefHeight="41.0" prefWidth="300.0" promptText="بحت بأسم المادة او الرقم">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets bottom="10.0" top="20.0" />
+                                 </HBox.margin>
+                              </TextField>
+                              <MFXButton id="insert_button" onAction="#searchOnCourseTable" prefHeight="48.0" prefWidth="121.0" text="بحت" textAlignment="CENTER" textFill="WHITE">
+                                 <graphic>
+                                    <FontIcon iconColor="WHITE" iconLiteral="anto-search" iconSize="31" wrappingWidth="37.0" />
+                                 </graphic>
+                                 <HBox.margin>
+                                    <Insets left="30.0" right="30.0" top="10.0" />
+                                 </HBox.margin>
+                              </MFXButton>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER_RIGHT" prefWidth="300.0">
+                           <children>
+                              <VBox prefHeight="119.0" prefWidth="500.0">
+                                 <children>
+                                    <TableView fx:id="CoursesTableView" onMouseClicked="#getCourseId" prefHeight="91.0">
+                                       <columns>
+                                          <TableColumn id="ColumnTable" fx:id="courseNumber" prefWidth="180.0" text="رقم المادة" />
+                                          <TableColumn id="ColumnTable" fx:id="courseName" prefWidth="215.0" text="اسم المادة" />
+                                          <TableColumn id="ColumnTable" fx:id="courseId" prefWidth="94.0" text="#" />
+                                       </columns>
+                                       <VBox.margin>
+                                          <Insets left="5.0" right="5.0" />
+                                       </VBox.margin>
+                                    </TableView>
+                                    <HBox fx:id="courseNameTakenHbox" alignment="CENTER" prefHeight="30.0" />
+                                 </children>
+                              </VBox>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER_RIGHT" prefWidth="200.0">
+                           <children>
+                              <TextField id="inputFiled" fx:id="searchTextField" alignment="CENTER_RIGHT" prefHeight="41.0" prefWidth="300.0" promptText="بحت عن مراقبين بالاسم , رقم الهاتف">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets bottom="10.0" top="20.0" />
+                                 </HBox.margin>
+                              </TextField>
+                              <MFXButton id="insert_button" onAction="#searchOnEmployeeTable" prefHeight="48.0" prefWidth="121.0" text="بحت" textAlignment="CENTER" textFill="WHITE">
+                                 <graphic>
+                                    <FontIcon iconColor="WHITE" iconLiteral="anto-search" iconSize="31" wrappingWidth="37.0" />
+                                 </graphic>
+                                 <HBox.margin>
+                                    <Insets left="30.0" right="30.0" top="10.0" />
+                                 </HBox.margin>
+                              </MFXButton>
+                           </children>
+                           <VBox.margin>
+                              <Insets top="20.0" />
+                           </VBox.margin>
+                        </HBox>
+                        <HBox alignment="CENTER_RIGHT" prefHeight="104.0" prefWidth="1000.0">
+                           <children>
+                              <SplitPane fx:id="nameTakenSplitPane" prefHeight="104.0" prefWidth="393.0" />
+                              <VBox prefWidth="600.0">
+                                 <children>
+                                    <TableView fx:id="EmployeeTableView" onMouseClicked="#getُEmployeeId" prefHeight="96.0" prefWidth="590.0">
+                                       <columns>
+                                          <TableColumn id="ColumnTable" fx:id="phoneNumberEmployeeCol" prefWidth="190.66668701171875" text="رقم الهاتف" />
+                                          <TableColumn id="ColumnTable" fx:id="workAsEmployeeCol" minWidth="0.0" prefWidth="129.66668701171875" text="يعمل ك" />
+                                          <TableColumn id="ColumnTable" fx:id="nameEmployeeCol" prefWidth="196.66668701171875" text="الاسم" />
+                                          <TableColumn id="ColumnTable" fx:id="idEmployeeCol" prefWidth="71.0" text="#" />
+                                       </columns>
+                                       <VBox.margin>
+                                          <Insets left="5.0" right="5.0" />
+                                       </VBox.margin>
+                                    </TableView>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER_RIGHT" prefWidth="1000.0">
+                           <children>
+                              <VBox fx:id="idNumberTakenVbox1" prefHeight="96.0" prefWidth="90.0">
+                                 <HBox.margin>
+                                    <Insets top="30.0" />
+                                 </HBox.margin></VBox>
+                              <VBox fx:id="idNumberTakenVbox2" prefHeight="96.0" prefWidth="90.0">
+                                 <HBox.margin>
+                                    <Insets top="30.0" />
+                                 </HBox.margin></VBox>
+                              <VBox fx:id="idNumberTakenVbox3" prefHeight="96.0" prefWidth="90.0">
+                                 <HBox.margin>
+                                    <Insets top="30.0" />
+                                 </HBox.margin>
+                              </VBox>
+                              <VBox prefWidth="373.0">
+                                 <children>
+                                    <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0">
+                                       <children>
+                                          <TextField id="inputFiled" fx:id="phoneNumberStudentTextField" prefHeight="41.0" prefWidth="238.0" promptText="رقم هاتف الطاب:0928515299">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                             <HBox.margin>
+                                                <Insets right="5.0" />
+                                             </HBox.margin>
+                                          </TextField>
+                                          <Label id="textField" prefHeight="41.0" prefWidth="86.0" text="رقم هاتف" textFill="WHITE">
+                                             <HBox.margin>
+                                                <Insets left="5.0" right="5.0" />
+                                             </HBox.margin>
+                                          </Label>
+                                       </children>
+                                       <VBox.margin>
+                                          <Insets top="-10.0" />
+                                       </VBox.margin>
+                                    </HBox>
+                                    <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0">
+                                       <children>
+                                          <TextArea id="choiceField" fx:id="noteOnStudentTextField" nodeOrientation="RIGHT_TO_LEFT" prefHeight="112.0" prefWidth="238.0" promptText="سبب الغياب ....">
+                                             <HBox.margin>
+                                                <Insets right="5.0" />
+                                             </HBox.margin></TextArea>
+                                          <Label id="textField" prefHeight="41.0" prefWidth="86.0" style="-fx-alignment: center;" text="ملاحظات" textAlignment="CENTER" textFill="WHITE">
+                                             <HBox.margin>
+                                                <Insets left="5.0" right="5.0" />
+                                             </HBox.margin>
+                                          </Label>
+                                       </children>
+                                    </HBox>
+                                 </children>
+                                 <HBox.margin>
+                                    <Insets />
+                                 </HBox.margin>
+                              </VBox>
+                              <VBox fx:id="mainStage11" alignment="CENTER_RIGHT" prefWidth="350.0" stylesheets="@style.css">
+                                 <children>
+                                    <HBox alignment="CENTER_RIGHT" prefHeight="70.0" prefWidth="400.0">
+                                       <children>
+                                          <TextField id="inputFiled" fx:id="idStudentNnmberTextField" alignment="CENTER_RIGHT" prefHeight="41.0" prefWidth="237.0" promptText="رقم قيد الطالب:192123">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                             <HBox.margin>
+                                                <Insets />
+                                             </HBox.margin>
+                                          </TextField>
+                                          <Label id="textField" depthTest="DISABLE" prefHeight="41.0" prefWidth="86.0" text="رقم قيد" textFill="WHITE">
+                                             <HBox.margin>
+                                                <Insets left="5.0" right="5.0" />
+                                             </HBox.margin>
+                                          </Label>
+                                       </children>
+                                    </HBox>
+                                    <HBox alignment="CENTER_RIGHT" prefHeight="70.0" prefWidth="381.0">
+                                       <children>
+                                          <TextField id="inputFiled" fx:id="nameStudentTextField" alignment="CENTER_RIGHT" prefHeight="41.0" prefWidth="213.0" promptText="مندر المبروك الجبالي">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                          </TextField>
+                                          <Label id="textField" prefHeight="41.0" prefWidth="113.0" style="-fx-alignment: center;" text="أسم الطالب" textAlignment="CENTER" textFill="WHITE">
+                                             <HBox.margin>
+                                                <Insets left="5.0" right="5.0" />
+                                             </HBox.margin>
+                                          </Label>
+                                       </children>
+                                    </HBox>
+                                    <HBox alignment="CENTER_RIGHT" prefHeight="70.0" prefWidth="381.0">
+                                       <children>
+                                          <ChoiceBox id="specificChoiceField" fx:id="groupNumberChoiceBox" prefHeight="31.0" prefWidth="213.0">
+                                             <opaqueInsets>
+                                                <Insets />
+                                             </opaqueInsets>
+                                          </ChoiceBox>
+                                          <Label id="textField" prefHeight="41.0" prefWidth="113.0" style="-fx-alignment: center;" text="رقم المجموعة" textAlignment="CENTER" textFill="WHITE">
+                                             <HBox.margin>
+                                                <Insets left="5.0" right="5.0" />
+                                             </HBox.margin>
+                                          </Label>
+                                       </children>
+                                    </HBox>
+                                    <HBox alignment="CENTER" prefHeight="80.0" prefWidth="380.0">
+                                       <children>
+                                          <MFXButton id="insert_button" onAction="#addStudentAbsence" prefHeight="48.0" prefWidth="160.0" text=" أضافة الطالب" textFill="WHITE">
+                                             <graphic>
+                                                <FontIcon iconColor="WHITE" iconLiteral="anto-user-add" iconSize="31" wrappingWidth="37.0" />
+                                             </graphic>
+                                             <HBox.margin>
+                                                <Insets right="40.0" top="-30.0" />
+                                             </HBox.margin>
+                                          </MFXButton>
+                                       </children>
+                                    </HBox>
+                                 </children>
+                                 <HBox.margin>
+                                    <Insets />
+                                 </HBox.margin>
+                              </VBox>
+                           </children>
+                           <VBox.margin>
+                              <Insets top="20.0" />
+                           </VBox.margin>
+                        </HBox>
+                        <HBox alignment="CENTER_RIGHT" prefWidth="1000.0">
+                           <children>
+                              <HBox alignment="CENTER_RIGHT" prefHeight="101.0" prefWidth="1000.0">
+                                 <children>
+                                    <MFXButton id="insert_button" onAction="#cancleAllInputCommitte" prefHeight="52.0" prefWidth="170.0" style="-fx-background-color: red; -fx-font-size: 17;" text="ألغاء" textFill="WHITE">
+                                       <graphic>
+                                          <FontIcon iconColor="WHITE" iconLiteral="antf-close-circle" iconSize="31" wrappingWidth="37.0" />
+                                       </graphic>
+                                    </MFXButton>
+                                    <HBox prefHeight="79.0" prefWidth="331.0" />
+                                    <MFXButton id="insert_button" onAction="#addFullCommitte" prefHeight="52.0" prefWidth="170.0" style="-fx-font-size: 17;" text="أدخال" textFill="WHITE">
+                                       <graphic>
+                                          <FontIcon iconColor="WHITE" iconLiteral="antf-check-circle" iconSize="31" wrappingWidth="37.0" />
+                                       </graphic>
+                                       <HBox.margin>
+                                          <Insets right="40.0" />
+                                       </HBox.margin>
+                                    </MFXButton>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+         </content>
+      </ScrollPane>
+   </children>
+</VBox>

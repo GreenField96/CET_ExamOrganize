@@ -173,7 +173,6 @@ public class addPaperMovementDeliveryController implements Initializable {
     @FXML
     public void addPaperMovementRecord(){
         // verify input like doctor id, committe id ... , to avoid replicated data
-
         groupsForm.getChildren().forEach(HboxGroup -> {
             ((HBox) HboxGroup).getChildren().forEach(input -> {
                 if (input instanceof TextField){
@@ -190,7 +189,7 @@ public class addPaperMovementDeliveryController implements Initializable {
 
         for (int i=0;i < countHboxItems ; i++) {
          if(!arrayHboxChoice.get(i).equals("") | !arrayHboxTextField.get(i).equals("") ){
-             paperModel.insert(new answerPaperMovementTable(Integer.parseInt(committeId), Integer.parseInt(recentId),
+             paperModel.insert(new answerPaperMovementTable(Integer.parseInt(committeId),session.getId(),Integer.parseInt(recentId),
                      dateCommitteReciveDatePicker.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")),
                      arrayHboxTextField.get(i), arrayHboxChoice.get(i))
              );
