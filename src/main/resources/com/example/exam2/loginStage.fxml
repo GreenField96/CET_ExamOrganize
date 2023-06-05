@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import io.github.palexdev.materialfx.controls.MFXButton?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+
+<AnchorPane fx:id="baseLogin" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.exam2.loginController">
+   <children>
+      <HBox prefHeight="500.0" prefWidth="800.0">
+         <children>
+            <AnchorPane prefHeight="500.0" prefWidth="231.0" style="-fx-background-color: #1C658C;">
+               <children>
+                  <ImageView fitHeight="500.0" fitWidth="160.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@login_cet_logo.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+            <BorderPane prefHeight="500.0" prefWidth="567.0">
+               <center>
+                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" style="-fx-spacing: 20;" BorderPane.alignment="CENTER">
+                     <children>
+                        <Label id="textFieldLogin" depthTest="DISABLE" prefHeight="52.0" prefWidth="367.0" style="-fx-padding: 10;" text="تسجيل الدخول - نظام متابعة سير الامتحانات" textFill="WHITE" />
+                        <TextField id="inputFiled" fx:id="emailTextField" prefHeight="41.0" prefWidth="300.0" promptText="Username:Admin">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </TextField>
+                        <TextField id="inputFiled" fx:id="paswordTextField" prefHeight="41.0" prefWidth="300.0" promptText="Password:!@#$$@#">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </TextField>
+                     </children>
+                  </VBox>
+               </center>
+               <left>
+                  <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER" />
+               </left>
+               <right>
+                  <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER" />
+               </right>
+               <top>
+                  <ImageView fitHeight="196.0" fitWidth="233.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+                     <image>
+                        <Image url="@cet.logo.png" />
+                     </image>
+                  </ImageView>
+               </top>
+               <bottom>
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="567.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <MFXButton fx:id="exitButton" onAction="#onClickLogout" prefHeight="60.0" prefWidth="60.0" styleClass="logout_button" text=" " textFill="WHITE">
+                           <graphic>
+                              <FontIcon fx:id="logout2" iconColor="WHITE" iconLiteral="anto-logout" iconSize="30" onKeyPressed="#onClickLogout" textAlignment="CENTER" />
+                           </graphic>
+                           <padding>
+                              <Insets left="10.0" />
+                           </padding>
+                        </MFXButton>
+                        <VBox prefHeight="200.0" prefWidth="100.0" />
+                        <MFXButton onAction="#onClickLogin" prefHeight="60.0" prefWidth="60.0" styleClass="login_button" text=" " textFill="WHITE">
+                           <graphic>
+                              <FontIcon fx:id="loginButton" iconColor="WHITE" iconLiteral="anto-check-circle" iconSize="30" onKeyPressed="#onClickLogout" textAlignment="CENTER" />
+                           </graphic>
+                           <padding>
+                              <Insets left="10.0" />
+                           </padding>
+                        </MFXButton>
+                     </children>
+                  </HBox>
+               </bottom>
+            </BorderPane>
+         </children>
+      </HBox>
+
+   </children>
+</AnchorPane>

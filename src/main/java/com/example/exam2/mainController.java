@@ -8,8 +8,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import java.io.IOException;
 
-
-public class HelloController {
+public class mainController {
     private static final ExceptionLogger log = ExceptionLogger.getInstance();
     @FXML
     private AnchorPane base;
@@ -40,6 +39,7 @@ public class HelloController {
     }
     @FXML
     public void addCommitteStage(){
+        System.out.print(session.getEmail());
         try {
             if(addCommitteStage == null) {
                 FXMLLoader fxml = new FXMLLoader();

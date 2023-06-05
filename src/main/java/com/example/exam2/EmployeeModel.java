@@ -102,5 +102,29 @@ public class EmployeeModel{
             log.logException(exception);
         }
     }
+    public boolean employeeLogin(String email,String pass) throws SQLException {
+        Connection connection = null;
+        PreparedStatement statement = null;
+        try {
+            connection = db.getDBConnection();
+            // SELECT * FROM `employees` WHERE `email` = 'munderjb' AND `password` = '25102510'
+            String query = "SELECT * FROM employees WHERE email = '"+ email + "' AND password = '" + pass + "'" ;
+            statement = connection.prepareStatement(query);
+            ResultSet resultSet = statement.executeQuery();
+            while(resultSet.next()) {
+               if(resultSet.getNString("password").equals(pass) & resultSet.getNString("email").equals(email)) {
 
+                   session.setDataSession(
+                           resultSet.getInt("id"),resultSet.getNString("name"),resultSet.getNString("email")
+                           , resultSet.getNString("password"),resultSet.getNString("phone_number"),resultSet.getNString("work_as")
+                   );
+
+                   return true;
+               }
+            }
+        } catch (SQLException exception) {
+            log.logException(exception);
+        }
+        return false;
+    }
 }

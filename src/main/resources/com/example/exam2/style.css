@@ -6,10 +6,24 @@
 	-fx-font-family:Verdana, Geneva, Tahoma, sans-serif;
 	-fx-effect: dropshadow(two-pass-box , #FFFF, 3,3,1,4);
 }
+.login_button{
+	-fx-font-size: 15;
+	-fx-background-radius:20;
+	-fx-background-color:  #398AB9;
+	-fx-font-family:Verdana, Geneva, Tahoma, sans-serif;
+	-fx-effect: dropshadow(two-pass-box , #FFFF, 3,3,1,4);
+}
 #textField{
 	-fx-font-size: 15;
 	-fx-alignment:center;
 	-fx-background-radius:20;
+	-fx-background-color:  #398AB9;
+	-fx-font-family:Verdana, Geneva, Tahoma, sans-serif;
+}
+#textFieldLogin{
+	-fx-font-size: 15;
+	-fx-alignment:center;
+	-fx-background-radius:5;
 	-fx-background-color:  #398AB9;
 	-fx-font-family:Verdana, Geneva, Tahoma, sans-serif;
 }

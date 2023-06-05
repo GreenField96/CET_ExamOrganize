@@ -17,7 +17,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
- public class addCommitteController  implements Initializable{
+ public class addCommitteController implements Initializable{
     private static ExceptionLogger log = ExceptionLogger.getInstance();
     @FXML
     private TableView<EmployeeTable> EmployeeTableView;
