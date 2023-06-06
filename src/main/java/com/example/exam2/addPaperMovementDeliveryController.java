@@ -22,9 +22,9 @@ import java.util.ResourceBundle;
 public class addPaperMovementDeliveryController implements Initializable {
     private static final ExceptionLogger log = ExceptionLogger.getInstance();
     @FXML
-    private TextField searchInput,numberRoomTextField,courseTextField;
+    private TextField searchInput,courseTextField;
     @FXML
-    private DatePicker dateCommitteReciveDatePicker,dateCommitteDatePicker;
+    private DatePicker dateCommitteReciveDatePicker;
     @FXML
     private TableView<EmployeeTable> EmployeeTableView;
     @FXML
@@ -41,6 +41,8 @@ public class addPaperMovementDeliveryController implements Initializable {
     @FXML
     private TableColumn<CommitteTable,String> courseCommitteCol;
     @FXML
+    private TableColumn<CommitteTable,String> groupCommitteCol;
+    @FXML
     private TableColumn<CommitteTable, String> dateCommitteCol;
     @FXML
     private TableColumn<CommitteTable, String> numberOfPaperCommitteCol;
@@ -48,26 +50,28 @@ public class addPaperMovementDeliveryController implements Initializable {
     private TableColumn<CommitteTable, String> specificCommitteCol;
     @FXML
     private TableColumn<CommitteTable, String> numberOfRoomCommitteCol;
+    @FXML
+    private TableColumn<CommitteTable, String> periodCommitteCol;
     ObservableList<CommitteTable> ObservableArrayCommitte;
     private ArrayList<EmployeeTable> Employees;
     private EmployeeModel emp;
     private ArrayList<CommitteTable> Committes;
     private CommitteModel comm;
     @FXML
-    HBox doctorNameTakenHbox,committeTakenHbox,groupForm1;
+    HBox doctorNameTakenHbox;
     @FXML
-    VBox groupsForm;
-    Label doctorName= new Label(),doctorPhoneNumber= new Label(),idCommitte= new Label(),courseCommitte= new Label(),dateCommitte= new Label(),numberOfRoomCommitte= new Label(),numberOfPaperCommitte= new Label();
-    boolean addChilderen = true , addChilderenCommitte = true;
-    private HBox HboxGroup;
+    VBox committeTakenVbox;
+    HBox committeTakenHboxChild;
+    Label doctorName=new Label(),doctorPhoneNumber=new Label(),periodLabelCommitte,courseCommitte,dateCommitte,numberOfRoomCommitte,numberOfPaperCommitte;
+    boolean addChilderen = true ;
     @FXML
-    private ChoiceBox<String> groupNumberChoiceBox;
-    private answerPaperMovementModel paperModel;
-    private answerPaperMovementTable paperTable;
+    private ChoiceBox<String> groupNumberChoiceBox,semesterChoiceBox,specificChoiceBox,semesterPeriodChoiceBox,yearChoiceBox;
+    private answerPaperMovementModel paperModel = new answerPaperMovementModel();
     private int countHboxItems=0;
     private String committeId,recentId;
     private ArrayList<String> arrayHboxTextField = new ArrayList<>();
     private ArrayList<String> arrayHboxChoice = new ArrayList<>();
+    private ArrayList<answerPaperMovementTable> answerPaperMovementList = new ArrayList<>();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -76,12 +80,60 @@ public class addPaperMovementDeliveryController implements Initializable {
         Committes = new ArrayList<>();
         comm = new CommitteModel();
         dateCommitteReciveDatePicker.setValue(LocalDate.now());
-        try {
-            addGroup();
-        } catch (IOException e) {
-            log.logException(e);
+
+
+        semesterChoiceBox.setValue("تمهيدي");
+        semesterChoiceBox.getItems().add("تمهيدي");
+        semesterChoiceBox.getItems().add("الأول");
+        semesterChoiceBox.getItems().add("التاني");
+        semesterChoiceBox.getItems().add("التالت");
+        semesterChoiceBox.getItems().add("الرابع");
+        semesterChoiceBox.getItems().add("الخامس");
+        semesterChoiceBox.getItems().add("السادس");
+        semesterChoiceBox.getItems().add("السابع");
+        semesterChoiceBox.getItems().add("التامن");
+
+        specificChoiceBox.setValue("عام");
+        specificChoiceBox.getItems().add("عام");
+        specificChoiceBox.getItems().add("حاسب ألي");
+        specificChoiceBox.getItems().add("تحكم ألي");
+        specificChoiceBox.getItems().add("اتصالات");
+
+        groupNumberChoiceBox.setValue("الاولى");
+        groupNumberChoiceBox.getItems().add("الاولى");
+        groupNumberChoiceBox.getItems().add("التانية");
+        groupNumberChoiceBox.getItems().add("التالتة");
+        groupNumberChoiceBox.getItems().add("الرابعة");
+        groupNumberChoiceBox.getItems().add("الخامسة");
+        groupNumberChoiceBox.getItems().add("السادسة");
+        groupNumberChoiceBox.getItems().add("السابعة");
+        groupNumberChoiceBox.getItems().add("التامنة");
+        groupNumberChoiceBox.getItems().add("التاسعة");
+        groupNumberChoiceBox.getItems().add("العاشرة");
+        groupNumberChoiceBox.getItems().add("الحادية عشرة");
+        groupNumberChoiceBox.getItems().add("اثنا عشر");
+        groupNumberChoiceBox.getItems().add("ثلاثة عشر");
+        groupNumberChoiceBox.getItems().add("أربعة عشر");
+        groupNumberChoiceBox.getItems().add("خمسة عشر");
+        groupNumberChoiceBox.getItems().add("ستة عشر");
+        groupNumberChoiceBox.getItems().add("سبعة عشر");
+        groupNumberChoiceBox.getItems().add("ثمانية عشر");
+        groupNumberChoiceBox.getItems().add("تسعة عشر");
+        groupNumberChoiceBox.getItems().add("عشرون");
+
+        yearChoiceBox.setValue(Integer.toString(LocalDate.now().getYear()));
+        int intYear = LocalDate.now().getYear();
+        intYear--;
+        for (int i=0;i<=3;i++) {
+            yearChoiceBox.getItems().add(Integer.toString(intYear++));
         }
-        paperModel = new answerPaperMovementModel();
+
+        semesterPeriodChoiceBox.setValue("ربيعي");
+        semesterPeriodChoiceBox.getItems().add("ربيعي");
+        semesterPeriodChoiceBox.getItems().add("خريفي");
+        semesterPeriodChoiceBox.getItems().add("صيفي");
+
+
     }
     @FXML
     public void querySearchOnDoctor() throws SQLException {
@@ -117,17 +169,20 @@ public class addPaperMovementDeliveryController implements Initializable {
     public void querySearchOnCommitte() throws SQLException {
         Committes.clear();
         String date = "";
-        if(dateCommitteDatePicker.getValue() != null){
-            date = dateCommitteDatePicker.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
-        }
-        Committes = comm.selectSpecificData(numberRoomTextField.getText(),courseTextField.getText(),date);
+
+//        groupNumberChoiceBox,semesterChoiceBox,specificChoiceBox,semesterPeriodChoiceBox,yearChoiceBox;
+
+        Committes = comm.selectSpecificData(courseTextField.getText(),groupNumberChoiceBox.getValue(),semesterChoiceBox.getValue(), specificChoiceBox.getValue(),semesterPeriodChoiceBox.getValue(),yearChoiceBox.getValue());
 
         idCommitteCol.setCellValueFactory(new PropertyValueFactory<>("IdCol"));
         courseCommitteCol.setCellValueFactory(new PropertyValueFactory<>("courseName"));
+        groupCommitteCol.setCellValueFactory(new PropertyValueFactory<>("GroupCol"));
         dateCommitteCol.setCellValueFactory(new PropertyValueFactory<>("DateCol"));
         specificCommitteCol.setCellValueFactory(new PropertyValueFactory<>("SpecificCol"));
         numberOfRoomCommitteCol.setCellValueFactory(new PropertyValueFactory<>("ClassNumberCol"));
-        numberOfPaperCommitteCol.setCellValueFactory(new PropertyValueFactory<>("NumberAnswerPaperCol"));
+        numberOfPaperCommitteCol.setCellValueFactory(new PropertyValueFactory<>("NumberPapersReceivedCol"));
+        periodCommitteCol.setCellValueFactory(new PropertyValueFactory<>("periodCol"));
+
         ObservableArrayCommitte =  FXCollections.observableArrayList(Committes);
         committeTableView.setItems(ObservableArrayCommitte);
     }
@@ -137,84 +192,66 @@ public class addPaperMovementDeliveryController implements Initializable {
 
         committeId = String.valueOf(idCommitteCol.getCellData(index));
 
-        idCommitte.setText(String.valueOf(idCommitteCol.getCellData(index)));
+
+        periodLabelCommitte = new Label();
+        courseCommitte = new Label();
+        dateCommitte = new Label();
+        numberOfRoomCommitte = new Label();
+        numberOfPaperCommitte = new Label();
+
+        committeTakenHboxChild = new HBox();
+        committeTakenHboxChild.setStyle("-fx-alignment:center;");
+
+        periodLabelCommitte.setText(String.valueOf(periodCommitteCol.getCellData(index)));
         courseCommitte.setText(courseCommitteCol.getCellData(index));
         dateCommitte.setText(dateCommitteCol.getCellData(index));
         numberOfRoomCommitte.setText(numberOfRoomCommitteCol.getCellData(index));
-        numberOfPaperCommitte.setText(numberOfPaperCommitteCol.getCellData(index) + " ورقة");
+        numberOfPaperCommitte.setText(String.valueOf(numberOfPaperCommitteCol.getCellData(index)) + " ورقة");
 
-        idCommitte.setStyle("-fx-opacity:0.8;"+"-fx-border-width:0.5;"+"-fx-border-color:#FFFF;"+"-fx-border-radius:10;"+"-fx-font-size: 15;"+"-fx-alignment:center;"+"-fx-background-radius:10;"+"-fx-background-color:#398AB9;"+"-fx-text-fill: #FFFF;"+"-fx-padding: 1 30 1 30");
+        periodLabelCommitte.setStyle("-fx-opacity:0.8;"+"-fx-border-width:0.5;"+"-fx-border-color:#FFFF;"+"-fx-border-radius:10;"+"-fx-font-size: 15;"+"-fx-alignment:center;"+"-fx-background-radius:10;"+"-fx-background-color:#398AB9;"+"-fx-text-fill: #FFFF;"+"-fx-padding: 1 30 1 30");
         courseCommitte.setStyle("-fx-opacity:0.8;"+"-fx-border-width:0.5;"+"-fx-border-color:#FFFF;"+"-fx-border-radius:10;"+"-fx-font-size: 15;"+"-fx-alignment:center;"+"-fx-background-radius:10;"+"-fx-background-color:#398AB9;"+"-fx-text-fill: #FFFF;"+"-fx-padding: 1 30 1 30");
         dateCommitte.setStyle("-fx-opacity:0.8;"+"-fx-border-width:0.5;"+"-fx-border-color:#FFFF;"+"-fx-border-radius:10;"+"-fx-font-size: 15;"+"-fx-alignment:center;"+"-fx-background-radius:10;"+"-fx-background-color:#398AB9;"+"-fx-text-fill: #FFFF;"+"-fx-padding: 1 30 1 30");
         numberOfRoomCommitte.setStyle("-fx-opacity:0.8;"+"-fx-border-width:0.5;"+"-fx-border-color:#FFFF;"+"-fx-border-radius:10;"+"-fx-font-size: 15;"+"-fx-alignment:center;"+"-fx-background-radius:10;"+"-fx-background-color:#398AB9;"+"-fx-text-fill: #FFFF;"+"-fx-padding: 1 30 1 30");
         numberOfPaperCommitte.setStyle("-fx-opacity:0.8;"+"-fx-border-width:0.5;"+"-fx-border-color:#FFFF;"+"-fx-border-radius:10;"+"-fx-font-size: 15;"+"-fx-alignment:center;"+"-fx-background-radius:10;"+"-fx-background-color:#398AB9;"+"-fx-text-fill: #FFFF;"+"-fx-padding: 1 30 1 30");
 
-        if(addChilderenCommitte) {
-            addChilderenCommitte = false;
-            committeTakenHbox.getChildren().add(numberOfRoomCommitte);
-            committeTakenHbox.getChildren().add(numberOfPaperCommitte);
-            committeTakenHbox.getChildren().add(dateCommitte);
-            committeTakenHbox.getChildren().add(courseCommitte);
-            committeTakenHbox.getChildren().add(idCommitte);
-        }
-    }
-    @FXML
-    public void addGroup() throws IOException {
-        FXMLLoader fxml = new FXMLLoader();
-        try {
-            fxml.setLocation(getClass().getResource("groupFormHbox.fxml"));
-            HboxGroup = fxml.load();
-        } catch (IOException e) {
-               log.logException(e);
-        }
+        committeTakenHboxChild.getChildren().add(numberOfRoomCommitte);
+        committeTakenHboxChild.getChildren().add(numberOfPaperCommitte);
+        committeTakenHboxChild.getChildren().add(dateCommitte);
+        committeTakenHboxChild.getChildren().add(courseCommitte);
+        committeTakenHboxChild.getChildren().add(periodLabelCommitte);
+        committeTakenVbox.getChildren().add(committeTakenHboxChild);
 
-        groupsForm.getChildren().add(HboxGroup);
+        answerPaperMovementList.add(new answerPaperMovementTable(idCommitteCol.getCellData(index),session.getId(),Integer.parseInt(recentId),
+                dateCommitteReciveDatePicker.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")),
+                String.valueOf(numberOfPaperCommitteCol.getCellData(index)),groupNumberChoiceBox.getValue() ));
     }
+
     @FXML
     public void addPaperMovementRecord(){
-        // verify input like doctor id, committe id ... , to avoid replicated data
-        groupsForm.getChildren().forEach(HboxGroup -> {
-            ((HBox) HboxGroup).getChildren().forEach(input -> {
-                if (input instanceof TextField){
-                    String a = ((TextField) input).getText();
-                    arrayHboxTextField.add(a);
-                    countHboxItems++;
-                }
-                if (input instanceof ChoiceBox<?>){
-                    String b = ((ChoiceBox<String>) input).getValue();
-                    arrayHboxChoice.add(b);
-                }
-            });
+        answerPaperMovementList.forEach(answerPaperMovementTable -> {
+            paperModel.insert(new answerPaperMovementTable(answerPaperMovementTable.getCommitteIdCol(),session.getId(),Integer.parseInt(recentId),
+                    answerPaperMovementTable.getDateCol(),answerPaperMovementTable.getNumberPaperRecivedCol(),answerPaperMovementTable.getGroupCol()));
         });
 
-        for (int i=0;i < countHboxItems ; i++) {
-         if(!arrayHboxChoice.get(i).equals("") | !arrayHboxTextField.get(i).equals("") ){
-             paperModel.insert(new answerPaperMovementTable(Integer.parseInt(committeId),session.getId(),Integer.parseInt(recentId),
-                     dateCommitteReciveDatePicker.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")),
-                     arrayHboxTextField.get(i), arrayHboxChoice.get(i))
-             );
-         }
-        }
         paperModel.store();
 
-        // cancle all input and options
         cancleAllInput();
+    }
+    @FXML
+    public void cleanMonitorsData(){
+        committeTakenVbox.getChildren().clear();
+//        MonitorsList.clear();
     }
     @FXML
     public void cancleAllInput(){
         doctorNameTakenHbox.getChildren().clear();
-        committeTakenHbox.getChildren().clear();
+        committeTakenVbox.getChildren().clear();
 
         addChilderen = true;
-        addChilderenCommitte = true;
-
-        groupsForm.getChildren().forEach(HboxGroup -> {
-            ((HBox) HboxGroup).getChildren().clear();
-        });
-        groupsForm.getChildren().clear();
 
         arrayHboxChoice.clear();
         arrayHboxTextField.clear();
         countHboxItems = 0;
+
     }
 }

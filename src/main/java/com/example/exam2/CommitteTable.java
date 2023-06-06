@@ -16,7 +16,10 @@ public class CommitteTable {
     private String courseName;
     private String courseNumber;
 
-    public CommitteTable(int idCol, String classNumberCol, String dateCol, int courseCol, String specificCol,String semesterCol, String numberAnswerPaperCol, int courseId, String courseName, String courseNumber) {
+    private String groupCol;
+    private int numberPapersReceivedCol;
+
+    public CommitteTable(int idCol, String classNumberCol, String dateCol, int courseCol, String specificCol,String semesterCol, String numberAnswerPaperCol, int courseId, String courseName, String courseNumber,String periodCol,String groupCol,int numberPapersReceivedCol) {
         this.idCol = idCol;
         this.classNumberCol = classNumberCol;
         this.dateCol = dateCol;
@@ -27,6 +30,9 @@ public class CommitteTable {
         this.courseId = courseId;
         this.courseName = courseName;
         this.courseNumber = courseNumber;
+        this.periodCol = periodCol;
+        this.groupCol = groupCol;
+        this.numberPapersReceivedCol = numberPapersReceivedCol;
     }
 
     public CommitteTable(int idCol, String classNumberCol, String dateCol, int courseCol, String semesterCol, String numberAnswerPaperCol, String specificCol) {
@@ -85,6 +91,9 @@ public class CommitteTable {
     }
     public String getYearCol() {return yearCol;}
     public String getSemesterPeriodCol() {return semesterPeriodCol;}
+    public String getGroupCol() {return groupCol;}
+    public int getNumberPapersReceivedCol() {return numberPapersReceivedCol;}
+
 
     public String getCourseName() {return courseName;}
     public String getCourseNumber() {return courseNumber;}

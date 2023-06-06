@@ -8,6 +8,7 @@ public class EmployeeTable {
     private String phone_number;
     private String work_as;
     private String email;
+    private boolean absence;
 
     EmployeeTable(String name , String email , String phone_number , String work_as){
         this.name = name;
@@ -22,9 +23,10 @@ public class EmployeeTable {
         this.work_as = work_as;
         this.phone_number = phone_number;
     }
-    EmployeeTable(int id,String name){
+    EmployeeTable(int id,String name,boolean absence){
         this.id = id;
         this.name = name;
+        this.absence = absence;
     }
     public int getId() {
         return id;
@@ -41,10 +43,12 @@ public class EmployeeTable {
     public String getEmail() {
         return email;
     }
+    public boolean isAbsence() {return absence;}
 
     public void setId(int id) {
         this.id = id;
     }
+    public void setAbsence(boolean absence) {this.absence = absence;}
 
 
 }

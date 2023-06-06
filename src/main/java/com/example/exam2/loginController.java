@@ -35,7 +35,10 @@ public class loginController implements Initializable {
     private void onClickLogin() throws SQLException {
         String email = emailTextField.getText();
         String pass = paswordTextField.getText();
-        if(pass.length() < 8){
+        if(pass.length() < 1 | email.length() < 1){
+            alert.setContentText("ادخل جميع الخانات");
+            alert.show();
+        }else if(pass.length() < 8){
             alert.setContentText("ادخل 8 خانات على الاقل");
             alert.show();
         }else if(employeeModel.employeeLogin(email,pass)){
@@ -54,7 +57,7 @@ public class loginController implements Initializable {
                 log.logException(e);
              }
           }else{
-            alert.setContentText("ادخالك خاطئ ,يرجى اعادة المحاولة");
+            alert.setContentText("كلمة المرور او اسم المستخدم خاطئة");
             alert.show();
         }
 

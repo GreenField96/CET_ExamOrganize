@@ -6,7 +6,6 @@
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextArea?>
@@ -233,7 +232,9 @@
                         </HBox>
                         <HBox alignment="CENTER_RIGHT" prefHeight="104.0" prefWidth="1000.0">
                            <children>
-                              <SplitPane fx:id="nameTakenSplitPane" prefHeight="104.0" prefWidth="393.0" />
+                              <VBox fx:id="nameTakenVbox1" prefHeight="96.0" prefWidth="120.0" />
+                              <VBox fx:id="nameTakenVbox2" prefHeight="96.0" prefWidth="120.0" />
+                              <VBox fx:id="nameTakenVbox3" prefHeight="96.0" prefWidth="120.0" />
                               <VBox prefWidth="600.0">
                                  <children>
                                     <TableView fx:id="EmployeeTableView" onMouseClicked="#getُEmployeeId" prefHeight="96.0" prefWidth="590.0">
@@ -251,6 +252,35 @@
                               </VBox>
                            </children>
                         </HBox>
+                        <VBox prefHeight="81.0" prefWidth="1000.0">
+                           <children>
+                              <HBox alignment="CENTER_RIGHT" prefHeight="64.0" prefWidth="1000.0">
+                                 <children>
+                                    <MFXButton id="insert_button" onAction="#cleanMonitorsData" prefHeight="43.0" prefWidth="162.0" style="-fx-background-color: red;" text="مسح المراقبين" textFill="WHITE">
+                                       <graphic>
+                                          <FontIcon iconColor="WHITE" iconLiteral="antf-close-circle" iconSize="31" textAlignment="CENTER" wrappingWidth="37.0" />
+                                       </graphic>
+                                       <opaqueInsets>
+                                          <Insets />
+                                       </opaqueInsets>
+                                       <HBox.margin>
+                                          <Insets right="10.0" />
+                                       </HBox.margin>
+                                    </MFXButton>
+                                    <ChoiceBox id="specificChoiceField" fx:id="MonitorTransportPaperChoiceBox" onMousePressed="#addMonitorsCheckBox" prefHeight="31.0" prefWidth="213.0">
+                                       <opaqueInsets>
+                                          <Insets />
+                                       </opaqueInsets>
+                                    </ChoiceBox>
+                                    <Label id="textField" prefHeight="41.0" prefWidth="149.0" style="-fx-alignment: center;" text="تم استلام اوراق من" textAlignment="CENTER" textFill="WHITE">
+                                       <HBox.margin>
+                                          <Insets left="5.0" right="5.0" />
+                                       </HBox.margin>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
                         <HBox alignment="CENTER_RIGHT" prefWidth="1000.0">
                            <children>
                               <VBox fx:id="idNumberTakenVbox1" prefHeight="96.0" prefWidth="90.0">

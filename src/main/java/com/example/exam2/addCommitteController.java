@@ -3,6 +3,7 @@ package com.example.exam2;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -18,7 +19,7 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 
  public class addCommitteController implements Initializable{
-    private static ExceptionLogger log = ExceptionLogger.getInstance();
+    private static final ExceptionLogger log = ExceptionLogger.getInstance();
     @FXML
     private TableView<EmployeeTable> EmployeeTableView;
     @FXML
@@ -32,46 +33,53 @@ import java.util.ResourceBundle;
     @FXML
     private DatePicker dateDatePicker;
     @FXML
-    private ChoiceBox<String> semesterChoiceBox,specificChoiceBox,groupNumberChoiceBox,poeriodChoiceBox,semesterPeriodChoiceBox,yearChoiceBox;
+    private ChoiceBox<String> semesterChoiceBox,specificChoiceBox,groupNumberChoiceBox,poeriodChoiceBox,semesterPeriodChoiceBox,yearChoiceBox,MonitorTransportPaperChoiceBox;
     @FXML
-    private TextField classNumberTextField,numberPaperTextField,searchTextField;
+    private TextField classNumberTextField,searchTextField,numberPaperTextField;
     @FXML
     private TextField idStudentNnmberTextField,phoneNumberStudentTextField,nameStudentTextField,searchCourseTextField;
     @FXML
     private TextArea noteOnStudentTextField;
-    @FXML
-    private VBox nameTakenVbox1,nameTakenVbox2,nameTakenVbox3;
-    private HBox nameChoiceHbox1,nameChoiceHbox2=new HBox(),nameChoiceHbox3=new HBox();
+    private HBox nameChoiceHbox2=new HBox(),nameChoiceHbox3=new HBox(),HboxGroup;
     @FXML
     private HBox courseNameTakenHbox;
     @FXML
     private VBox idNumberTakenVbox1,idNumberTakenVbox2,idNumberTakenVbox3;
+    @FXML
+    private VBox nameTakenVbox1,nameTakenVbox2,nameTakenVbox3,groupsForm;
     ObservableList<EmployeeTable> ObservableArrayEmployee;
     private ArrayList<EmployeeTable> Employees;
     private EmployeeModel emp;
-    private Label monitorName;
     private Label studentName;
     private ArrayList<EmployeeTable> MonitorsList;
     private ArrayList<studentAbsenceTable> students;
     private CommitteModel commModel = new CommitteModel();
     private int counterMonitors=0,counterStudentAbsence = 0;
     public boolean deleteStudentFlag = true;
-    public boolean deleteMonitorFlag = true;
-     @FXML
-     private TableView<CourseTable> CoursesTableView;
-     @FXML
-     private TableColumn<CourseTable,Integer> courseId;
-     @FXML
-     private TableColumn<CourseTable, String> courseName;
-     @FXML
-     private TableColumn<CourseTable, String> courseNumber;
-     ObservableList<CourseTable> ObservableArrayCourse;
-     private ArrayList<CourseTable> Courses;
-     int IdRow;
-     String NameRow,courseNumberRow;
-     CourseModel courseModel;
-     boolean addChilderen = true;
-     public Label courseNameLabel = new Label() , courseNumberLabel = new Label();
+    public boolean MonitorFlag = false;
+    @FXML
+    private TableView<CourseTable> CoursesTableView;
+    @FXML
+    private TableColumn<CourseTable,Integer> courseId;
+    @FXML
+    private TableColumn<CourseTable, String> courseName;
+    @FXML
+    private TableColumn<CourseTable, String> courseNumber;
+    ObservableList<CourseTable> ObservableArrayCourse;
+    private ArrayList<CourseTable> Courses;
+    int IdRow;
+    String NameRow,courseNumberRow;
+    CourseModel courseModel;
+    boolean addChilderen = true;
+    private CheckBox checkAbsenceMonitor;
+    private ArrayList<String> arrayHboxTextField = new ArrayList<>();
+    public Label courseNameLabel = new Label() , courseNumberLabel = new Label();
+    private ArrayList<String> arrayHboxChoice = new ArrayList<>();
+    private int countHboxItems=0;
+    private answerPaperMovementModel paperModel = new answerPaperMovementModel();
+    private Alert alert;
+
+
      @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         semesterChoiceBox.setValue("تمهيدي");
@@ -130,11 +138,22 @@ import java.util.ResourceBundle;
         semesterPeriodChoiceBox.getItems().add("خريفي");
         semesterPeriodChoiceBox.getItems().add("صيفي");
 
+        MonitorTransportPaperChoiceBox.setValue("اسم الملاحظ");
+
         emp = new EmployeeModel();
         Employees = new ArrayList<>();
         courseModel = new CourseModel();
         Courses = new ArrayList<>();
         MonitorsList = new ArrayList<>();
+
+        try {
+            addGroup();
+        } catch (IOException e) {
+            log.logException(e);
+        }
+         alert = new Alert(Alert.AlertType.NONE);
+         alert.setTitle("خطأ");
+         alert.setAlertType(Alert.AlertType.INFORMATION);
     }
     @FXML
     public void searchOnEmployeeTable() throws SQLException {
@@ -150,40 +169,69 @@ import java.util.ResourceBundle;
     @FXML
     public void getُEmployeeId(MouseEvent value){
         Integer index = EmployeeTableView.getSelectionModel().getSelectedIndex();
-        monitorName = new Label();
 
-        monitorName.setText(nameEmployeeCol.getCellData(index));
-        monitorName.setStyle("-fx-opacity:0.7;"+"-fx-border-width:0.5;"+"-fx-border-color:#FFFF;"+"-fx-border-radius:10;"+"-fx-font-size: 14;"+"-fx-alignment:center;"+"-fx-background-radius:10;"+"-fx-background-color:  #398AB9;"+"-fx-text-fill: #FFFF;"+"-fx-padding: 1");
+        MonitorFlag = false;
+        for (EmployeeTable monitor : MonitorsList){
+            if(nameEmployeeCol.getCellData(index).equals(monitor.getName())) {
+                MonitorFlag = true;
+            }
+        }
+        if(!MonitorFlag) {
+            checkAbsenceMonitor = new CheckBox(nameEmployeeCol.getCellData(index));
+            checkAbsenceMonitor.setSelected(true);
+            checkAbsenceMonitor.setStyle("-fx-opacity:0.7;" + "-fx-border-width:1.5;" + "-fx-border-color:#FFFF;" + "-fx-border-radius:5;" + "-fx-font-size: 14;" + "-fx-alignment:center;" + "-fx-background-radius:10;" + "-fx-background-color:  #398AB9;" + "-fx-text-fill: #FFFF;" + "-fx-padding: 1");
+            MonitorsList.add(new EmployeeTable(idEmployeeCol.getCellData(index), nameEmployeeCol.getCellData(index),checkAbsenceMonitor.isSelected()));
+        }
 
-        MonitorsList.add(new EmployeeTable(idEmployeeCol.getCellData(index),nameEmployeeCol.getCellData(index)));
-
-        monitorName.setOnMouseClicked(MouseEvent -> {
-            deleteMonitorFlag = true;
+        checkAbsenceMonitor.setOnMouseClicked(MouseEvent -> {
             for (EmployeeTable monitor : MonitorsList){
-                 if(MouseEvent.getSource().toString().contains(monitor.getName()) & deleteMonitorFlag) {
-                     monitor.setId(-1);
-                    deleteMonitorFlag = false;
+                if(MouseEvent.getSource().toString().contains(monitor.getName())) {
+                    monitor.setAbsence(false);
                 }
             }
-            if(nameTakenVbox1.getChildren().contains(MouseEvent.getSource())) {
-                nameTakenVbox1.getChildren().remove(MouseEvent.getSource());
-            } else if(nameTakenVbox2.getChildren().contains(MouseEvent.getSource())) {
-                nameTakenVbox2.getChildren().remove(MouseEvent.getSource());
-            } else if(nameTakenVbox3.getChildren().contains(MouseEvent.getSource())) {
-                nameTakenVbox3.getChildren().remove(MouseEvent.getSource());
-            }
         });
+
         if(counterMonitors == 0) {
-            nameTakenVbox1.getChildren().add(monitorName);
+            nameTakenVbox1.getChildren().add(checkAbsenceMonitor);
             counterMonitors++;
         } else if (counterMonitors == 1) {
-            nameTakenVbox2.getChildren().add(monitorName);
+            nameTakenVbox2.getChildren().add(checkAbsenceMonitor);
             counterMonitors++;
         }else {
-            nameTakenVbox3.getChildren().add(monitorName);
+            nameTakenVbox3.getChildren().add(checkAbsenceMonitor);
             counterMonitors = 0;
         }
+
     }
+    @FXML
+    public void addMonitorsCheckBox(){
+        MonitorTransportPaperChoiceBox.getItems().clear();
+        for (EmployeeTable monitor : MonitorsList){
+            if(monitor.isAbsence()) {
+                MonitorTransportPaperChoiceBox.getItems().add(monitor.getName());
+            }
+        }
+    }
+     @FXML
+     public void cleanMonitorsData(){
+         MonitorTransportPaperChoiceBox.getItems().clear();
+         nameTakenVbox1.getChildren().clear();
+         nameTakenVbox2.getChildren().clear();
+         nameTakenVbox3.getChildren().clear();
+         MonitorsList.clear();
+     }
+     @FXML
+     public void addGroup() throws IOException {
+         FXMLLoader fxml = new FXMLLoader();
+         try {
+             fxml.setLocation(getClass().getResource("groupFormHbox.fxml"));
+             HboxGroup = fxml.load();
+         } catch (IOException e) {
+             log.logException(e);
+         }
+
+         groupsForm.getChildren().add(HboxGroup);
+     }
     @FXML
     public void addStudentAbsence(){
         students = commModel.getStudentAbsence();
@@ -225,15 +273,56 @@ import java.util.ResourceBundle;
         phoneNumberStudentTextField.setText("");
         noteOnStudentTextField.setText("");
     }
+    public int getMonitorIdByName(){
+        for (EmployeeTable monitor : MonitorsList){
+            if(monitor.getName().equals(MonitorTransportPaperChoiceBox.getValue())) {
+                return monitor.getId();
+            }
+        }
+        return -1;
+    }
     @FXML
     public void addFullCommitte() throws IOException {
-        commModel.insert(new CommitteTable(
+
+        if(getMonitorIdByName() == -1){
+            alert.setContentText("قم بأختيار المراقب الدي تم الاستلام منه");
+            alert.show();
+            return;
+        }
+
+         commModel.insert(new CommitteTable(
                 classNumberTextField.getText(),dateDatePicker.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")),
                 IdRow,semesterChoiceBox.getValue(),numberPaperTextField.getText(),specificChoiceBox.getValue(),poeriodChoiceBox.getValue(),
                 yearChoiceBox.getValue(),semesterPeriodChoiceBox.getValue()
         ));
 
-        commModel.store(MonitorsList);
+        int idCommitteLastRow = commModel.store(MonitorsList);
+
+        // verify input like doctor id, committe id ... , to avoid replicated data
+        groupsForm.getChildren().forEach(HboxGroup -> {
+            ((HBox) HboxGroup).getChildren().forEach(input -> {
+                if (input instanceof TextField){
+                    String a = ((TextField) input).getText();
+                    arrayHboxTextField.add(a);
+                    countHboxItems++;
+                }
+                if (input instanceof ChoiceBox<?>){
+                    String b = ((ChoiceBox<String>) input).getValue();
+                    arrayHboxChoice.add(b);
+                }
+            });
+        });
+
+        for (int i=0;i < countHboxItems ; i++) {
+            if(!arrayHboxChoice.get(i).equals("") | !arrayHboxTextField.get(i).equals("") ){
+                paperModel.insert(new answerPaperMovementTable(idCommitteLastRow,getMonitorIdByName(),session.getId(),
+                        dateDatePicker.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")),
+                        arrayHboxTextField.get(i), arrayHboxChoice.get(i))
+                );
+            }
+        }
+        paperModel.store();
+
         cancleAllInputCommitte();
     }
      @FXML
@@ -263,6 +352,20 @@ import java.util.ResourceBundle;
          }
          addChilderen = true;
          courseNameTakenHbox.getChildren().clear();
+
+         groupsForm.getChildren().forEach(HboxGroup -> {
+             ((HBox) HboxGroup).getChildren().clear();
+         });
+         groupsForm.getChildren().clear();
+         countHboxItems=0;
+         arrayHboxChoice.clear();
+
+         try {
+             addGroup();
+         } catch (IOException e) {
+             log.logException(e);
+         }// create ane block of group CheckList
+
      }
 
      @FXML

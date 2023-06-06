@@ -45,9 +45,7 @@ public class answerPaperMovementTable {
         return groupCol;
     }
 
-    public void setIdCol(int idCol) {
-        this.idCol = idCol;
-    }
+    public void setIdCol(int idCol) {this.idCol = idCol;}
     public void setCommitteIdCol(int committeIdCol) {
         this.committeIdCol = committeIdCol;
     }

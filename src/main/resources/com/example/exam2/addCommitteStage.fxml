@@ -119,7 +119,7 @@
                                                 <Font size="15.0" />
                                              </font>
                                           </TextField>
-                                          <Label id="textField" prefHeight="41.0" prefWidth="113.0" style="-fx-alignment: center;" text="عدد أوراق الاجابة" textAlignment="CENTER" textFill="WHITE">
+                                          <Label id="textField" prefHeight="41.0" prefWidth="113.0" style="-fx-alignment: center;" text="عدد أوراق الكلي" textAlignment="CENTER" textFill="WHITE">
                                              <HBox.margin>
                                                 <Insets left="5.0" right="5.0" />
                                              </HBox.margin>
@@ -167,7 +167,32 @@
                               </VBox>
                            </children>
                         </HBox>
-                        <HBox alignment="CENTER_RIGHT" prefHeight="15.0" prefWidth="1000.0" />
+                        <HBox alignment="CENTER_RIGHT" prefHeight="20.0" />
+                        <HBox alignment="CENTER_RIGHT" prefWidth="1000.0">
+                           <children>
+                              <VBox fx:id="groupsForm" alignment="CENTER_RIGHT" fillWidth="false" prefWidth="600.0">
+                                 <HBox.margin>
+                                    <Insets />
+                                 </HBox.margin>
+                              </VBox>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER_RIGHT" prefHeight="70.0" prefWidth="100.0">
+                           <children>
+                              <MFXButton id="insert_button" onAction="#addGroup" prefHeight="48.0" prefWidth="56.0" style="-fx-background-radius: 90;" text=" " textFill="WHITE">
+                                 <graphic>
+                                    <FontIcon iconColor="WHITE" iconLiteral="anto-plus" iconSize="31" textAlignment="CENTER" wrappingWidth="37.0" />
+                                 </graphic>
+                                 <HBox.margin>
+                                    <Insets right="40.0" />
+                                 </HBox.margin>
+                                 <padding>
+                                    <Insets right="-10.0" />
+                                 </padding>
+                              </MFXButton>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER_RIGHT" prefHeight="20.0" />
                         <HBox alignment="CENTER_RIGHT" prefWidth="200.0">
                            <children>
                               <TextField id="inputFiled" fx:id="searchCourseTextField" alignment="CENTER_RIGHT" prefHeight="41.0" prefWidth="300.0" promptText="بحت بأسم المادة او الرقم">
@@ -252,6 +277,35 @@
                               </VBox>
                            </children>
                         </HBox>
+                        <VBox prefHeight="81.0" prefWidth="1000.0">
+                           <children>
+                              <HBox alignment="CENTER_RIGHT" prefHeight="64.0" prefWidth="1000.0">
+                                 <children>
+                                    <MFXButton id="insert_button" onAction="#cleanMonitorsData" prefHeight="43.0" prefWidth="162.0" style="-fx-background-color: red;" text="مسح المراقبين" textFill="WHITE">
+                                       <graphic>
+                                          <FontIcon iconColor="WHITE" iconLiteral="antf-close-circle" iconSize="31" textAlignment="CENTER" wrappingWidth="37.0" />
+                                       </graphic>
+                                       <opaqueInsets>
+                                          <Insets />
+                                       </opaqueInsets>
+                                       <HBox.margin>
+                                          <Insets right="10.0" />
+                                       </HBox.margin>
+                                    </MFXButton>
+                                    <ChoiceBox id="specificChoiceField" fx:id="MonitorTransportPaperChoiceBox" onMousePressed="#addMonitorsCheckBox" prefHeight="31.0" prefWidth="213.0">
+                                       <opaqueInsets>
+                                          <Insets />
+                                       </opaqueInsets>
+                                    </ChoiceBox>
+                                    <Label id="textField" prefHeight="41.0" prefWidth="149.0" style="-fx-alignment: center;" text="تم استلام اوراق من" textAlignment="CENTER" textFill="WHITE">
+                                       <HBox.margin>
+                                          <Insets left="5.0" right="5.0" />
+                                       </HBox.margin>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
                         <HBox alignment="CENTER_RIGHT" prefWidth="1000.0">
                            <children>
                               <VBox fx:id="idNumberTakenVbox1" prefHeight="96.0" prefWidth="90.0">
