@@ -7,26 +7,39 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<HBox fx:id="HboxGroup" alignment="CENTER_RIGHT" prefHeight="55.0" prefWidth="650.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.exam2.addChoiceBoxController">
+<HBox fx:id="HboxGroup" alignment="CENTER_RIGHT" prefHeight="55.0" prefWidth="900.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.exam2.addChoiceBoxController">
    <children>
-      <TextField id="inputFiled" fx:id="phoneNumberStudentTextField11" alignment="CENTER_RIGHT" prefHeight="41.0" prefWidth="148.0" promptText="متال : 20">
+      <TextField id="inputFiled" fx:id="phoneNumberStudentTextField11" alignment="CENTER_RIGHT" prefHeight="41.0" prefWidth="120.0" promptText="متال : 20">
          <font>
             <Font size="15.0" />
          </font>
       </TextField>
       <Label id="textField" prefHeight="41.0" prefWidth="123.0" text="عدد أوراق الاجابة" textFill="WHITE">
          <HBox.margin>
-            <Insets left="10.0" right="35.0" />
+            <Insets left="5.0" right="10.0" />
          </HBox.margin>
       </Label>
-      <ChoiceBox id="specificChoiceField" fx:id="groupNumberChoiceBox" prefHeight="31.0" prefWidth="213.0">
+      <ChoiceBox id="specificChoiceField" fx:id="groupNumberChoiceBox" prefHeight="31.0" prefWidth="174.0">
          <opaqueInsets>
             <Insets />
          </opaqueInsets>
       </ChoiceBox>
       <Label id="textField" depthTest="DISABLE" prefHeight="41.0" prefWidth="86.0" text="المجموعة" textAlignment="CENTER" textFill="WHITE">
          <HBox.margin>
-            <Insets left="5.0" />
+            <Insets left="5.0" right="10.0" />
+         </HBox.margin>
+      </Label>
+      <ChoiceBox id="specificChoiceField" fx:id="specificChoiceBox" prefHeight="31.0" prefWidth="169.0">
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+         <HBox.margin>
+            <Insets right="5.0" />
+         </HBox.margin>
+      </ChoiceBox>
+      <Label id="textField" prefHeight="41.0" prefWidth="86.0" style="-fx-alignment: center;" text="التخصص" textAlignment="CENTER" textFill="WHITE">
+         <HBox.margin>
+            <Insets right="5.0" />
          </HBox.margin>
       </Label>
    </children>

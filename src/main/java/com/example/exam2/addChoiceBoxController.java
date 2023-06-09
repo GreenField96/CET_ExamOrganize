@@ -8,7 +8,8 @@ import java.util.ResourceBundle;
 
 public class addChoiceBoxController implements Initializable {
     @FXML
-    ChoiceBox<String> groupNumberChoiceBox;
+    ChoiceBox<String> groupNumberChoiceBox,specificChoiceBox;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         groupNumberChoiceBox.setValue("الاولى");
@@ -32,5 +33,12 @@ public class addChoiceBoxController implements Initializable {
         groupNumberChoiceBox.getItems().add("ثمانية عشر");
         groupNumberChoiceBox.getItems().add("تسعة عشر");
         groupNumberChoiceBox.getItems().add("عشرون");
+
+        specificChoiceBox.setValue("عام");
+        specificChoiceBox.getItems().add("عام");
+        specificChoiceBox.getItems().add("حاسب ألي");
+        specificChoiceBox.getItems().add("تحكم ألي");
+        specificChoiceBox.getItems().add("اتصالات");
+
     }
 }

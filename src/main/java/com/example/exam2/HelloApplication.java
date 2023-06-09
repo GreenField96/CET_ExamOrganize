@@ -14,7 +14,7 @@ public class HelloApplication extends Application {
     private Double x,y;
     @Override
     public void start(Stage stage) throws IOException {
-//        Parent root =  FXMLLoader.load(getClass().getResource("main-view.fxml"));
+
         Parent root =  FXMLLoader.load(getClass().getResource("loginStage.fxml"));
 //        Parent root =  FXMLLoader.load(getClass().getResource("main-view.fxml"));
 
@@ -44,7 +44,6 @@ public class HelloApplication extends Application {
 
     public static void main(String[] args)
     {
-
         launch();
     }
 }

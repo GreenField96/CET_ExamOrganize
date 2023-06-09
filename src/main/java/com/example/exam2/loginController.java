@@ -32,7 +32,7 @@ public class loginController implements Initializable {
         stage.close();
     }
     @FXML
-    private void onClickLogin() throws SQLException {
+    private void onClickLogin() {
         String email = emailTextField.getText();
         String pass = paswordTextField.getText();
         if(pass.length() < 1 | email.length() < 1){

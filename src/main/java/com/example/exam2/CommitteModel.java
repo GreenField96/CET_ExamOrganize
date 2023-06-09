@@ -25,18 +25,16 @@ public class CommitteModel{
         int idCommitteRow = 1000;
         try {
             connection = db.getDBConnection();
-            String queryComitte = "INSERT INTO committe (class,date,course,semester,specification,number_answer_paper,periodExam,year,semester_period) VALUES (?,?,?,?,?,?,?,?,?)";
+            String queryComitte = "INSERT INTO committe (class,date,course,number_answer_paper,periodExam,year,semester_period) VALUES (?,?,?,?,?,?,?)";
             statement = connection.prepareStatement(queryComitte);
             for (CommitteTable committe : committes) {
                 statement.setString(1, committe.getClassNumberCol());
                 statement.setString(2, committe.getDateCol());
                 statement.setInt(3, committe.getCourseCol());
-                statement.setString(4,  committe.getSemesterCol());
-                statement.setString(5,  committe.getSpecificCol());
-                statement.setString(6,  committe.getNumberAnswerPaperCol());
-                statement.setString(7,  committe.getPeriodCol());
-                statement.setString(8,  committe.getYearCol());
-                statement.setString(9,  committe.getSemesterPeriodCol());
+                statement.setString(4,  committe.getNumberAnswerPaperCol());
+                statement.setString(5,  committe.getPeriodCol());
+                statement.setString(6,  committe.getYearCol());
+                statement.setString(7,  committe.getSemesterPeriodCol());
                 statement.addBatch();
             }
             statement.executeBatch();
@@ -44,19 +42,20 @@ public class CommitteModel{
             statement = connection.prepareStatement( "select id from committe ORDER BY id DESC LIMIT 1");
             ResultSet resultSet = statement.executeQuery();
 
-            while(resultSet.next()){
+            if(resultSet.next()){
                 idCommitteRow = resultSet.getInt("id");
             }
-            String queryStudent = "INSERT INTO student_absence (student_id,name,phone_number,group_number,committe_id,note) VALUES (?,?,?,?,?,?)";
+            String queryStudent = "INSERT INTO student_absence (student_id,name,phone_number,specification,group_number,committe_id,note) VALUES (?,?,?,?,?,?,?)";
             statement = connection.prepareStatement(queryStudent);
             for (studentAbsenceTable student : students) {
                  if(student.getStudentIdCol() > -1){
                     statement.setInt(1, student.getStudentIdCol());
                     statement.setString(2, student.getNameCol());
                     statement.setString(3, student.getPhoneNumberCol());
-                    statement.setString(4, student.getGroupNumberCol());
-                    statement.setInt(5, idCommitteRow);
-                    statement.setString(6, student.getNoteCol());
+                     statement.setString(4, student.getSpecification());
+                    statement.setString(5, student.getGroupNumberCol());
+                    statement.setInt(6, idCommitteRow);
+                    statement.setString(7, student.getNoteCol());
                     statement.addBatch();
                 }
             }
@@ -88,41 +87,68 @@ public class CommitteModel{
         students.add(student);
     }
 
-    public ArrayList<CommitteTable> selectSpecificData(String course,String groupNumber,String semester,String specific,String semesterPeriod,String year){
-//        groupNumberChoiceBox,semesterChoiceBox,specificChoiceBox,semesterPeriodChoiceBox,yearChoiceBox;
+    public ArrayList<CommitteTable> selectSpecificData(String course,String groupNumber,String specific,String semesterPeriod,String year,boolean stateQuery){
 
-//        committes.clear();
         Connection connection = null;
         PreparedStatement statement = null;
-//        date = date.replace('/','-');
+        int id_have_paper = -1;
+
         try {
-            courseModel.searchOnTable(course);
             connection = db.getDBConnection();
-//           // class 	date 	course 	semester 	specification 	number_answer_paper periodExam 	year semester_period
             String query = "SELECT " +
-                    " committe.id,committe.class,committe.date,committe.course,committe.semester,committe.specification,committe.number_answer_paper,committe.periodExam,course_name.id as courseId,course_name.courseName,course_name.courseNumber,answer_paper_movement.group,answer_paper_movement.number_papers_received " +
-                    " FROM committe,course_name,answer_paper_movement WHERE committe.year LIKE '"+ year +"' AND committe.semester_period LIKE '"+ semesterPeriod +"' AND course_name.courseName LIKE '"+ course +"' AND committe.semester LIKE '"+ semester +"' AND committe.specification Like '"+ specific +"' AND answer_paper_movement.group LIKE '"+ groupNumber + "' AND course_name.id = committe.course AND answer_paper_movement.committe_id = committe.id AND answer_paper_movement.he_have_id = " + session.getId() + " ORDER BY answer_paper_movement.committe_id DESC LIMIT 1 ";
+                    " committe.id,committe.class,committe.date,committe.course,answer_paper_movement.specification,committe.number_answer_paper,committe.periodExam,course_name.id as courseId,course_name.courseName,course_name.courseNumber,answer_paper_movement.group,answer_paper_movement.number_papers_received,answer_paper_movement.he_had_id,answer_paper_movement.he_have_id " +
+                    " FROM " +
+                    " committe,course_name,answer_paper_movement " +
+                    "WHERE " +
+                    "committe.year LIKE '"+ year +"' AND " +
+                    "committe.semester_period LIKE '"+ semesterPeriod +"' AND " +
+                    "course_name.courseName LIKE '"+ course +"' AND " +
+                    "answer_paper_movement.specification LIKE '"+ specific +"' AND " +
+                    "answer_paper_movement.group LIKE '"+ groupNumber + "' AND " +
+                    "course_name.id = committe.course AND " +
+                    "answer_paper_movement.committe_id = committe.id " +
+                    "ORDER BY answer_paper_movement.id DESC LIMIT 1 ";
 
             statement = connection.prepareStatement(query);
             ResultSet resultSet = statement.executeQuery();
+
             while(resultSet.next())
             {
-                committes.add(new CommitteTable(
-                        resultSet.getInt("id"),
-                        resultSet.getNString("class"),
-                        resultSet.getDate("date").toLocalDate().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")) ,
-                        resultSet.getInt("course"),
-                        resultSet.getNString("specification"),
-                        resultSet.getNString("semester"),
-                        resultSet.getNString("number_answer_paper"),
-                        resultSet.getInt("courseId"),
-                        resultSet.getNString("courseName"),
-                        resultSet.getNString("courseNumber"),
-                        resultSet.getNString("periodExam"),
-                        resultSet.getNString("group"),
-                        resultSet.getInt("number_papers_received")
-                        ));
+                id_have_paper = resultSet.getInt("he_have_id");
+                    committes.add(new CommitteTable(
+                            resultSet.getInt("id"),
+                            resultSet.getNString("class"),
+                            resultSet.getDate("date").toLocalDate().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")),
+                            resultSet.getInt("course"),
+                            resultSet.getNString("specification"),
+                            resultSet.getNString("number_answer_paper"),
+                            resultSet.getInt("courseId"),
+                            resultSet.getNString("courseName"),
+                            resultSet.getNString("courseNumber"),
+                            resultSet.getNString("periodExam"),
+                            resultSet.getNString("group"),
+                            resultSet.getInt("number_papers_received")
+                    ));
             }
+            statement = connection.prepareStatement("SELECT * FROM employees WHERE id = " + id_have_paper);
+            ResultSet subResultSet = statement.executeQuery();
+            if(subResultSet.next())
+            {
+                committes.get(0).setDoctorId(subResultSet.getInt("id"));
+                committes.get(0).setDoctorName(subResultSet.getNString("name"));
+
+                if(stateQuery) {
+                    if (!subResultSet.getBoolean("permisson")) {
+                        committes.clear();
+                    }
+                }else{
+                    if (subResultSet.getBoolean("permisson")) {
+                        committes.clear();
+                    }
+                }
+
+            }
+
         } catch (SQLException exception) {
             log.logException(exception);
         }

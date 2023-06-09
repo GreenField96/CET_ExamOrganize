@@ -33,7 +33,7 @@ import java.util.ResourceBundle;
     @FXML
     private DatePicker dateDatePicker;
     @FXML
-    private ChoiceBox<String> semesterChoiceBox,specificChoiceBox,groupNumberChoiceBox,poeriodChoiceBox,semesterPeriodChoiceBox,yearChoiceBox,MonitorTransportPaperChoiceBox;
+    private ChoiceBox<String> groupNumberChoiceBox,poeriodChoiceBox,semesterPeriodChoiceBox,yearChoiceBox,MonitorTransportPaperChoiceBox,specificChoiceBox;
     @FXML
     private TextField classNumberTextField,searchTextField,numberPaperTextField;
     @FXML
@@ -66,15 +66,16 @@ import java.util.ResourceBundle;
     @FXML
     private TableColumn<CourseTable, String> courseNumber;
     ObservableList<CourseTable> ObservableArrayCourse;
-    private ArrayList<CourseTable> Courses;
+    private ArrayList<CourseTable> Courses = new ArrayList<>();
     int IdRow;
     String NameRow,courseNumberRow;
-    CourseModel courseModel;
+    private CourseModel courseModel = new CourseModel();
     boolean addChilderen = true;
     private CheckBox checkAbsenceMonitor;
-    private ArrayList<String> arrayHboxTextField = new ArrayList<>();
     public Label courseNameLabel = new Label() , courseNumberLabel = new Label();
     private ArrayList<String> arrayHboxChoice = new ArrayList<>();
+    private ArrayList<String> arrayHboxTextField = new ArrayList<>();
+    private ArrayList<String> arrayHboxSpecificChoiceBox = new ArrayList<>();
     private int countHboxItems=0;
     private answerPaperMovementModel paperModel = new answerPaperMovementModel();
     private Alert alert;
@@ -82,21 +83,6 @@ import java.util.ResourceBundle;
 
      @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        semesterChoiceBox.setValue("تمهيدي");
-        semesterChoiceBox.getItems().add("تمهيدي");
-        semesterChoiceBox.getItems().add("الأول");
-        semesterChoiceBox.getItems().add("التاني");
-        semesterChoiceBox.getItems().add("التالت");
-        semesterChoiceBox.getItems().add("الرابع");
-        semesterChoiceBox.getItems().add("الخامس");
-        semesterChoiceBox.getItems().add("السادس");
-        semesterChoiceBox.getItems().add("السابع");
-        semesterChoiceBox.getItems().add("التامن");
-        specificChoiceBox.setValue("عام");
-        specificChoiceBox.getItems().add("عام");
-        specificChoiceBox.getItems().add("حاسب ألي");
-        specificChoiceBox.getItems().add("تحكم ألي");
-        specificChoiceBox.getItems().add("اتصالات");
 
         groupNumberChoiceBox.setValue("الاولى");
         groupNumberChoiceBox.getItems().add("الاولى");
@@ -140,10 +126,15 @@ import java.util.ResourceBundle;
 
         MonitorTransportPaperChoiceBox.setValue("اسم الملاحظ");
 
+
+        specificChoiceBox.setValue("عام");
+        specificChoiceBox.getItems().add("عام");
+        specificChoiceBox.getItems().add("حاسب ألي");
+        specificChoiceBox.getItems().add("تحكم ألي");
+        specificChoiceBox.getItems().add("اتصالات");
+
         emp = new EmployeeModel();
         Employees = new ArrayList<>();
-        courseModel = new CourseModel();
-        Courses = new ArrayList<>();
         MonitorsList = new ArrayList<>();
 
         try {
@@ -264,7 +255,7 @@ import java.util.ResourceBundle;
         idNumberTakenVbox3.getChildren().add(studentName);
         counterStudentAbsence = 0;
         }
-        commModel.insert(new studentAbsenceTable(Integer.parseInt(idStudentNnmberTextField.getText()),nameStudentTextField.getText(),phoneNumberStudentTextField.getText(),
+        commModel.insert(new studentAbsenceTable(Integer.parseInt(idStudentNnmberTextField.getText()),nameStudentTextField.getText(),phoneNumberStudentTextField.getText(),specificChoiceBox.getValue(),
                 groupNumberChoiceBox.getValue(),noteOnStudentTextField.getText()));
 
         idStudentNnmberTextField.setText("");
@@ -292,7 +283,7 @@ import java.util.ResourceBundle;
 
          commModel.insert(new CommitteTable(
                 classNumberTextField.getText(),dateDatePicker.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")),
-                IdRow,semesterChoiceBox.getValue(),numberPaperTextField.getText(),specificChoiceBox.getValue(),poeriodChoiceBox.getValue(),
+                IdRow,numberPaperTextField.getText(),poeriodChoiceBox.getValue(),
                 yearChoiceBox.getValue(),semesterPeriodChoiceBox.getValue()
         ));
 
@@ -306,10 +297,15 @@ import java.util.ResourceBundle;
                     arrayHboxTextField.add(a);
                     countHboxItems++;
                 }
-                if (input instanceof ChoiceBox<?>){
+                if (input instanceof ChoiceBox<?>) {
                     String b = ((ChoiceBox<String>) input).getValue();
-                    arrayHboxChoice.add(b);
+                    if (b == "اتصالات" | b == "تحكم ألي" | b == "حاسب ألي" | b == "عام") {
+                        arrayHboxSpecificChoiceBox.add(b);
+                    }else{
+                        arrayHboxChoice.add(b);
+                    }
                 }
+
             });
         });
 
@@ -317,7 +313,7 @@ import java.util.ResourceBundle;
             if(!arrayHboxChoice.get(i).equals("") | !arrayHboxTextField.get(i).equals("") ){
                 paperModel.insert(new answerPaperMovementTable(idCommitteLastRow,getMonitorIdByName(),session.getId(),
                         dateDatePicker.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")),
-                        arrayHboxTextField.get(i), arrayHboxChoice.get(i))
+                        arrayHboxTextField.get(i), arrayHboxSpecificChoiceBox.get(i),arrayHboxChoice.get(i))
                 );
             }
         }
@@ -334,8 +330,8 @@ import java.util.ResourceBundle;
          phoneNumberStudentTextField.setText("");
          noteOnStudentTextField.setText("");
          classNumberTextField.setText("");
-         specificChoiceBox.setValue("عام");
-         semesterChoiceBox.setValue("تمهيدي");
+
+
          numberPaperTextField.setText("");
          idNumberTakenVbox1.getChildren().clear();
          idNumberTakenVbox2.getChildren().clear();

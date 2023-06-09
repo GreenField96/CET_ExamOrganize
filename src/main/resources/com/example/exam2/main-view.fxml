@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import org.kordamp.ikonli.javafx.FontIcon?>
 
-<AnchorPane fx:id="base" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="645.0" prefWidth="1300.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.exam2.mainController">
+<AnchorPane fx:id="base" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="645.0" prefWidth="1300.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.exam2.mainController">
    <children>
       <HBox prefHeight="645.0" prefWidth="1300.0">
          <children>
@@ -32,7 +32,7 @@
                         <Insets top="-10.0" />
                      </VBox.margin>
                   </MFXButton>
-                  <MFXButton id="main_button" graphicTextGap="1.0" onAction="#addPaperMovementStageDelivery" prefHeight="60.0" prefWidth="227.0" text="أستلام/تسليم اوراق الاجابة" textAlignment="RIGHT" textFill="WHITE">
+                  <MFXButton id="main_button" graphicTextGap="1.0" onAction="#addPaperMovementStageDelivery" prefHeight="60.0" prefWidth="227.0" text="تسليم اوراق الاجابة         " textAlignment="RIGHT" textFill="WHITE">
                      <graphic>
                         <FontIcon iconColor="WHITE" iconLiteral="anto-inbox" iconSize="31" wrappingWidth="37.0" />
                      </graphic>
@@ -40,9 +40,9 @@
                         <Insets top="10.0" />
                      </VBox.margin>
                   </MFXButton>
-                  <MFXButton id="main_button" onAction="#addEmployeeStage" prefHeight="60.0" prefWidth="227.0" text="ادخال بيانات موظف/دكتور" textFill="#FFFF">
+                  <MFXButton id="main_button" graphicTextGap="1.0" onAction="#addPaperMovementStageRecive" prefHeight="60.0" prefWidth="227.0" text="أستلام اوراق الاجابة         " textAlignment="RIGHT" textFill="WHITE">
                      <graphic>
-                        <FontIcon iconColor="WHITE" iconLiteral="anto-user-add" iconSize="31" textAlignment="RIGHT" wrappingWidth="37.0" />
+                        <FontIcon iconColor="WHITE" iconLiteral="anto-inbox" iconSize="31" wrappingWidth="37.0" />
                      </graphic>
                      <VBox.margin>
                         <Insets top="10.0" />

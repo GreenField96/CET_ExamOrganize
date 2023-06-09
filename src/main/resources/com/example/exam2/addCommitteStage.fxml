@@ -15,7 +15,7 @@
 <?import javafx.scene.text.Font?>
 <?import org.kordamp.ikonli.javafx.FontIcon?>
 
-<VBox prefWidth="1100.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.exam2.addCommitteController">
+<VBox prefWidth="1100.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.exam2.addCommitteController">
    <children>
       <ScrollPane prefWidth="1000.0">
          <content>
@@ -33,23 +33,6 @@
                                           <Label id="textField" prefHeight="41.0" prefWidth="86.0" style="-fx-alignment: center;" text="التاريخ" textAlignment="CENTER" textFill="WHITE">
                                              <HBox.margin>
                                                 <Insets left="15.0" right="5.0" />
-                                             </HBox.margin>
-                                          </Label>
-                                       </children>
-                                    </HBox>
-                                    <HBox alignment="CENTER_RIGHT" prefHeight="99.0" prefWidth="381.0">
-                                       <children>
-                                          <ChoiceBox id="specificChoiceField" fx:id="specificChoiceBox" prefHeight="31.0" prefWidth="213.0">
-                                             <opaqueInsets>
-                                                <Insets />
-                                             </opaqueInsets>
-                                             <HBox.margin>
-                                                <Insets right="20.0" />
-                                             </HBox.margin>
-                                          </ChoiceBox>
-                                          <Label id="textField" prefHeight="41.0" prefWidth="113.0" style="-fx-alignment: center;" text="التخصص" textAlignment="CENTER" textFill="WHITE">
-                                             <HBox.margin>
-                                                <Insets left="5.0" right="5.0" />
                                              </HBox.margin>
                                           </Label>
                                        </children>
@@ -128,23 +111,6 @@
                                     </HBox>
                                     <HBox alignment="CENTER_RIGHT" prefHeight="99.0" prefWidth="381.0">
                                        <children>
-                                          <ChoiceBox id="semesterChoiceField" fx:id="semesterChoiceBox" prefHeight="31.0" prefWidth="213.0">
-                                             <opaqueInsets>
-                                                <Insets />
-                                             </opaqueInsets>
-                                             <HBox.margin>
-                                                <Insets right="20.0" />
-                                             </HBox.margin>
-                                          </ChoiceBox>
-                                          <Label id="textField" prefHeight="41.0" prefWidth="113.0" text="الفصل/السيم" textAlignment="CENTER" textFill="WHITE">
-                                             <HBox.margin>
-                                                <Insets left="5.0" right="5.0" />
-                                             </HBox.margin>
-                                          </Label>
-                                       </children>
-                                    </HBox>
-                                    <HBox alignment="CENTER_RIGHT" prefHeight="99.0" prefWidth="381.0">
-                                       <children>
                                           <ChoiceBox id="semesterChoiceField" fx:id="yearChoiceBox" prefHeight="31.0" prefWidth="213.0">
                                              <opaqueInsets>
                                                 <Insets />
@@ -170,7 +136,7 @@
                         <HBox alignment="CENTER_RIGHT" prefHeight="20.0" />
                         <HBox alignment="CENTER_RIGHT" prefWidth="1000.0">
                            <children>
-                              <VBox fx:id="groupsForm" alignment="CENTER_RIGHT" fillWidth="false" prefWidth="600.0">
+                              <VBox fx:id="groupsForm" alignment="CENTER_RIGHT" fillWidth="false" prefWidth="900.0">
                                  <HBox.margin>
                                     <Insets />
                                  </HBox.margin>
@@ -343,13 +309,30 @@
                                           <Insets top="-10.0" />
                                        </VBox.margin>
                                     </HBox>
-                                    <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0">
+                                    <HBox alignment="CENTER_RIGHT" prefHeight="52.0" prefWidth="373.0">
                                        <children>
-                                          <TextArea id="choiceField" fx:id="noteOnStudentTextField" nodeOrientation="RIGHT_TO_LEFT" prefHeight="112.0" prefWidth="238.0" promptText="سبب الغياب ....">
+                                          <TextArea id="choiceField" fx:id="noteOnStudentTextField" nodeOrientation="RIGHT_TO_LEFT" prefHeight="43.0" prefWidth="238.0" promptText="سبب الغياب ....">
                                              <HBox.margin>
                                                 <Insets right="5.0" />
                                              </HBox.margin></TextArea>
                                           <Label id="textField" prefHeight="41.0" prefWidth="86.0" style="-fx-alignment: center;" text="ملاحظات" textAlignment="CENTER" textFill="WHITE">
+                                             <HBox.margin>
+                                                <Insets left="5.0" right="5.0" />
+                                             </HBox.margin>
+                                          </Label>
+                                       </children>
+                                    </HBox>
+                                    <HBox alignment="CENTER_RIGHT" prefHeight="64.0" prefWidth="373.0">
+                                       <children>
+                                          <ChoiceBox id="specificChoiceField" fx:id="specificChoiceBox" prefHeight="31.0" prefWidth="213.0">
+                                             <opaqueInsets>
+                                                <Insets />
+                                             </opaqueInsets>
+                                             <HBox.margin>
+                                                <Insets right="5.0" />
+                                             </HBox.margin>
+                                          </ChoiceBox>
+                                          <Label id="textField" prefHeight="41.0" prefWidth="86.0" style="-fx-alignment: center;" text="التخصص" textAlignment="CENTER" textFill="WHITE">
                                              <HBox.margin>
                                                 <Insets left="5.0" right="5.0" />
                                              </HBox.margin>

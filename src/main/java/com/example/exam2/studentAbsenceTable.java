@@ -6,22 +6,25 @@ public class studentAbsenceTable {
     private String nameCol;
     private String groupNumberCol;
     private String phoneNumberCol;
+    private String specification;
     private String noteCol;
     private int committeIdCol;
 
-    public studentAbsenceTable(int idCol, int studentIdCol, String nameCol, String phoneNumberCol,String groupNumberCol ,String noteCol ,int committeIdCol) {
+    public studentAbsenceTable(int idCol, int studentIdCol, String nameCol, String phoneNumberCol ,String specification, String groupNumberCol ,String noteCol ,int committeIdCol) {
         this.idCol = idCol;
         this.studentIdCol = studentIdCol;
         this.nameCol = nameCol;
         this.phoneNumberCol = phoneNumberCol;
+        this.specification = specification;
         this.groupNumberCol = groupNumberCol;
         this.noteCol = noteCol;
         this.committeIdCol = committeIdCol;
     }
-    public studentAbsenceTable(int studentIdCol, String nameCol, String phoneNumberCol, String groupNumberCol, String noteCol) {
+    public studentAbsenceTable(int studentIdCol, String nameCol, String phoneNumberCol,String specification, String groupNumberCol, String noteCol) {
         this.studentIdCol = studentIdCol;
         this.nameCol = nameCol;
         this.phoneNumberCol = phoneNumberCol;
+        this.specification = specification;
         this.groupNumberCol = groupNumberCol;
         this.noteCol = noteCol;
     }
@@ -43,6 +46,8 @@ public class studentAbsenceTable {
     public String getNoteCol() {
         return noteCol;
     }
+    public String getSpecification(){ return specification; }
+
     public int getCommitteIdCol() {
         return committeIdCol;
     }

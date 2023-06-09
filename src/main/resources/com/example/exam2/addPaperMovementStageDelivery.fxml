@@ -16,11 +16,11 @@
 <?import javafx.scene.text.Font?>
 <?import org.kordamp.ikonli.javafx.FontIcon?>
 
-<VBox fx:id="mainStage" prefWidth="1100.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.exam2.addPaperMovementDeliveryController">
+<VBox fx:id="mainStage" prefWidth="1100.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.exam2.addPaperMovementDeliveryController">
    <children>
       <TabPane prefHeight="800.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
-          <Tab id="TabePane" text="تسليم الاوراق الي الدكتور">
+          <Tab id="TabePane" text="تسليم الاوراق الي ">
                <content>
                   <ScrollPane prefWidth="1000.0">
                      <content>
@@ -85,6 +85,44 @@
                                     <HBox alignment="CENTER_RIGHT" prefHeight="30.0" prefWidth="1000.0" />
                                     <HBox alignment="CENTER_RIGHT" prefWidth="200.0">
                                        <children>
+                                          <TextField id="inputFiled" fx:id="searchCourseTextField" alignment="CENTER_RIGHT" prefHeight="41.0" prefWidth="300.0" promptText="بحت بأسم المادة او الرقم">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                             <HBox.margin>
+                                                <Insets bottom="10.0" top="20.0" />
+                                             </HBox.margin>
+                                          </TextField>
+                                          <MFXButton id="insert_button" onAction="#searchOnCourseTable" prefHeight="48.0" prefWidth="121.0" text="بحت" textAlignment="CENTER" textFill="WHITE">
+                                             <graphic>
+                                                <FontIcon iconColor="WHITE" iconLiteral="anto-search" iconSize="31" wrappingWidth="37.0" />
+                                             </graphic>
+                                             <HBox.margin>
+                                                <Insets left="30.0" right="30.0" top="10.0" />
+                                             </HBox.margin>
+                                          </MFXButton>
+                                       </children>
+                                    </HBox>
+                                    <HBox alignment="CENTER_RIGHT" prefWidth="300.0">
+                                       <children>
+                                          <VBox prefHeight="104.0" prefWidth="500.0">
+                                             <children>
+                                                <TableView fx:id="CoursesTableView" onMouseClicked="#getCourseId" prefHeight="91.0">
+                                                   <columns>
+                                                      <TableColumn id="ColumnTable" fx:id="courseNumber" prefWidth="180.0" text="رقم المادة" />
+                                                      <TableColumn id="ColumnTable" fx:id="courseName" prefWidth="215.0" text="اسم المادة" />
+                                                      <TableColumn id="ColumnTable" fx:id="courseId" prefWidth="94.0" text="#" />
+                                                   </columns>
+                                                   <VBox.margin>
+                                                      <Insets left="5.0" right="5.0" />
+                                                   </VBox.margin>
+                                                </TableView>
+                                             </children>
+                                          </VBox>
+                                       </children>
+                                    </HBox>
+                                    <HBox alignment="CENTER_RIGHT" prefWidth="200.0">
+                                       <children>
                                           <ChoiceBox id="semesterChoiceField" fx:id="yearChoiceBox" prefHeight="31.0" prefWidth="124.0">
                                              <opaqueInsets>
                                                 <Insets />
@@ -101,23 +139,15 @@
                                                 <Insets left="10.0" top="10.0" />
                                              </HBox.margin>
                                           </ChoiceBox>
-                                          <ChoiceBox id="specificChoiceField" fx:id="specificChoiceBox" prefHeight="31.0" prefWidth="130.0">
-                                             <opaqueInsets>
-                                                <Insets />
-                                             </opaqueInsets>
-                                             <HBox.margin>
-                                                <Insets left="10.0" top="10.0" />
-                                             </HBox.margin>
-                                          </ChoiceBox>
-                                          <ChoiceBox id="semesterChoiceField" fx:id="semesterChoiceBox" prefHeight="31.0" prefWidth="130.0">
-                                             <opaqueInsets>
-                                                <Insets />
-                                             </opaqueInsets>
-                                             <HBox.margin>
-                                                <Insets left="10.0" top="10.0" />
-                                             </HBox.margin>
-                                          </ChoiceBox>
                                           <ChoiceBox id="specificChoiceField" fx:id="groupNumberChoiceBox" prefHeight="31.0" prefWidth="130.0">
+                                             <opaqueInsets>
+                                                <Insets />
+                                             </opaqueInsets>
+                                             <HBox.margin>
+                                                <Insets left="10.0" top="10.0" />
+                                             </HBox.margin>
+                                          </ChoiceBox>
+                                          <ChoiceBox id="specificChoiceField" fx:id="specificChoiceBox" prefHeight="31.0" prefWidth="130.0">
                                              <opaqueInsets>
                                                 <Insets />
                                              </opaqueInsets>
@@ -162,7 +192,7 @@
                                                       <Insets left="5.0" right="5.0" />
                                                    </VBox.margin>
                                                 </TableView>
-                                                <VBox fx:id="committeTakenVbox" alignment="TOP_CENTER" prefHeight="38.0" prefWidth="980.0" />
+                                                <VBox fx:id="committeTakenVbox" alignment="TOP_CENTER" prefHeight="29.0" prefWidth="980.0" />
                                              </children>
                                           </VBox>
                                        </children>
@@ -179,7 +209,7 @@
                                           <Insets top="20.0" />
                                        </VBox.margin>
                                     </HBox>
-                                    <HBox alignment="CENTER_RIGHT" prefHeight="70.0" prefWidth="100.0">
+                                    <HBox alignment="CENTER_RIGHT" prefHeight="50.0" prefWidth="100.0">
                                        <children>
                                           <MFXButton id="insert_button" onAction="#cleanMonitorsData" prefHeight="43.0" prefWidth="162.0" style="-fx-background-color: red;" text="مسح اللجان" textFill="WHITE">
                                              <graphic>
@@ -221,7 +251,6 @@
                   </ScrollPane>
                </content>
             </Tab>
-          <Tab id="TabePane" text="أستلام الاوراق من الدكتور" />
         </tabs>
       </TabPane>
    </children>

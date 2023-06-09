@@ -2,14 +2,13 @@ package com.example.exam2;
 
 public class CommitteTable {
     private int idCol;
-    private String classNumberCol;  // مسرح / رقم قاعة
+    private String classNumberCol;
     private String dateCol;
     private int courseCol;
     private String numberAnswerPaperCol;
-    private String specificCol;
-    private String semesterCol;
     private String periodCol;
     private String yearCol;
+    private String specificCol;
     private String semesterPeriodCol;
 
     private int courseId;
@@ -19,14 +18,16 @@ public class CommitteTable {
     private String groupCol;
     private int numberPapersReceivedCol;
 
-    public CommitteTable(int idCol, String classNumberCol, String dateCol, int courseCol, String specificCol,String semesterCol, String numberAnswerPaperCol, int courseId, String courseName, String courseNumber,String periodCol,String groupCol,int numberPapersReceivedCol) {
+    private int doctorId;
+    private String doctorName;
+
+    public CommitteTable(int idCol, String classNumberCol, String dateCol, int courseCol,String specificCol, String numberAnswerPaperCol, int courseId, String courseName, String courseNumber,String periodCol,String groupCol,int numberPapersReceivedCol) {
         this.idCol = idCol;
         this.classNumberCol = classNumberCol;
         this.dateCol = dateCol;
         this.courseCol = courseCol;
-        this.numberAnswerPaperCol = numberAnswerPaperCol;
         this.specificCol = specificCol;
-        this.semesterCol = semesterCol;
+        this.numberAnswerPaperCol = numberAnswerPaperCol;
         this.courseId = courseId;
         this.courseName = courseName;
         this.courseNumber = courseNumber;
@@ -35,37 +36,31 @@ public class CommitteTable {
         this.numberPapersReceivedCol = numberPapersReceivedCol;
     }
 
-    public CommitteTable(int idCol, String classNumberCol, String dateCol, int courseCol, String semesterCol, String numberAnswerPaperCol, String specificCol) {
+    public CommitteTable(int idCol, String classNumberCol, String dateCol, int courseCol, String numberAnswerPaperCol) {
         this.idCol = idCol;
         this.classNumberCol = classNumberCol;
         this.dateCol = dateCol;
         this.courseCol = courseCol;
-        this.semesterCol = semesterCol;
         this.numberAnswerPaperCol = numberAnswerPaperCol;
-        this.specificCol = specificCol;
     }
-    public CommitteTable(String classNumberCol, String dateCol, int courseCol, String semesterCol, String numberAnswerPaperCol, String specificCol,String periodCol,String yearCol,String semesterPeriodCol) {
+    public CommitteTable(String classNumberCol, String dateCol, int courseCol ,String numberAnswerPaperCol,String periodCol,String yearCol,String semesterPeriodCol) {
         this.classNumberCol = classNumberCol;
         this.dateCol = dateCol;
         this.courseCol = courseCol;
-        this.semesterCol = semesterCol;
         this.numberAnswerPaperCol = numberAnswerPaperCol;
-        this.specificCol = specificCol;
         this.periodCol = periodCol;
         this.yearCol = yearCol;
         this.semesterPeriodCol = semesterPeriodCol;
 
     }
-
-    // id,class,date,course,specification,number_answer_paper
-    public CommitteTable(int idCol, String classNumberCol, String dateCol, int courseCol, String specificCol, String numberAnswerPaperCol) {
-        this.idCol = idCol;
-        this.classNumberCol = classNumberCol;
-        this.dateCol = dateCol;
-        this.courseCol = courseCol;
-        this.numberAnswerPaperCol = numberAnswerPaperCol;
-        this.specificCol = specificCol;
-    }
+//
+//    public CommitteTable(int idCol, String classNumberCol, String dateCol, int courseCol, String numberAnswerPaperCol) {
+//        this.idCol = idCol;
+//        this.classNumberCol = classNumberCol;
+//        this.dateCol = dateCol;
+//        this.courseCol = courseCol;
+//        this.numberAnswerPaperCol = numberAnswerPaperCol;
+//    }
 
 
     public int getIdCol() {
@@ -78,14 +73,11 @@ public class CommitteTable {
         return dateCol;
     }
     public int getCourseCol() { return courseCol;}
-    public String getSemesterCol() {
-        return semesterCol;
-    }
     public String getNumberAnswerPaperCol() {
         return numberAnswerPaperCol;
     }
-    public String getSpecificCol(){ return specificCol;}
     public String getPeriodCol() {return periodCol;}
+    public String getSpecificCol(){return specificCol;}
     public int getCourseId() {
         return courseId;
     }
@@ -98,6 +90,12 @@ public class CommitteTable {
     public String getCourseName() {return courseName;}
     public String getCourseNumber() {return courseNumber;}
 
+    public void getYearCol(String yearCol) {this.yearCol = yearCol;}
+    public void getSemesterPeriodCol(String semesterPeriodCol) {this.semesterPeriodCol = semesterPeriodCol;}
+
+    public void getCourseName(String courseName) {this.courseName = courseName;}
+    public void getCourseNumber(String courseNumber) {this.courseNumber = courseNumber;}
+
     public void setCourseId(int courseId) {
         this.courseId = courseId;
     }
@@ -107,11 +105,13 @@ public class CommitteTable {
     public void setCourseNumber(String courseNumber) {
         this.courseNumber = courseNumber;
     }
-    public void getYearCol(String yearCol) {this.yearCol = yearCol;}
-    public void getSemesterPeriodCol(String semesterPeriodCol) {this.semesterPeriodCol = semesterPeriodCol;}
 
-    public void getCourseName(String courseName) {this.courseName = courseName;}
-    public void getCourseNumber(String courseNumber) {this.courseNumber = courseNumber;}
+    public int getDoctorId() {return doctorId;}
+    public String getDoctorName() {return doctorName;}
+
+    public void setDoctorId(int id){ this.doctorId = id; }
+    public void setDoctorName(String name){ this.doctorName = name; }
+
 }
 
 

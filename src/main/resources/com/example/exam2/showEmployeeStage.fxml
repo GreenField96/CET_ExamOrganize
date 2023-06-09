@@ -12,7 +12,7 @@
 <?import javafx.scene.text.Font?>
 <?import org.kordamp.ikonli.javafx.FontIcon?>
 
-<VBox fx:id="mainStage" prefHeight="655.0" prefWidth="1200.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.exam2.showEmployeeController">
+<VBox fx:id="mainStage" prefHeight="655.0" prefWidth="1200.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.exam2.showEmployeeController">
    <children>
       <HBox prefHeight="100.0" prefWidth="200.0" />
       <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0">

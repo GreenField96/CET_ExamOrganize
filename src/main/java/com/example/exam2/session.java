@@ -1,7 +1,6 @@
 package com.example.exam2;
 
 public class session {
-
     static private int id;
     static private String name;
     static private String phone_number;

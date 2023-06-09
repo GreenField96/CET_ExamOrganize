@@ -25,11 +25,11 @@ public class mainController {
         stage.close();
     }
     @FXML
-    public void addEmployeeStage(){
+    public void addPaperMovementStageRecive(){
         try {
         if(addEmployeeStage == null) {
             FXMLLoader fxml = new FXMLLoader();
-            fxml.setLocation(getClass().getResource("addEmployeeStage.fxml"));
+            fxml.setLocation(getClass().getResource("addPaperMovementStageRecive.fxml"));
             addEmployeeStage = fxml.load();
         }
             mainStage.getChildren().setAll(addEmployeeStage);
@@ -39,7 +39,6 @@ public class mainController {
     }
     @FXML
     public void addCommitteStage(){
-        System.out.print(session.getEmail());
         try {
             if(addCommitteStage == null) {
                 FXMLLoader fxml = new FXMLLoader();

@@ -23,14 +23,15 @@ public class EmployeeModel{
             ResultSet resultSet = statement.executeQuery();
             while(resultSet.next())
             {
-                //  Column: emp_no  birth_date 	first_name 	last_name 	gender 	hire_date
-                Employees.add(new EmployeeTable(
-                        resultSet.getInt("id") ,
-                        resultSet.getNString("name") ,
-                        resultSet.getNString("email") ,
-                        resultSet.getNString("phone_number"),
-                        resultSet.getNString("work_as")
-                ));
+                if(!resultSet.getBoolean("permisson")) {
+                    Employees.add(new EmployeeTable(
+                            resultSet.getInt("id"),
+                            resultSet.getNString("name"),
+                            resultSet.getNString("email"),
+                            resultSet.getNString("phone_number"),
+                            resultSet.getNString("work_as")
+                    ));
+                }
             }
         } catch (SQLException exception) {
             log.logException(exception);
@@ -102,7 +103,7 @@ public class EmployeeModel{
             log.logException(exception);
         }
     }
-    public boolean employeeLogin(String email,String pass) throws SQLException {
+    public boolean employeeLogin(String email,String pass) {
         Connection connection = null;
         PreparedStatement statement = null;
         try {
