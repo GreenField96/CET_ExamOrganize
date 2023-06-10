@@ -87,8 +87,7 @@ public class CommitteModel{
         students.add(student);
     }
 
-    public ArrayList<CommitteTable> selectSpecificData(String course,String groupNumber,String specific,String semesterPeriod,String year,boolean stateQuery){
-
+    public ArrayList<CommitteTable> selectSpecificData(String course,String groupNumber,String specific,String exam_period ,String Class,String semesterPeriod,String year,boolean stateQuery){
         Connection connection = null;
         PreparedStatement statement = null;
         int id_have_paper = -1;
@@ -103,6 +102,8 @@ public class CommitteModel{
                     "committe.year LIKE '"+ year +"' AND " +
                     "committe.semester_period LIKE '"+ semesterPeriod +"' AND " +
                     "course_name.courseName LIKE '"+ course +"' AND " +
+                    "committe.class LIKE '"+ Class +"' AND " +
+                    "committe.periodExam LIKE '"+ exam_period +"' AND " +
                     "answer_paper_movement.specification LIKE '"+ specific +"' AND " +
                     "answer_paper_movement.group LIKE '"+ groupNumber + "' AND " +
                     "course_name.id = committe.course AND " +
@@ -115,20 +116,20 @@ public class CommitteModel{
             while(resultSet.next())
             {
                 id_have_paper = resultSet.getInt("he_have_id");
-                    committes.add(new CommitteTable(
-                            resultSet.getInt("id"),
-                            resultSet.getNString("class"),
-                            resultSet.getDate("date").toLocalDate().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")),
-                            resultSet.getInt("course"),
-                            resultSet.getNString("specification"),
-                            resultSet.getNString("number_answer_paper"),
-                            resultSet.getInt("courseId"),
-                            resultSet.getNString("courseName"),
-                            resultSet.getNString("courseNumber"),
-                            resultSet.getNString("periodExam"),
-                            resultSet.getNString("group"),
-                            resultSet.getInt("number_papers_received")
-                    ));
+                committes.add(new CommitteTable(
+                        resultSet.getInt("id"),
+                        resultSet.getNString("class"),
+                        resultSet.getDate("date").toLocalDate().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")),
+                        resultSet.getInt("course"),
+                        resultSet.getNString("specification"),
+                        resultSet.getNString("number_answer_paper"),
+                        resultSet.getInt("courseId"),
+                        resultSet.getNString("courseName"),
+                        resultSet.getNString("courseNumber"),
+                        resultSet.getNString("periodExam"),
+                        resultSet.getNString("group"),
+                        resultSet.getInt("number_papers_received")
+                ));
             }
             statement = connection.prepareStatement("SELECT * FROM employees WHERE id = " + id_have_paper);
             ResultSet subResultSet = statement.executeQuery();

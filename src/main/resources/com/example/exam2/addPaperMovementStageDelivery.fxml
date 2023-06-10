@@ -123,39 +123,55 @@
                                     </HBox>
                                     <HBox alignment="CENTER_RIGHT" prefWidth="200.0">
                                        <children>
-                                          <ChoiceBox id="semesterChoiceField" fx:id="yearChoiceBox" prefHeight="31.0" prefWidth="124.0">
+                                          <ChoiceBox id="semesterChoiceField" fx:id="yearChoiceBox" prefHeight="31.0" prefWidth="100.0">
                                              <opaqueInsets>
                                                 <Insets />
                                              </opaqueInsets>
                                              <HBox.margin>
-                                                <Insets left="10.0" top="10.0" />
+                                                <Insets left="5.0" top="10.0" />
                                              </HBox.margin>
                                           </ChoiceBox>
-                                          <ChoiceBox id="semesterChoiceField" fx:id="semesterPeriodChoiceBox" prefHeight="31.0" prefWidth="130.0">
+                                          <ChoiceBox id="semesterChoiceField" fx:id="semesterPeriodChoiceBox" prefHeight="31.0" prefWidth="100.0">
                                              <opaqueInsets>
                                                 <Insets />
                                              </opaqueInsets>
                                              <HBox.margin>
-                                                <Insets left="10.0" top="10.0" />
+                                                <Insets left="5.0" top="10.0" />
                                              </HBox.margin>
                                           </ChoiceBox>
-                                          <ChoiceBox id="specificChoiceField" fx:id="groupNumberChoiceBox" prefHeight="31.0" prefWidth="130.0">
+                                          <TextField id="inputFiled" fx:id="classTextField" alignment="CENTER_RIGHT" prefHeight="41.0" prefWidth="130.0" promptText="القاعة:212">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                             <HBox.margin>
+                                                <Insets left="5.0" top="10.0" />
+                                             </HBox.margin>
+                                          </TextField>
+                                          <ChoiceBox id="semesterChoiceField" fx:id="poeriodChoiceBox" prefHeight="31.0" prefWidth="130.0">
                                              <opaqueInsets>
                                                 <Insets />
                                              </opaqueInsets>
                                              <HBox.margin>
-                                                <Insets left="10.0" top="10.0" />
+                                                <Insets left="5.0" top="10.0" />
                                              </HBox.margin>
                                           </ChoiceBox>
-                                          <ChoiceBox id="specificChoiceField" fx:id="specificChoiceBox" prefHeight="31.0" prefWidth="130.0">
+                                          <ChoiceBox id="specificChoiceField" fx:id="groupNumberChoiceBox" prefHeight="31.0" prefWidth="120.0">
                                              <opaqueInsets>
                                                 <Insets />
                                              </opaqueInsets>
                                              <HBox.margin>
-                                                <Insets left="10.0" top="10.0" />
+                                                <Insets left="5.0" top="10.0" />
                                              </HBox.margin>
                                           </ChoiceBox>
-                                          <TextField id="inputFiled" fx:id="courseTextField" alignment="CENTER_RIGHT" prefHeight="41.0" prefWidth="149.0" promptText="مادة/كورس">
+                                          <ChoiceBox id="specificChoiceField" fx:id="specificChoiceBox" prefHeight="31.0" prefWidth="100.0">
+                                             <opaqueInsets>
+                                                <Insets />
+                                             </opaqueInsets>
+                                             <HBox.margin>
+                                                <Insets left="5.0" top="10.0" />
+                                             </HBox.margin>
+                                          </ChoiceBox>
+                                          <TextField id="inputFiled" fx:id="courseTextField" alignment="CENTER_RIGHT" prefHeight="41.0" prefWidth="120.0" promptText="مادة/كورس">
                                              <font>
                                                 <Font size="15.0" />
                                              </font>
@@ -163,12 +179,12 @@
                                                 <Insets left="10.0" top="10.0" />
                                              </HBox.margin>
                                           </TextField>
-                                          <MFXButton id="insert_button" onAction="#querySearchOnCommitte" prefHeight="48.0" prefWidth="121.0" text="بحت" textAlignment="CENTER" textFill="WHITE">
+                                          <MFXButton id="insert_button" onAction="#querySearchOnCommitte" prefHeight="48.0" prefWidth="100.0" text="بحت" textAlignment="CENTER" textFill="WHITE">
                                              <graphic>
                                                 <FontIcon iconColor="WHITE" iconLiteral="anto-search" iconSize="31" wrappingWidth="37.0" />
                                              </graphic>
                                              <HBox.margin>
-                                                <Insets left="10.0" top="10.0" />
+                                                <Insets left="5.0" top="10.0" />
                                              </HBox.margin>
                                           </MFXButton>
                                        </children>

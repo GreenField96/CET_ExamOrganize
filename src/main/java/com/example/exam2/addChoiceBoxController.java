@@ -36,6 +36,7 @@ public class addChoiceBoxController implements Initializable {
 
         specificChoiceBox.setValue("عام");
         specificChoiceBox.getItems().add("عام");
+        specificChoiceBox.getItems().add("تمهيدي");
         specificChoiceBox.getItems().add("حاسب ألي");
         specificChoiceBox.getItems().add("تحكم ألي");
         specificChoiceBox.getItems().add("اتصالات");

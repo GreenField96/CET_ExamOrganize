@@ -115,5 +115,8 @@ public class showEmployeeController implements Initializable{
         emailTextField.setText("");
         phoneNumberTextField.setText("");
         workAsChoiceBox.setValue("");
+
+        ObservableArrayEmployee.clear();
+
     }
 }

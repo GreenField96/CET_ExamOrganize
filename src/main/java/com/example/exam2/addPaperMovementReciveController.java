@@ -19,7 +19,7 @@ import java.util.ResourceBundle;
 public class addPaperMovementReciveController implements Initializable {
     private static final ExceptionLogger log = ExceptionLogger.getInstance();
     @FXML
-    private TextField courseTextField;
+    private TextField courseTextField,classTextField;
     @FXML
     private DatePicker dateCommitteReciveDatePicker;
     @FXML
@@ -48,7 +48,7 @@ public class addPaperMovementReciveController implements Initializable {
     HBox committeTakenHboxChild;
     Label periodLabelCommitte,doctorReciveCommitte,specificCommitte,courseCommitte,dateCommitte,numberOfRoomCommitte,numberOfPaperCommitte,groupsCommitte;
     @FXML
-    private ChoiceBox<String> groupNumberChoiceBox,specificChoiceBox,semesterPeriodChoiceBox,yearChoiceBox;
+    private ChoiceBox<String> groupNumberChoiceBox,specificChoiceBox,semesterPeriodChoiceBox,yearChoiceBox,poeriodChoiceBox;
     @FXML
     private TextField searchCourseTextField;
     private String recentId;
@@ -75,6 +75,7 @@ public class addPaperMovementReciveController implements Initializable {
 
         specificChoiceBox.setValue("عام");
         specificChoiceBox.getItems().add("عام");
+        specificChoiceBox.getItems().add("تمهيدي");
         specificChoiceBox.getItems().add("حاسب ألي");
         specificChoiceBox.getItems().add("تحكم ألي");
         specificChoiceBox.getItems().add("اتصالات");
@@ -113,12 +114,15 @@ public class addPaperMovementReciveController implements Initializable {
         semesterPeriodChoiceBox.getItems().add("خريفي");
         semesterPeriodChoiceBox.getItems().add("صيفي");
 
+        poeriodChoiceBox.setValue("09:00-11:00");
+        poeriodChoiceBox.getItems().add("09:00-11:00");
+        poeriodChoiceBox.getItems().add("11:30-13:30");
     }
     @FXML
     public void querySearchOnCommitte() throws SQLException {
         Committes.clear();
 
-        Committes = comm.selectSpecificData(courseTextField.getText(),groupNumberChoiceBox.getValue(),specificChoiceBox.getValue(),semesterPeriodChoiceBox.getValue(),yearChoiceBox.getValue(),false);
+        Committes = comm.selectSpecificData(courseTextField.getText(),groupNumberChoiceBox.getValue(),specificChoiceBox.getValue(),poeriodChoiceBox.getValue(),classTextField.getText(),semesterPeriodChoiceBox.getValue(),yearChoiceBox.getValue(),false);
 
         idCommitteCol.setCellValueFactory(new PropertyValueFactory<>("IdCol"));
         doctorReciveCommitteCol.setCellValueFactory(new PropertyValueFactory<>("DoctorName"));
@@ -211,7 +215,6 @@ public class addPaperMovementReciveController implements Initializable {
         Integer index = CoursesTableView.getSelectionModel().getSelectedIndex();
 
         courseTextField.setText(courseName.getCellData(index));
-
     }
     @FXML
     public void cleanMonitorsData(){
@@ -225,5 +228,10 @@ public class addPaperMovementReciveController implements Initializable {
         answerPaperMovementList.clear();
 
         courseTextField.clear();
+        ObservableArrayCourse.clear();
+        ObservableArrayCommitte.clear();
+
+        ObservableArrayCourse.clear();
+        ObservableArrayCommitte.clear();
     }
 }

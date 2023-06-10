@@ -129,6 +129,7 @@ import java.util.ResourceBundle;
 
         specificChoiceBox.setValue("عام");
         specificChoiceBox.getItems().add("عام");
+        specificChoiceBox.getItems().add("تمهيدي");
         specificChoiceBox.getItems().add("حاسب ألي");
         specificChoiceBox.getItems().add("تحكم ألي");
         specificChoiceBox.getItems().add("اتصالات");
@@ -299,7 +300,7 @@ import java.util.ResourceBundle;
                 }
                 if (input instanceof ChoiceBox<?>) {
                     String b = ((ChoiceBox<String>) input).getValue();
-                    if (b == "اتصالات" | b == "تحكم ألي" | b == "حاسب ألي" | b == "عام") {
+                    if (b == "اتصالات" | b == "تحكم ألي" | b == "حاسب ألي" | b == "عام" | b == "تمهيدي") {
                         arrayHboxSpecificChoiceBox.add(b);
                     }else{
                         arrayHboxChoice.add(b);
@@ -361,6 +362,9 @@ import java.util.ResourceBundle;
          } catch (IOException e) {
              log.logException(e);
          }// create ane block of group CheckList
+
+         ObservableArrayEmployee.clear();
+         ObservableArrayCourse.clear();
 
      }
 

@@ -19,7 +19,7 @@ import java.util.ResourceBundle;
 public class addPaperMovementDeliveryController implements Initializable {
     private static final ExceptionLogger log = ExceptionLogger.getInstance();
     @FXML
-    private TextField searchInput,courseTextField;
+    private TextField searchInput,courseTextField,classTextField,searchCourseTextField;
     @FXML
     private DatePicker dateCommitteReciveDatePicker;
     @FXML
@@ -58,9 +58,7 @@ public class addPaperMovementDeliveryController implements Initializable {
     Label doctorName=new Label(),doctorPhoneNumber=new Label(),periodLabelCommitte,courseCommitte,dateCommitte,numberOfRoomCommitte,numberOfPaperCommitte,groupsCommitte,specificCommitte;
     boolean addChilderen = true ;
     @FXML
-    private ChoiceBox<String> groupNumberChoiceBox,specificChoiceBox,semesterPeriodChoiceBox,yearChoiceBox;
-    @FXML
-    private TextField searchCourseTextField;
+    private ChoiceBox<String> groupNumberChoiceBox,specificChoiceBox,semesterPeriodChoiceBox,yearChoiceBox,poeriodChoiceBox;
     private String recentId;
     private ArrayList<answerPaperMovementTable> answerPaperMovementList = new ArrayList<>();
     @FXML
@@ -88,6 +86,7 @@ public class addPaperMovementDeliveryController implements Initializable {
 
         specificChoiceBox.setValue("عام");
         specificChoiceBox.getItems().add("عام");
+        specificChoiceBox.getItems().add("تمهيدي");
         specificChoiceBox.getItems().add("حاسب ألي");
         specificChoiceBox.getItems().add("تحكم ألي");
         specificChoiceBox.getItems().add("اتصالات");
@@ -126,6 +125,9 @@ public class addPaperMovementDeliveryController implements Initializable {
         semesterPeriodChoiceBox.getItems().add("خريفي");
         semesterPeriodChoiceBox.getItems().add("صيفي");
 
+        poeriodChoiceBox.setValue("09:00-11:00");
+        poeriodChoiceBox.getItems().add("09:00-11:00");
+        poeriodChoiceBox.getItems().add("11:30-13:30");
 
     }
     @FXML
@@ -162,7 +164,7 @@ public class addPaperMovementDeliveryController implements Initializable {
     public void querySearchOnCommitte() throws SQLException {
         Committes.clear();
 
-        Committes = comm.selectSpecificData(courseTextField.getText(),groupNumberChoiceBox.getValue(),specificChoiceBox.getValue(),semesterPeriodChoiceBox.getValue(),yearChoiceBox.getValue(),true);
+        Committes = comm.selectSpecificData(courseTextField.getText(),groupNumberChoiceBox.getValue(),specificChoiceBox.getValue(),poeriodChoiceBox.getValue(),classTextField.getText(),semesterPeriodChoiceBox.getValue(),yearChoiceBox.getValue(),true);
 
         idCommitteCol.setCellValueFactory(new PropertyValueFactory<>("IdCol"));
         courseCommitteCol.setCellValueFactory(new PropertyValueFactory<>("courseName"));
@@ -268,5 +270,10 @@ public class addPaperMovementDeliveryController implements Initializable {
         answerPaperMovementList.clear();
 
         courseTextField.clear();
+
+        ObservableArrayEmployee.clear();
+        ObservableArrayCourse.clear();
+        ObservableArrayCommitte.clear();
+
     }
 }
