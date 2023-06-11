@@ -8,10 +8,8 @@ import java.util.ArrayList;
 
 public class EmployeeModel{
     final private ExceptionLogger log = ExceptionLogger.getInstance();
-    private ArrayList<EmployeeTable> Employees;
-    EmployeeModel(){
-        Employees = new ArrayList<>();
-    }
+    private ArrayList<EmployeeTable> Employees = new ArrayList<>();;
+
     public ArrayList<EmployeeTable> searchOnTable(String searchKeyWord) throws SQLException {
         Connection connection = null;
         PreparedStatement statement = null;

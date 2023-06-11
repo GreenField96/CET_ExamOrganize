@@ -5,10 +5,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import java.net.URL;
@@ -33,25 +30,35 @@ public class showEmployeeController implements Initializable{
     @FXML
     private TableColumn<EmployeeTable, String> WorkAs;
     ObservableList<EmployeeTable> ObservableArrayEmployee;
-    private ArrayList<EmployeeTable> Employees;
     @FXML
     private TextField nameTextField,phoneNumberTextField,emailTextField;
     @FXML
     private ChoiceBox<String> workAsChoiceBox;
     int IdRow;
     String EmailRow,NameRow,WorkAsRow,PhoneNumberRow;
-    EmployeeModel emp;
+    EmployeeModel emp = new EmployeeModel();
+    private ArrayList<EmployeeTable> Employees = new ArrayList<>();
+    private Alert alert;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         workAsChoiceBox.setValue("موظف");
         workAsChoiceBox.getItems().add("موظف");
         workAsChoiceBox.getItems().add("دكتور");
-        emp = new EmployeeModel();
-        Employees = new ArrayList<>();
+
+        alert = new Alert(Alert.AlertType.NONE);
+        alert.setTitle("خطأ");
+        alert.setAlertType(Alert.AlertType.INFORMATION);
     }
     @FXML
     public void querySearch() throws SQLException {
         Employees.clear();
+
+        if (searchInput.getText().equals("")) {
+            alert.setContentText("الرجاء ادخال قيمة للبحت");
+            alert.show();
+            return;
+        }
         Employees = emp.searchOnTable(searchInput.getText());
 
         Id.setCellValueFactory(new PropertyValueFactory<>("Id"));
@@ -59,13 +66,8 @@ public class showEmployeeController implements Initializable{
         WorkAs.setCellValueFactory(new PropertyValueFactory<>("Work_as"));
         Email.setCellValueFactory(new PropertyValueFactory<>("Email"));
         PhoneNumber.setCellValueFactory(new PropertyValueFactory<>("Phone_number"));
-        ObservableArrayEmployee =  FXCollections.observableArrayList(Employees);
+        ObservableArrayEmployee = FXCollections.observableArrayList(Employees);
         EmployeeTableView.setItems(ObservableArrayEmployee);
-
-//        FilteredList<EmployeeTable> filterData = new FilteredList<>(ObservableArrayEmployee, b -> true);
-//        SortedList<EmployeeTable> sortData = new SortedList<>(filterData);
-//        sortData.comparatorProperty().bind(EmployeeTableView.comparatorProperty());
-//        EmployeeTableView.setItems(sortData);
     }
     @FXML
     public void getId(MouseEvent value){
@@ -87,26 +89,34 @@ public class showEmployeeController implements Initializable{
     @FXML
     public void updateEmployeeData(ActionEvent event) throws SQLException {
 
+        if(nameTextField.getText().equals("")){
+            alert.setContentText("الرجاء ادخال الاسم");
+            alert.show();
+            return;
+        }
+
         emp.update(IdRow,nameTextField.getText(),emailTextField.getText(), workAsChoiceBox.getValue(),phoneNumberTextField.getText());
-        querySearch();
 
         cleanEmployeeData();
     }
     @FXML
     public void deleteEmployeeData(ActionEvent event) throws SQLException {
         emp.delete(IdRow);
-        querySearch();
 
         cleanEmployeeData();
     }
     @FXML
     public void insertEmployeeData() throws SQLException {
-        EmployeeModel emp = new EmployeeModel();
 
+        if(nameTextField.getText().equals("")){
+            alert.setContentText("الرجاء ادخال الاسم");
+            alert.show();
+            return;
+        }
+        Employees.clear();
         emp.insert(new EmployeeTable(nameTextField.getText(),emailTextField.getText(),phoneNumberTextField.getText(),workAsChoiceBox.getValue()));
         emp.store();
 
-        querySearch();
         cleanEmployeeData();
     }
     @FXML
@@ -114,7 +124,7 @@ public class showEmployeeController implements Initializable{
         nameTextField.setText("");
         emailTextField.setText("");
         phoneNumberTextField.setText("");
-        workAsChoiceBox.setValue("");
+        workAsChoiceBox.setValue("موظف");
 
         ObservableArrayEmployee.clear();
 

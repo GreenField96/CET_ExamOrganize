@@ -17,8 +17,9 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+import java.util.concurrent.atomic.AtomicInteger;
 
- public class addCommitteController implements Initializable{
+public class addCommitteController implements Initializable{
     private static final ExceptionLogger log = ExceptionLogger.getInstance();
     @FXML
     private TableView<EmployeeTable> EmployeeTableView;
@@ -143,6 +144,7 @@ import java.util.ResourceBundle;
         } catch (IOException e) {
             log.logException(e);
         }
+
          alert = new Alert(Alert.AlertType.NONE);
          alert.setTitle("خطأ");
          alert.setAlertType(Alert.AlertType.INFORMATION);
@@ -150,6 +152,13 @@ import java.util.ResourceBundle;
     @FXML
     public void searchOnEmployeeTable() throws SQLException {
         Employees.clear();
+
+        if(searchTextField.getText().equals("")){
+            alert.setContentText("الرجاء ادخال قيمة للبحت");
+            alert.show();
+            return;
+        }
+
         Employees = emp.searchOnTable(searchTextField.getText());
         idEmployeeCol.setCellValueFactory(new PropertyValueFactory<>("Id"));
         nameEmployeeCol.setCellValueFactory(new PropertyValueFactory<>("Name"));
@@ -221,15 +230,16 @@ import java.util.ResourceBundle;
          } catch (IOException e) {
              log.logException(e);
          }
-
          groupsForm.getChildren().add(HboxGroup);
      }
     @FXML
     public void addStudentAbsence(){
+
         students = commModel.getStudentAbsence();
         studentName = new Label();
         studentName.setText(idStudentNnmberTextField.getText());
         studentName.setStyle("-fx-opacity:0.5;"+"-fx-border-width:4;"+"-fx-border-color:#FFFF;"+"-fx-border-radius:10;"+"-fx-font-size: 14;"+"-fx-alignment:center;"+"-fx-background-radius:10;"+"-fx-background-color:  #398AB9;"+"-fx-text-fill: #FFFF;"+"-fx-padding: 1");
+
         studentName.setOnMouseClicked(MouseEvent -> {
             deleteStudentFlag = true;
             for (studentAbsenceTable student : students) {
@@ -253,8 +263,8 @@ import java.util.ResourceBundle;
             idNumberTakenVbox2.getChildren().add(studentName);
             counterStudentAbsence++;
         }else {
-        idNumberTakenVbox3.getChildren().add(studentName);
-        counterStudentAbsence = 0;
+            idNumberTakenVbox3.getChildren().add(studentName);
+            counterStudentAbsence = 0;
         }
         commModel.insert(new studentAbsenceTable(Integer.parseInt(idStudentNnmberTextField.getText()),nameStudentTextField.getText(),phoneNumberStudentTextField.getText(),specificChoiceBox.getValue(),
                 groupNumberChoiceBox.getValue(),noteOnStudentTextField.getText()));
@@ -276,8 +286,37 @@ import java.util.ResourceBundle;
     @FXML
     public void addFullCommitte() throws IOException {
 
+        AtomicInteger result = new AtomicInteger();
+        result.set(0);
+        groupsForm.getChildren().forEach(item -> {
+            HBox H = (HBox) item;
+            TextField l = (TextField) H.getChildren().get(0);
+            if(!l.getText().equals(""))
+                result.addAndGet(Integer.parseInt(l.getText()));
+        });
+
+        if(numberPaperTextField.getText().equals("") | classNumberTextField.getText().equals("")){
+            alert.setContentText("الرجاء ادخال جميع الخانات");
+            alert.show();
+            return;
+        }
+        if(MonitorTransportPaperChoiceBox.getValue() == ""){
+            alert.setContentText("الرجاء اختيار المراقب المستلم منه اوراق الاجابة");
+            alert.show();
+            return;
+        }
+        if(courseNameTakenHbox.getChildren().isEmpty()){
+            alert.setContentText("الرجاء اختيار المادة");
+            alert.show();
+            return;
+        }
+        if(!numberPaperTextField.getText().equals(String.valueOf(result))){
+            alert.setContentText("الرجاء التأكد من صحة عدد اوراق الاجابة");
+            alert.show();
+            return;
+        }
         if(getMonitorIdByName() == -1){
-            alert.setContentText("قم بأختيار المراقب الدي تم الاستلام منه");
+            alert.setContentText("الرجاء أختيار المراقب الدي تم الاستلام منه");
             alert.show();
             return;
         }
@@ -371,6 +410,13 @@ import java.util.ResourceBundle;
      @FXML
      public void searchOnCourseTable() throws SQLException {
          Courses.clear();
+
+         if(searchCourseTextField.getText().equals("")){
+             alert.setContentText("الرجاء ادخال قيمة للبحت");
+             alert.show();
+             return;
+         }
+
          Courses = courseModel.searchOnTable(searchCourseTextField.getText());
 
          courseId.setCellValueFactory(new PropertyValueFactory<>("Id"));

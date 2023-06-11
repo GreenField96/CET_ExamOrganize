@@ -16,7 +16,7 @@
       <HBox prefHeight="100.0" prefWidth="200.0" />
       <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0">
          <children>
-            <TextField id="inputFiled" fx:id="searchInput" alignment="CENTER_RIGHT" prefHeight="41.0" prefWidth="300.0" promptText="بحت بأسم المادة او رقم المادة">
+            <TextField id="inputFiled" fx:id="searchInput" alignment="CENTER_RIGHT" prefHeight="41.0" prefWidth="300.0" promptText="بحت بأسم المادة">
                <font>
                   <Font size="15.0" />
                </font>
@@ -48,7 +48,7 @@
                               <Insets />
                            </HBox.margin>
                         </TextField>
-                        <Label id="textField" depthTest="DISABLE" prefHeight="41.0" prefWidth="86.0" text="الاسم المادة" textFill="WHITE">
+                        <Label id="textField" depthTest="DISABLE" prefHeight="41.0" prefWidth="86.0" text="اسم المادة" textFill="WHITE">
                            <HBox.margin>
                               <Insets left="5.0" right="5.0" />
                            </HBox.margin>

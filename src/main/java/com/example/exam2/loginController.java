@@ -25,6 +25,11 @@ public class loginController implements Initializable {
         alert = new Alert(Alert.AlertType.NONE);
         alert.setTitle("خطأ");
         alert.setAlertType(Alert.AlertType.INFORMATION);
+
+        //test
+        emailTextField.setText("munderjb");
+        paswordTextField.setText("25102510");
+
     }
     @FXML
     private void onClickLogout() {

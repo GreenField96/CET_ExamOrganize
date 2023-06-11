@@ -10,6 +10,8 @@ public class answerPaperMovementTable {
     private String specificCol;
     private String groupCol;
 
+    public answerPaperMovementTable(){}
+
     public answerPaperMovementTable(int committeIdCol, int heHadCol , int heHaveCol, String dateCol, String numberPaperRecivedCol, String specificCol, String groupCol) {
         this.committeIdCol = committeIdCol;
         this.heHadCol = heHadCol;
@@ -74,5 +76,5 @@ public class answerPaperMovementTable {
     public void setGroupCol(String groupCol) {
         this.groupCol = groupCol;
     }
-
+    public void setSpecificCol(String specificCol) {this.specificCol = specificCol;}
 }

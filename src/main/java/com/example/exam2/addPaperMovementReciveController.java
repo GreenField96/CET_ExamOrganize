@@ -46,11 +46,12 @@ public class addPaperMovementReciveController implements Initializable {
     @FXML
     VBox committeTakenVbox;
     HBox committeTakenHboxChild;
-    Label periodLabelCommitte,doctorReciveCommitte,specificCommitte,courseCommitte,dateCommitte,numberOfRoomCommitte,numberOfPaperCommitte,groupsCommitte;
+    Label idCommitte,periodLabelCommitte,doctorReciveCommitte,specificCommitte,courseCommitte,dateCommitte,numberOfRoomCommitte,groupsCommitte;
     @FXML
     private ChoiceBox<String> groupNumberChoiceBox,specificChoiceBox,semesterPeriodChoiceBox,yearChoiceBox,poeriodChoiceBox;
     @FXML
     private TextField searchCourseTextField;
+    private TextField numberOfPaperTextField;
     private String recentId;
     private ArrayList<answerPaperMovementTable> answerPaperMovementList = new ArrayList<>();
     @FXML
@@ -67,6 +68,7 @@ public class addPaperMovementReciveController implements Initializable {
     private ArrayList<CommitteTable> Committes = new ArrayList<>();
     private CommitteModel comm = new CommitteModel();
     private answerPaperMovementModel paperModel = new answerPaperMovementModel();
+    private Alert alert;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -117,9 +119,20 @@ public class addPaperMovementReciveController implements Initializable {
         poeriodChoiceBox.setValue("09:00-11:00");
         poeriodChoiceBox.getItems().add("09:00-11:00");
         poeriodChoiceBox.getItems().add("11:30-13:30");
+
+        alert = new Alert(Alert.AlertType.NONE);
+        alert.setTitle("خطأ");
+        alert.setAlertType(Alert.AlertType.INFORMATION);
     }
     @FXML
     public void querySearchOnCommitte() throws SQLException {
+
+        if(classTextField.getText().equals("") | courseTextField.getText().equals("")){
+            alert.setContentText("الرجاء ادخال جميع الخانات");
+            alert.show();
+            return;
+        }
+
         Committes.clear();
 
         Committes = comm.selectSpecificData(courseTextField.getText(),groupNumberChoiceBox.getValue(),specificChoiceBox.getValue(),poeriodChoiceBox.getValue(),classTextField.getText(),semesterPeriodChoiceBox.getValue(),yearChoiceBox.getValue(),false);
@@ -142,66 +155,105 @@ public class addPaperMovementReciveController implements Initializable {
 
         Integer index = committeTableView.getSelectionModel().getSelectedIndex();
 
+        idCommitte = new Label();
         periodLabelCommitte = new Label();
         courseCommitte = new Label();
         dateCommitte = new Label();
         numberOfRoomCommitte = new Label();
-        numberOfPaperCommitte = new Label();
         groupsCommitte = new Label();
         specificCommitte = new Label();
         doctorReciveCommitte = new Label();
+        numberOfPaperTextField = new TextField();
+
 
         committeTakenHboxChild = new HBox();
         committeTakenHboxChild.setStyle("-fx-alignment:center;");
         recentId = String.valueOf(Committes.get(0).getDoctorId());
 
+        idCommitte.setText(String.valueOf(idCommitteCol.getCellData(index)));
         periodLabelCommitte.setText(String.valueOf(periodCommitteCol.getCellData(index)));
         doctorReciveCommitte.setText(String.valueOf(doctorReciveCommitteCol.getCellData(index)));
         courseCommitte.setText(courseCommitteCol.getCellData(index));
         dateCommitte.setText(dateCommitteCol.getCellData(index));
         numberOfRoomCommitte.setText(numberOfRoomCommitteCol.getCellData(index));
-        numberOfPaperCommitte.setText(String.valueOf(numberOfPaperCommitteCol.getCellData(index)) + " ورقة");
-        groupsCommitte.setText("المجموعة: " + groupCommitteCol.getCellData(index));
+        numberOfPaperTextField.setText(String.valueOf(numberOfPaperCommitteCol.getCellData(index)));
+        groupsCommitte.setText(groupCommitteCol.getCellData(index));
         specificCommitte.setText(specificCommitteCol.getCellData(index));
 
+        idCommitte.setStyle("-fx-opacity:0.8;"+"-fx-border-width:0.5;"+"-fx-border-color:#FFFF;"+"-fx-border-radius:10;"+"-fx-font-size: 15;"+"-fx-alignment:center;"+"-fx-background-radius:10;"+"-fx-background-color:#398AB9;"+"-fx-text-fill: #FFFF;"+"-fx-padding: 1 10 1 10");
         periodLabelCommitte.setStyle("-fx-opacity:0.8;"+"-fx-border-width:0.5;"+"-fx-border-color:#FFFF;"+"-fx-border-radius:10;"+"-fx-font-size: 15;"+"-fx-alignment:center;"+"-fx-background-radius:10;"+"-fx-background-color:#398AB9;"+"-fx-text-fill: #FFFF;"+"-fx-padding: 1 10 1 10");
         doctorReciveCommitte.setStyle("-fx-opacity:0.8;"+"-fx-border-width:0.5;"+"-fx-border-color:#FFFF;"+"-fx-border-radius:10;"+"-fx-font-size: 15;"+"-fx-alignment:center;"+"-fx-background-radius:10;"+"-fx-background-color:#398AB9;"+"-fx-text-fill: #FFFF;"+"-fx-padding: 1 10 1 10");
         courseCommitte.setStyle("-fx-opacity:0.8;"+"-fx-border-width:0.5;"+"-fx-border-color:#FFFF;"+"-fx-border-radius:10;"+"-fx-font-size: 15;"+"-fx-alignment:center;"+"-fx-background-radius:10;"+"-fx-background-color:#398AB9;"+"-fx-text-fill: #FFFF;"+"-fx-padding: 1 10 1 10");
         dateCommitte.setStyle("-fx-opacity:0.8;"+"-fx-border-width:0.5;"+"-fx-border-color:#FFFF;"+"-fx-border-radius:10;"+"-fx-font-size: 15;"+"-fx-alignment:center;"+"-fx-background-radius:10;"+"-fx-background-color:#398AB9;"+"-fx-text-fill: #FFFF;"+"-fx-padding: 1 10 1 10");
+        numberOfPaperTextField.setStyle("-fx-opacity:1;"+"-fx-border-width:0.5;"+"-fx-border-color:black;"+"-fx-border-radius:10;"+"-fx-font-size: 15;"+"-fx-alignment:center;"+"-fx-background-radius:10;"+"-fx-background-color:White;"+"-fx-padding: 1 10 1 10");
         numberOfRoomCommitte.setStyle("-fx-opacity:0.8;"+"-fx-border-width:0.5;"+"-fx-border-color:#FFFF;"+"-fx-border-radius:10;"+"-fx-font-size: 15;"+"-fx-alignment:center;"+"-fx-background-radius:10;"+"-fx-background-color:#398AB9;"+"-fx-text-fill: #FFFF;"+"-fx-padding: 1 10 1 10");
-        numberOfPaperCommitte.setStyle("-fx-opacity:0.8;"+"-fx-border-width:0.5;"+"-fx-border-color:#FFFF;"+"-fx-border-radius:10;"+"-fx-font-size: 15;"+"-fx-alignment:center;"+"-fx-background-radius:10;"+"-fx-background-color:#398AB9;"+"-fx-text-fill: #FFFF;"+"-fx-padding: 1 10 1 10");
         groupsCommitte.setStyle("-fx-opacity:0.8;"+"-fx-border-width:0.5;"+"-fx-border-color:#FFFF;"+"-fx-border-radius:10;"+"-fx-font-size: 15;"+"-fx-alignment:center;"+"-fx-background-radius:10;"+"-fx-background-color:#398AB9;"+"-fx-text-fill: #FFFF;"+"-fx-padding: 1 10 1 10");
         specificCommitte.setStyle("-fx-opacity:0.8;"+"-fx-border-width:0.5;"+"-fx-border-color:#FFFF;"+"-fx-border-radius:10;"+"-fx-font-size: 15;"+"-fx-alignment:center;"+"-fx-background-radius:10;"+"-fx-background-color:#398AB9;"+"-fx-text-fill: #FFFF;"+"-fx-padding: 1 10 1 10");
 
+        committeTakenHboxChild.getChildren().add(idCommitte);
         committeTakenHboxChild.getChildren().add(numberOfRoomCommitte);
-        committeTakenHboxChild.getChildren().add(numberOfPaperCommitte);
+        committeTakenHboxChild.getChildren().add(numberOfPaperTextField);
         committeTakenHboxChild.getChildren().add(groupsCommitte);
         committeTakenHboxChild.getChildren().add(dateCommitte);
         committeTakenHboxChild.getChildren().add(periodLabelCommitte);
         committeTakenHboxChild.getChildren().add(courseCommitte);
         committeTakenHboxChild.getChildren().add(specificCommitte);
+
         committeTakenHboxChild.getChildren().add(doctorReciveCommitte);
         committeTakenVbox.getChildren().add(committeTakenHboxChild);
 
-        answerPaperMovementList.add(new answerPaperMovementTable(idCommitteCol.getCellData(index),Integer.parseInt(recentId),session.getId(),
-                dateCommitteReciveDatePicker.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")),
-                String.valueOf(numberOfPaperCommitteCol.getCellData(index)),specificCommitteCol.getCellData(index),groupNumberChoiceBox.getValue() ));
     }
 
     @FXML
     public void addPaperMovementRecord(){
-        answerPaperMovementList.forEach(answerPaperMovementTable -> {
-            paperModel.insert(new answerPaperMovementTable(answerPaperMovementTable.getCommitteIdCol(),answerPaperMovementTable.getHeHadCol(),session.getId(),
-                    answerPaperMovementTable.getDateCol(),answerPaperMovementTable.getNumberPaperRecivedCol(),answerPaperMovementTable.getSpecificCol(),answerPaperMovementTable.getGroupCol()));
+        if(committeTakenVbox.getChildren().isEmpty()){
+            alert.setContentText("الرجاء اختيار اللجنة او اللجان المراد تسليمها");
+            alert.show();
+            return;
+        }
+        // verify
+
+        committeTakenVbox.getChildren().forEach( box -> {
+            HBox H = (HBox) box;
+
+            answerPaperMovementTable cloumnAnswerPaper = new answerPaperMovementTable();
+
+            cloumnAnswerPaper.setHeHadCol(Integer.parseInt(recentId));
+            cloumnAnswerPaper.setHeHaveCol(session.getId());
+            cloumnAnswerPaper.setDateCol(dateCommitteReciveDatePicker.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+
+            if(H.getChildren().get(0) instanceof Label) {
+                Label l = (Label) H.getChildren().get(0);
+                cloumnAnswerPaper.setCommitteIdCol(Integer.parseInt(l.getText()));
+            }
+            if(H.getChildren().get(2) instanceof TextField) {
+                TextField l = (TextField) H.getChildren().get(2);
+                cloumnAnswerPaper.setNumberPaperRecivedCol(l.getText());
+            }
+            if(H.getChildren().get(3) instanceof Label) {
+                Label l = (Label) H.getChildren().get(3);
+                cloumnAnswerPaper.setGroupCol(l.getText());
+            }
+            if(H.getChildren().get(7) instanceof Label) {
+                Label l = (Label) H.getChildren().get(7);
+                cloumnAnswerPaper.setSpecificCol(l.getText());
+            }
+            paperModel.insert(cloumnAnswerPaper);
         });
 
         paperModel.store();
-
         cancleAllInput();
     }
     @FXML
     public void searchOnCourseTable() throws SQLException {
         Courses.clear();
+
+        if(searchCourseTextField.getText().equals("")){
+            alert.setContentText("الرجاء ادخال قيمة للبحت");
+            alert.show();
+            return;
+        }
+
         Courses = courseModel.searchOnTable(searchCourseTextField.getText());
 
         courseId.setCellValueFactory(new PropertyValueFactory<>("Id"));
