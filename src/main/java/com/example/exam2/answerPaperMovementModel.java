@@ -38,4 +38,22 @@ public class answerPaperMovementModel{
     public void insert(answerPaperMovementTable paper){
         papers.add(paper);
     }
+
+    public int getLastRecord() {
+        Connection connection = null;
+        PreparedStatement statement = null;
+        int lastCommitteIdRecord = -1;
+        try {
+            connection = db.getDBConnection();
+            statement = connection.prepareStatement("select id from answer_paper_movement ORDER BY id DESC LIMIT 1;");
+            ResultSet resultSet = statement.executeQuery();
+            if (resultSet.next()) {
+                lastCommitteIdRecord = resultSet.getInt("id");
+            }
+        } catch (SQLException exception) {
+            log.logException(exception);
+        }
+        return lastCommitteIdRecord;
+    }
+
 }

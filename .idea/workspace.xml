@@ -1,21 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="exam2:jar" />
+    </artifacts-to-build>
+  </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="05bb42eb-d727-4007-94a4-11c0139cc897" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/artifacts/exam2_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/bootstrapfx-core-0.4.0.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/controlsfx-11.1.2.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/javafx-base-18.0.2-win.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/javafx-base-18.0.2.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/javafx-controls-18.0.2-win.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/javafx-controls-18.0.2.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/validatorfx-0.4.0.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/META-INF/MANIFEST.MF" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/exception_log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/exception_log.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/exam2/EmployeeModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/exam2/EmployeeModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/exam2/CommitteModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/exam2/CommitteModel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/exam2/addCommitteController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/exam2/addCommitteController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/exam2/addPaperMovementDeliveryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/exam2/addPaperMovementDeliveryController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/exam2/addPaperMovementReciveController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/exam2/addPaperMovementReciveController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/exam2/answerPaperMovementTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/exam2/answerPaperMovementTable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/exam2/loginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/exam2/loginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/exam2/showCoursesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/exam2/showCoursesController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/exam2/showEmployeeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/exam2/showEmployeeController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/exam2/showCoursesStage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/exam2/showCoursesStage.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/exam2/answerPaperMovementModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/exam2/answerPaperMovementModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/exam2/mainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/exam2/mainController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/exam2/main-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/exam2/main-view.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -63,8 +75,8 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/PR/exam2/lib/ikonli-antdesignicons-pack-12.2.0.jar&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/PR/library&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Artifacts&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.3137931&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;

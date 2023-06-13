@@ -4,22 +4,23 @@ import java.sql.*;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
-public class CommitteModel{
+public class CommitteModel {
     private ExceptionLogger log = ExceptionLogger.getInstance();
     private ArrayList<CommitteTable> committes;
     private ArrayList<studentAbsenceTable> students;
     private CourseModel courseModel;
-    CommitteModel(){
+
+    CommitteModel() {
         committes = new ArrayList<>();
         students = new ArrayList<>();
         courseModel = new CourseModel();
     }
 
-    public ArrayList<studentAbsenceTable> getStudentAbsence(){
+    public ArrayList<studentAbsenceTable> getStudentAbsence() {
         return students;
     }
 
-    public int store(ArrayList<EmployeeTable> monitorsId){
+    public int store(ArrayList<EmployeeTable> monitorsId) {
         Connection connection = null;
         PreparedStatement statement = null;
         int idCommitteRow = 1000;
@@ -31,28 +32,28 @@ public class CommitteModel{
                 statement.setString(1, committe.getClassNumberCol());
                 statement.setString(2, committe.getDateCol());
                 statement.setInt(3, committe.getCourseCol());
-                statement.setString(4,  committe.getNumberAnswerPaperCol());
-                statement.setString(5,  committe.getPeriodCol());
-                statement.setString(6,  committe.getYearCol());
-                statement.setString(7,  committe.getSemesterPeriodCol());
+                statement.setString(4, committe.getNumberAnswerPaperCol());
+                statement.setString(5, committe.getPeriodCol());
+                statement.setString(6, committe.getYearCol());
+                statement.setString(7, committe.getSemesterPeriodCol());
                 statement.addBatch();
             }
             statement.executeBatch();
 
-            statement = connection.prepareStatement( "select id from committe ORDER BY id DESC LIMIT 1");
+            statement = connection.prepareStatement("select id from committe ORDER BY id DESC LIMIT 1");
             ResultSet resultSet = statement.executeQuery();
 
-            if(resultSet.next()){
+            if (resultSet.next()) {
                 idCommitteRow = resultSet.getInt("id");
             }
             String queryStudent = "INSERT INTO student_absence (student_id,name,phone_number,specification,group_number,committe_id,note) VALUES (?,?,?,?,?,?,?)";
             statement = connection.prepareStatement(queryStudent);
             for (studentAbsenceTable student : students) {
-                 if(student.getStudentIdCol() > -1){
+                if (student.getStudentIdCol() > -1) {
                     statement.setInt(1, student.getStudentIdCol());
                     statement.setString(2, student.getNameCol());
                     statement.setString(3, student.getPhoneNumberCol());
-                     statement.setString(4, student.getSpecification());
+                    statement.setString(4, student.getSpecification());
                     statement.setString(5, student.getGroupNumberCol());
                     statement.setInt(6, idCommitteRow);
                     statement.setString(7, student.getNoteCol());
@@ -61,33 +62,33 @@ public class CommitteModel{
             }
             statement.executeBatch();
 
-            statement = connection.prepareStatement( "INSERT INTO monitor_committe (personal_info_id,committe_id,absence) VALUES (?,?,?)");
+            statement = connection.prepareStatement("INSERT INTO monitor_committe (personal_info_id,committe_id,absence) VALUES (?,?,?)");
             for (EmployeeTable monId : monitorsId) {
-                    statement.setInt(1, monId.getId());
-                    statement.setInt(2, idCommitteRow);
-                    statement.setBoolean(3, monId.isAbsence());
-                    statement.addBatch();
+                statement.setInt(1, monId.getId());
+                statement.setInt(2, idCommitteRow);
+                statement.setBoolean(3, monId.isAbsence());
+                statement.addBatch();
             }
             statement.executeBatch();
 
-            } catch (SQLException exception) {
+        } catch (SQLException exception) {
             log.logException(exception);
         }
         committes.clear();
         students.clear();
 
-       return idCommitteRow;
+        return idCommitteRow;
     }
-    public void insert(CommitteTable committe)
-    {
+
+    public void insert(CommitteTable committe) {
         committes.add(committe);
     }
-    public void insert(studentAbsenceTable student)
-    {
+
+    public void insert(studentAbsenceTable student) {
         students.add(student);
     }
 
-    public ArrayList<CommitteTable> selectSpecificData(String course,String groupNumber,String specific,String exam_period ,String Class,String semesterPeriod,String year,boolean stateQuery){
+    public ArrayList<CommitteTable> selectSpecificData(String course, String groupNumber, String specific, String exam_period, String Class, String semesterPeriod, String year, boolean stateQuery) {
         Connection connection = null;
         PreparedStatement statement = null;
         int id_have_paper = -1;
@@ -99,13 +100,13 @@ public class CommitteModel{
                     " FROM " +
                     " committe,course_name,answer_paper_movement " +
                     "WHERE " +
-                    "committe.year LIKE '"+ year +"' AND " +
-                    "committe.semester_period LIKE '"+ semesterPeriod +"' AND " +
-                    "course_name.courseName LIKE '"+ course +"' AND " +
-                    "committe.class LIKE '"+ Class +"' AND " +
-                    "committe.periodExam LIKE '"+ exam_period +"' AND " +
-                    "answer_paper_movement.specification LIKE '"+ specific +"' AND " +
-                    "answer_paper_movement.group LIKE '"+ groupNumber + "' AND " +
+                    "committe.year LIKE '" + year + "' AND " +
+                    "committe.semester_period LIKE '" + semesterPeriod + "' AND " +
+                    "course_name.courseName LIKE '" + course + "' AND " +
+                    "committe.class LIKE '" + Class + "' AND " +
+                    "committe.periodExam LIKE '" + exam_period + "' AND " +
+                    "answer_paper_movement.specification LIKE '" + specific + "' AND " +
+                    "answer_paper_movement.group LIKE '" + groupNumber + "' AND " +
                     "course_name.id = committe.course AND " +
                     "answer_paper_movement.committe_id = committe.id " +
                     "ORDER BY answer_paper_movement.id DESC LIMIT 1 ";
@@ -113,8 +114,7 @@ public class CommitteModel{
             statement = connection.prepareStatement(query);
             ResultSet resultSet = statement.executeQuery();
 
-            while(resultSet.next())
-            {
+            while (resultSet.next()) {
                 id_have_paper = resultSet.getInt("he_have_id");
                 committes.add(new CommitteTable(
                         resultSet.getInt("id"),
@@ -133,16 +133,15 @@ public class CommitteModel{
             }
             statement = connection.prepareStatement("SELECT * FROM employees WHERE id = " + id_have_paper);
             ResultSet subResultSet = statement.executeQuery();
-            if(subResultSet.next())
-            {
+            if (subResultSet.next()) {
                 committes.get(0).setDoctorId(subResultSet.getInt("id"));
                 committes.get(0).setDoctorName(subResultSet.getNString("name"));
 
-                if(stateQuery) {
+                if (stateQuery) {
                     if (!subResultSet.getBoolean("permisson")) {
                         committes.clear();
                     }
-                }else{
+                } else {
                     if (subResultSet.getBoolean("permisson")) {
                         committes.clear();
                     }
@@ -156,25 +155,26 @@ public class CommitteModel{
         return committes;
     }
 
-    public void update(int id,String name,String email,String workAs,String phoneNumber){
+    public void update(int id, String name, String email, String workAs, String phoneNumber) {
         Connection connection = null;
         PreparedStatement statement = null;
         try {
             connection = db.getDBConnection();
             String query = "UPDATE committe SET name=?,email=?,phone_number=?,work_as=? WHERE id=?";
             statement = connection.prepareStatement(query);
-            statement.setString(1,name);
-            statement.setString(2,email);
-            statement.setString(3,phoneNumber);
-            statement.setString(4,workAs);
-            statement.setInt(   5,id);
+            statement.setString(1, name);
+            statement.setString(2, email);
+            statement.setString(3, phoneNumber);
+            statement.setString(4, workAs);
+            statement.setInt(5, id);
             statement.executeUpdate();
 
         } catch (SQLException exception) {
             log.logException(exception);
         }
     }
-    public void delete(int id){
+
+    public void delete(int id) {
         Connection connection = null;
         PreparedStatement statement = null;
         try {
@@ -189,8 +189,25 @@ public class CommitteModel{
         } catch (SQLException exception) {
             log.logException(exception);
         }
-
     }
 
+    public int getLastRecord() {
+        Connection connection = null;
+        PreparedStatement statement = null;
+        int lastCommitteIdRecord = -1;
+        try {
+            connection = db.getDBConnection();
+            statement = connection.prepareStatement("select id from committe ORDER BY id DESC LIMIT 1;");
+            ResultSet resultSet = statement.executeQuery();
+            if (resultSet.next()) {
+                lastCommitteIdRecord = resultSet.getInt("id");
+            }
+        } catch (SQLException exception) {
+            log.logException(exception);
+        }
+        return lastCommitteIdRecord;
+    }
 
 }
+
+

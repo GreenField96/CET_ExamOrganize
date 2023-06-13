@@ -9,11 +9,14 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+
+import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class addPaperMovementReciveController implements Initializable {
@@ -69,6 +72,7 @@ public class addPaperMovementReciveController implements Initializable {
     private CommitteModel comm = new CommitteModel();
     private answerPaperMovementModel paperModel = new answerPaperMovementModel();
     private Alert alert;
+    private int countOfRecive = 0;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -239,9 +243,30 @@ public class addPaperMovementReciveController implements Initializable {
                 cloumnAnswerPaper.setSpecificCol(l.getText());
             }
             paperModel.insert(cloumnAnswerPaper);
+            countOfRecive++;
         });
 
         paperModel.store();
+
+//        ButtonType yesButton = new ButtonType("حسنا");
+//        ButtonType noButton = new ButtonType("لا");
+//        alert.setContentText("هل تريد انشاء تقرير؟");
+//        alert.getButtonTypes().setAll(yesButton,noButton);
+//
+//        Optional<ButtonType> resutlAction = alert.showAndWait();
+//        if(resutlAction.get() == yesButton){
+
+            for (int i=0; i<countOfRecive;i++) {
+                try {
+                    new ProcessBuilder("cmd", "/c", " start https://127.0.0.1/exam_organize/reports/reciveCreateReport.php?Recive_id=" + (paperModel.getLastRecord() - i)).inheritIO().start().waitFor();
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+
+
         cancleAllInput();
     }
     @FXML

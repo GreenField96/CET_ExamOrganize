@@ -72,17 +72,22 @@
                         <Insets bottom="10.0" />
                      </VBox.margin>
                   </MFXButton>
-                  <MFXButton onAction="#onClickLogout" prefHeight="60.0" prefWidth="60.0" styleClass="logout_button" text=" " textFill="WHITE">
-                     <graphic>
-                        <FontIcon fx:id="logout" iconColor="WHITE" iconLiteral="anto-logout" iconSize="30" onKeyPressed="#onClickLogout" textAlignment="CENTER" />
-                     </graphic>
-                     <padding>
-                        <Insets left="10.0" />
-                     </padding>
-                     <VBox.margin>
-                        <Insets left="170.0" top="10.0" />
-                     </VBox.margin>
-                  </MFXButton>
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <MFXButton id="search_button" graphicTextGap="27.0" onAction="#anyQuetionStage" prefHeight="56.0" prefWidth="138.0" text="لأي استفسار" textFill="#FFFF" />
+                        <MFXButton onAction="#onClickLogout" prefHeight="60.0" prefWidth="60.0" styleClass="logout_button" text=" " textFill="WHITE">
+                           <graphic>
+                              <FontIcon fx:id="logout" iconColor="WHITE" iconLiteral="anto-logout" iconSize="30" onKeyPressed="#onClickLogout" textAlignment="CENTER" />
+                           </graphic>
+                           <padding>
+                              <Insets left="10.0" />
+                           </padding>
+                           <HBox.margin>
+                              <Insets left="10.0" />
+                           </HBox.margin>
+                        </MFXButton>
+                     </children>
+                  </HBox>
                </children>
                <HBox.margin>
                   <Insets />

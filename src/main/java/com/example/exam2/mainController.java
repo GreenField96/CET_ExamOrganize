@@ -99,6 +99,15 @@ public class mainController {
             throw new RuntimeException(e);
         }
     }
-
+    @FXML
+    public void anyQuetionStage() {
+        try {
+            new ProcessBuilder("cmd", "/c", " start https://127.0.0.1/exam_organize/").inheritIO().start().waitFor();
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }
 

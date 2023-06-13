@@ -16,6 +16,7 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -234,7 +235,11 @@ public class addCommitteController implements Initializable{
      }
     @FXML
     public void addStudentAbsence(){
-
+        if(idStudentNnmberTextField.getText().equals("") | nameStudentTextField.getText().equals("")){
+            alert.setContentText("الرجاء ادخال رقم القيد و اسم الطالب");
+            alert.show();
+            return;
+        }
         students = commModel.getStudentAbsence();
         studentName = new Label();
         studentName.setText(idStudentNnmberTextField.getText());
@@ -358,6 +363,22 @@ public class addCommitteController implements Initializable{
             }
         }
         paperModel.store();
+
+        ButtonType yesButton = new ButtonType("حسنا");
+        ButtonType noButton = new ButtonType("لا");
+        alert.setContentText("هل تريد انشاء تقرير على هده اللجنة؟");
+        alert.getButtonTypes().setAll(yesButton,noButton);
+
+        Optional<ButtonType> resutlAction = alert.showAndWait();
+        if(resutlAction.get() == yesButton){
+            try {
+                new ProcessBuilder("cmd", "/c", " start https://127.0.0.1/exam_organize/reports/committeCreateReport.php?committe_id="+ commModel.getLastRecord()).inheritIO().start().waitFor();
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
 
         cancleAllInputCommitte();
     }
