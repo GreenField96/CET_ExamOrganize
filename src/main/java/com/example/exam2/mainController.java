@@ -19,6 +19,7 @@ public class mainController {
     private VBox addCommitteStage;
     private VBox addPaperMovementStageDelivery;
     private VBox manageCoursesStage;
+    private VBox anyQuetionStage;
     @FXML
     private void onClickLogout() {
         Stage stage = (Stage) base.getScene().getWindow();
@@ -102,12 +103,16 @@ public class mainController {
     @FXML
     public void anyQuetionStage() {
         try {
-            new ProcessBuilder("cmd", "/c", " start https://127.0.0.1/exam_organize/").inheritIO().start().waitFor();
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
+            if(anyQuetionStage == null) {
+                FXMLLoader fxml = new FXMLLoader();
+                fxml.setLocation(getClass().getResource("anyQuetionStage.fxml"));
+                anyQuetionStage = fxml.load();
+            }
+            mainStage.getChildren().setAll(anyQuetionStage);
+        }catch (Exception e){
+            log.logException(e);
         }
     }
+
 }
 

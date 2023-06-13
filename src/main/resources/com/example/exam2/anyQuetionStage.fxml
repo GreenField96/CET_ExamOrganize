@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox prefWidth="1100.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <ScrollPane prefWidth="1000.0">
+         <content>
+            <HBox prefWidth="1000.0">
+               <children>
+                  <VBox prefWidth="1000.0">
+                     <children>
+                        <HBox alignment="CENTER_RIGHT" prefHeight="300.0" prefWidth="1000.0">
+                           <children>
+                              <VBox prefHeight="275.0" prefWidth="373.0">
+                                 <children>
+                                    <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0">
+                                       <children>
+                                          <Label id="textField" prefHeight="41.0" prefWidth="211.0" style="-fx-alignment: center;" text="رقم الهاتف : 0928515299" textAlignment="CENTER" textFill="WHITE">
+                                             <HBox.margin>
+                                                <Insets left="15.0" right="5.0" />
+                                             </HBox.margin>
+                                          </Label>
+                                       </children>
+                                    </HBox>
+                                    <HBox alignment="CENTER_RIGHT" prefHeight="99.0" prefWidth="381.0">
+                                       <children>
+                                          <Label id="textField" prefHeight="41.0" prefWidth="211.0" style="-fx-alignment: center;" text="رقم الهاتف : 0910086774" textAlignment="CENTER" textFill="WHITE">
+                                             <HBox.margin>
+                                                <Insets right="5.0" />
+                                             </HBox.margin>
+                                          </Label>
+                                       </children>
+                                    </HBox>
+                                    <HBox alignment="CENTER_RIGHT" prefHeight="99.0" prefWidth="381.0" />
+                                 </children>
+                                 <HBox.margin>
+                                    <Insets right="20.0" />
+                                 </HBox.margin>
+                              </VBox>
+                              <VBox alignment="CENTER_RIGHT" prefHeight="261.0" prefWidth="400.0" stylesheets="@style.css">
+                                 <children>
+                                    <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="400.0">
+                                       <children>
+                                          <Label id="textField" depthTest="DISABLE" prefHeight="41.0" prefWidth="271.0" text="عمل الطالب : مندر المبروك الجبالي" textFill="WHITE">
+                                             <HBox.margin>
+                                                <Insets left="15.0" right="5.0" />
+                                             </HBox.margin>
+                                          </Label>
+                                       </children>
+                                    </HBox>
+                                    <HBox alignment="CENTER_RIGHT" prefHeight="99.0" prefWidth="381.0">
+                                       <children>
+                                          <Label id="textField" depthTest="DISABLE" prefHeight="41.0" prefWidth="271.0" text="و الطالب : محمد عبدالرحمن فرارة" textFill="WHITE" />
+                                       </children>
+                                    </HBox>
+                                    <HBox alignment="CENTER_RIGHT" prefHeight="99.0" prefWidth="381.0">
+                                       <children>
+                                          <Label id="textField" depthTest="DISABLE" prefHeight="41.0" prefWidth="271.0" text="بأشراف : م.مصطفى قاباج" textFill="WHITE" />
+                                       </children>
+                                    </HBox>
+                                 </children>
+                                 <HBox.margin>
+                                    <Insets />
+                                 </HBox.margin>
+                              </VBox>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER_RIGHT" prefHeight="20.0" />
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+         </content>
+      </ScrollPane>
+   </children>
+</VBox>

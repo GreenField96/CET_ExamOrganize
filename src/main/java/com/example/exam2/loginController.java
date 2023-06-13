@@ -27,8 +27,8 @@ public class loginController implements Initializable {
         alert.setAlertType(Alert.AlertType.INFORMATION);
 
         //test
-        emailTextField.setText("munderjb");
-        paswordTextField.setText("25102510");
+//        emailTextField.setText("munderjb");
+//        paswordTextField.setText("25102510");
 
     }
     @FXML
