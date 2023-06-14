@@ -10,14 +10,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="05bb42eb-d727-4007-94a4-11c0139cc897" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/exam2/addCommitteController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/exam2/addCommitteController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/exam2/addPaperMovementDeliveryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/exam2/addPaperMovementDeliveryController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/exam2/addPaperMovementReciveController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/exam2/addPaperMovementReciveController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/exam2/showCoursesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/exam2/showCoursesController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/exam2/showEmployeeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/exam2/showEmployeeController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/exam2/loginStage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/exam2/loginStage.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,11 +59,11 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "last_opened_file_path": "C:/CET_ExamOrganize/lib/virtualizedfx-11.2.6.jar",
+    "last_opened_file_path": "C:/PR/CET_ExamOrganize",
     "project.structure.last.edited": "Libraries",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.3137931",
-    "settings.editor.selected.configurable": "preferences.lookFeel"
+    "settings.editor.selected.configurable": "reference.settings.project.maven.importing"
   }
 }]]></component>
   <component name="RecentsManager">
@@ -87,6 +81,19 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="CET_ExamOrganize" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="CET_ExamOrganize" />
+      <option name="filePath" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
