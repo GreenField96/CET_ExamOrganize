@@ -7,7 +7,7 @@
 <h3> 3- Import the database structure from db/organize_exam.sql </h3>
 <hr>
 <h2>#part two</h2>
-<h3> 1- move to CET_ExamOrganize/Reports/ and copy ExamReports/ to C:/xampp/htdocs  </h3>
+<h3> 1- move to CET_ExamOrganize/Reports/ and copy folder exam_organize/ to C:/xampp/htdocs/  </h3>
 <hr>
 <h3> 2- move to CET_ExamOrganize/out/artifacts & run exam2.jar </h3>
 <hr>
