@@ -115,6 +115,6 @@ public class showCoursesController implements Initializable{
         courseNumberTextField.setText("");
         Courses.clear();
 
-        ObservableArrayCourse.clear();
+        CoursesTableView.getItems().clear();
     }
 }

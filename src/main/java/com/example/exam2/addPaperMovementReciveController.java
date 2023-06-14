@@ -305,10 +305,8 @@ public class addPaperMovementReciveController implements Initializable {
         answerPaperMovementList.clear();
 
         courseTextField.clear();
-        ObservableArrayCourse.clear();
-        ObservableArrayCommitte.clear();
 
-        ObservableArrayCourse.clear();
-        ObservableArrayCommitte.clear();
+        CoursesTableView.getItems().clear();
+        committeTableView.getItems().clear();
     }
 }

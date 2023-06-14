@@ -423,8 +423,8 @@ public class addCommitteController implements Initializable{
              log.logException(e);
          }// create ane block of group CheckList
 
-         ObservableArrayEmployee.clear();
-         ObservableArrayCourse.clear();
+         EmployeeTableView.getItems().clear();
+         CoursesTableView.getItems().clear();
 
      }
 

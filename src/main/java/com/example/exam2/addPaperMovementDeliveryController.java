@@ -356,9 +356,9 @@ public class addPaperMovementDeliveryController implements Initializable {
 
         courseTextField.clear();
 
-        ObservableArrayEmployee.clear();
-        ObservableArrayCourse.clear();
-        ObservableArrayCommitte.clear();
+        CoursesTableView.getItems().clear();
+        committeTableView.getItems().clear();
+        EmployeeTableView.getItems().clear();
 
     }
 }

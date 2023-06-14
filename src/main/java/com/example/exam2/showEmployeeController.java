@@ -126,7 +126,6 @@ public class showEmployeeController implements Initializable{
         phoneNumberTextField.setText("");
         workAsChoiceBox.setValue("موظف");
 
-        ObservableArrayEmployee.clear();
-
+        EmployeeTableView.getItems().clear();
     }
 }
