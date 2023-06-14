@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 10, 2023 at 01:21 PM
+-- Generation Time: Jun 13, 2023 at 09:36 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -42,33 +42,6 @@ CREATE TABLE `answer_paper_movement` (
 -- Dumping data for table `answer_paper_movement`
 --
 
-INSERT INTO `answer_paper_movement` (`id`, `committe_id`, `he_had_id`, `he_have_id`, `date`, `number_papers_received`, `specification`, `group`) VALUES
-(70, 1034, 16, 2, '2023-06-08', 23, 'حاسب ألي', 'الاولى'),
-(71, 1034, 16, 2, '2023-06-08', 22, 'تحكم ألي', 'الاولى'),
-(72, 1034, 2, 10, '2023-06-08', 23, 'حاسب ألي', 'الاولى'),
-(74, 1035, 15, 2, '2023-06-09', 12, 'عام', 'الاولى'),
-(75, 1034, 2, 21, '2023-06-09', 22, 'تحكم ألي', 'الاولى'),
-(78, 1034, 10, 2, '2023-06-09', 23, 'حاسب ألي', 'الاولى'),
-(79, 1034, 21, 2, '2023-06-09', 22, 'تحكم ألي', 'الاولى'),
-(80, 1035, 2, 3, '2023-06-09', 12, 'عام', 'الاولى'),
-(81, 1035, 3, 2, '2023-06-09', 12, 'عام', 'الاولى'),
-(82, 1036, 20, 2, '2023-06-09', 25, 'عام', 'الاولى'),
-(83, 1036, 20, 2, '2023-06-09', 24, 'تمهيدي', 'الاولى'),
-(84, 1036, 2, 22, '2023-06-09', 25, 'عام', 'الاولى'),
-(85, 1036, 2, 34, '2023-06-09', 24, 'تمهيدي', 'الاولى'),
-(86, 1036, 22, 2, '2023-06-09', 25, 'عام', 'الاولى'),
-(87, 1036, 34, 2, '2023-06-09', 24, 'تمهيدي', 'الاولى'),
-(88, 1036, 2, 34, '2023-06-09', 24, 'تمهيدي', 'الاولى'),
-(89, 1035, 2, 12, '2023-06-09', 12, 'عام', 'الاولى'),
-(90, 1035, 12, 2, '2023-06-09', 12, 'عام', 'الاولى'),
-(91, 1037, 14, 2, '2023-06-10', 30, 'تمهيدي', 'الحادية عشرة'),
-(92, 1038, 26, 2, '2023-06-10', 20, 'تمهيدي', 'الحادية عشرة'),
-(93, 1038, 2, 20, '2023-06-10', 20, 'تمهيدي', 'الحادية عشرة'),
-(94, 1037, 2, 20, '2023-06-10', 30, 'تمهيدي', 'الحادية عشرة'),
-(95, 1037, 20, 2, '2023-06-10', 30, 'تمهيدي', 'الحادية عشرة'),
-(96, 1038, 20, 2, '2023-06-10', 20, 'تمهيدي', 'الحادية عشرة'),
-(97, 1038, 2, 3, '2023-06-10', 20, 'تمهيدي', 'الحادية عشرة');
-
 -- --------------------------------------------------------
 
 --
@@ -90,13 +63,6 @@ CREATE TABLE `committe` (
 -- Dumping data for table `committe`
 --
 
-INSERT INTO `committe` (`id`, `class`, `date`, `course`, `number_answer_paper`, `periodExam`, `year`, `semester_period`) VALUES
-(1034, '220', '2023-06-08', 25, '45', '09:00-11:00', '2023', 'ربيعي'),
-(1035, 'E1', '2023-06-09', 13, '12', '09:00-11:00', '2023', 'ربيعي'),
-(1036, '323', '2023-06-09', 11, '49', '09:00-11:00', '2023', 'ربيعي'),
-(1037, '224', '2023-06-10', 9, '30', '09:00-11:00', '2023', 'ربيعي'),
-(1038, '220', '2023-06-10', 9, '20', '09:00-11:00', '2023', 'ربيعي');
-
 -- --------------------------------------------------------
 
 --
@@ -106,7 +72,8 @@ INSERT INTO `committe` (`id`, `class`, `date`, `course`, `number_answer_paper`, 
 CREATE TABLE `course_name` (
   `id` int(11) NOT NULL,
   `courseName` varchar(30) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  `courseNumber` varchar(30) NOT NULL
+  `courseNumber` varchar(30) NOT NULL,
+  `course_a` varchar(30) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -114,7 +81,7 @@ CREATE TABLE `course_name` (
 --
 
 INSERT INTO `course_name` (`id`, `courseName`, `courseNumber`) VALUES
-(0, 'قواعد بيانات (تحليل و تصميم)', 'CS322'),
+(2, 'قواعد بيانات (تحليل و تصميم)', 'CS322'),
 (3, 'الجبر الخطي', 'GS202'),
 (6, 'تراكيب البيانات', 'CS315'),
 (7, 'بروتوكولات التوجيه', 'CN302'),
@@ -131,7 +98,7 @@ INSERT INTO `course_name` (`id`, `courseName`, `courseNumber`) VALUES
 (18, 'اساسيات البرمجة', 'CS111'),
 (19, 'دوائر كهربائية معمل', 'EE102L'),
 (20, 'دوائر رقمية معمل', 'EE122L'),
-(21, 'انجليزي 3', 'GS223'),
+(21, 'انجليزي 3', 'GS223' ),
 (22, 'معادلات تفاضلية', 'GS203'),
 (23, 'الاحصاء والاحتمالات', 'GS204'),
 (24, 'معمارية الحاسب', 'CE325'),
@@ -144,7 +111,7 @@ INSERT INTO `course_name` (`id`, `courseName`, `courseNumber`) VALUES
 (31, 'تحليل وتصميم النظم', 'CS221'),
 (32, 'هندسة البرمجيات', 'CS325'),
 (33, 'تطبيقات البرمجة الهدفية', 'CS314'),
-(34, 'امن الحاسب والمعلومات', 'CS326'),
+(34, 'امن الحاسب والمعلومات', 'CS326' ),
 (35, 'اساسيات البرمجة مرئية', 'CS316'),
 (36, 'برمجة مرئية متقدمة', 'CS417'),
 (37, 'تطبيقات قواعد بيانات', 'CS323'),
@@ -154,7 +121,8 @@ INSERT INTO `course_name` (`id`, `courseName`, `courseNumber`) VALUES
 (43, 'الشبكات الواسعة النطاق', 'CN404'),
 (44, 'برمجة صفحات الويب', 'CS432'),
 (45, 'ادراة قواعد بيانات', 'CS424'),
-(46, 'صيانة انظمة حاسبات', 'CE223');
+(46, 'صيانة انظمة حاسبات', 'CE223'),
+(49, 'الجبر الخطي', 'GS202');
 
 -- --------------------------------------------------------
 
@@ -177,29 +145,7 @@ CREATE TABLE `employees` (
 --
 
 INSERT INTO `employees` (`id`, `name`, `phone_number`, `work_as`, `email`, `password`, `permisson`) VALUES
-(2, 'مندر الجبالي', '0928515299', 'دكتور', 'munderjb', '25102510', 1),
-(3, 'محمد فرارة', '0921112222', 'دكتور', 'mohamed99', 'mohamedFurara99&$#', 0),
-(10, 'محمد بوكر', '0921122334', 'دكتور', 'pokr@gmail.com', '99', 0),
-(12, 'علي حسين', '0912224442', 'دكتور', 'ali@gmail.com', '99', 0),
-(14, 'مصطفى قاباج', '0924403212', 'دكتور', 'gabaj@gmail.com', '99', 0),
-(15, 'ناصر التليسي', '0928922123', 'دكتور', 'nasir@gmail.com', '99', 0),
-(16, 'حاتم المهني', '0921234562', 'موظف', '', '99', 0),
-(17, 'مندر المبروك مفتاح الجبالي', '0918637521', 'موظف', ' munderjbaly77@gmail.com', '99', 0),
-(18, 'عبد العزيز التابت', '0926776122', 'دكتور', 'abdElaziz@gmail.com', '99', 0),
-(19, 'فتحي مختار', '0927212012', 'دكتور', 'fathi@gmail.com', '99', 0),
-(20, 'ناجي عبدالله', '0916336722', 'دكتور', '', '99', 0),
-(21, 'محمد الجعفري', '0913663092', 'دكتور', 'mohamed@gmail.com', '99', 0),
-(22, 'فوزي زريقان', '0921155117', 'دكتور', 'fozi@yahoo.com', '99', 0),
-(23, 'امال النوري', '', 'دكتور', 'amal@gmail.com', '99', 0),
-(24, 'حسني علي', '0924554122', 'موظف', '', '99', 0),
-(25, 'خالد عتيق', '0917558131', 'موظف', '', '99', 0),
-(26, 'سميح العماري', '0921221343', 'دكتور', 'samih@yahoo.com', '99', 0),
-(27, 'مروان مرغم', '0928558747', 'دكتور', 'marwan@gmail.com', '99', 0),
-(28, 'احمد حلمي', '0924554002', 'موظف', 'ahmed@yahoo.com', '99', 0),
-(29, 'عبد الباسط عاشور', '0921441210', 'دكتور', '', '99', 0),
-(30, 'رولا اسماعيل', '0912332120', 'دكتور', '', '99', 0),
-(31, 'أشرف خشخوشة', '0921122232', 'دكتور', 'Ashraf@gmail.com', '99', 0),
-(34, 'احمد هشيك', '0913231111', 'موظف', '', '99', 0);
+(1, 'مندر الجبالي', '0928515299', 'موظف', 'munderjb', '25102510', 1);
 
 -- --------------------------------------------------------
 
@@ -217,23 +163,6 @@ CREATE TABLE `monitor_committe` (
 --
 -- Dumping data for table `monitor_committe`
 --
-
-INSERT INTO `monitor_committe` (`id`, `personal_info_id`, `committe_id`, `absence`) VALUES
-(99, 15, 1034, 1),
-(100, 16, 1034, 1),
-(101, 19, 1034, 1),
-(102, 20, 1034, 1),
-(103, 14, 1035, 1),
-(104, 15, 1035, 1),
-(105, 16, 1035, 1),
-(106, 15, 1036, 1),
-(107, 17, 1036, 0),
-(108, 19, 1036, 1),
-(109, 20, 1036, 1),
-(110, 15, 1037, 1),
-(111, 14, 1037, 1),
-(112, 25, 1038, 1),
-(113, 26, 1038, 1);
 
 -- --------------------------------------------------------
 
@@ -256,15 +185,6 @@ CREATE TABLE `student_absence` (
 -- Dumping data for table `student_absence`
 --
 
-INSERT INTO `student_absence` (`id`, `student_id`, `name`, `phone_number`, `specification`, `group_number`, `committe_id`, `note`) VALUES
-(175, 171455, 'مهند المبروك', '', 'حاسب ألي', 'الاولى', 1034, ''),
-(176, 191411, 'علي محمد', '', 'تحكم ألي', 'الاولى', 1034, ''),
-(177, 151441, 'محمد محمد', '', 'عام', 'الاولى', 1035, ''),
-(178, 190322, 'محمد سالم', '', 'عام', 'الاولى', 1036, ''),
-(179, 200123, 'محمد علي', '', 'تمهيدي', 'الاولى', 1036, ''),
-(180, 190111, 'حسام محمد', '', 'عام', 'الاولى', 1036, ''),
-(181, 220123, 'ناصر محمد', '', 'تمهيدي', 'الحادية عشرة', 1037, ''),
-(182, 202121, 'مصطفى الطاهر', '', 'تمهيدي', 'الحادية عشرة', 1038, '');
 
 --
 -- Indexes for dumped tables
@@ -321,37 +241,37 @@ ALTER TABLE `student_absence`
 -- AUTO_INCREMENT for table `answer_paper_movement`
 --
 ALTER TABLE `answer_paper_movement`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=98;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=130;
 
 --
 -- AUTO_INCREMENT for table `committe`
 --
 ALTER TABLE `committe`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1039;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1046;
 
 --
 -- AUTO_INCREMENT for table `course_name`
 --
 ALTER TABLE `course_name`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
 
 --
 -- AUTO_INCREMENT for table `employees`
 --
 ALTER TABLE `employees`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=94;
 
 --
 -- AUTO_INCREMENT for table `monitor_committe`
 --
 ALTER TABLE `monitor_committe`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=114;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=124;
 
 --
 -- AUTO_INCREMENT for table `student_absence`
 --
 ALTER TABLE `student_absence`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=183;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=186;
 
 --
 -- Constraints for dumped tables
