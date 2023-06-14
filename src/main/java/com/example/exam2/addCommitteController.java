@@ -170,6 +170,11 @@ public class addCommitteController implements Initializable{
     }
     @FXML
     public void getُEmployeeId(MouseEvent value){
+
+        if(EmployeeTableView.getSelectionModel().getSelectedIndex() < 0){
+            return;
+        }
+
         Integer index = EmployeeTableView.getSelectionModel().getSelectedIndex();
 
         MonitorFlag = false;
@@ -448,6 +453,11 @@ public class addCommitteController implements Initializable{
      }
      @FXML
      public void getCourseId(MouseEvent value){
+
+         if(CoursesTableView.getSelectionModel().getSelectedIndex() < 0){
+             return;
+         }
+
          Integer index = CoursesTableView.getSelectionModel().getSelectedIndex();
          IdRow = courseId.getCellData(index);
 

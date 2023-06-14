@@ -157,6 +157,10 @@ public class addPaperMovementDeliveryController implements Initializable {
     }
     @FXML
     public void getDoctorId(MouseEvent value){
+
+        if(EmployeeTableView.getSelectionModel().getSelectedIndex() < 0){
+            return;
+        }
         Integer index = EmployeeTableView.getSelectionModel().getSelectedIndex();
 
         recentId = String.valueOf(idEmployeeCol.getCellData(index));
@@ -203,6 +207,9 @@ public class addPaperMovementDeliveryController implements Initializable {
     @FXML
     public void getCommitteId(MouseEvent value){
 
+        if(committeTableView.getSelectionModel().getSelectedIndex() < 0){
+            return;
+        }
         Integer index = committeTableView.getSelectionModel().getSelectedIndex();
 
         idCommitte = new Label();
@@ -335,6 +342,10 @@ public class addPaperMovementDeliveryController implements Initializable {
     }
     @FXML
     public void getCourseId(MouseEvent value){
+
+        if(CoursesTableView.getSelectionModel().getSelectedIndex() < 0){
+            return;
+        }
         Integer index = CoursesTableView.getSelectionModel().getSelectedIndex();
 
         courseTextField.setText(courseName.getCellData(index));

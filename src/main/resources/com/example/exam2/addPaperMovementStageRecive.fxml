@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import io.github.palexdev.materialfx.controls.MFXButton?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
@@ -14,9 +14,8 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
-<?import org.kordamp.ikonli.javafx.FontIcon?>
 
-<VBox fx:id="mainStage" prefWidth="1100.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.exam2.addPaperMovementReciveController">
+<VBox fx:id="mainStage" prefWidth="1100.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.exam2.addPaperMovementReciveController">
    <children>
       <TabPane prefHeight="800.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE">
          <tabs>
@@ -56,14 +55,12 @@
                                                 <Insets bottom="10.0" top="20.0" />
                                              </HBox.margin>
                                           </TextField>
-                                          <MFXButton id="insert_button" onAction="#searchOnCourseTable" prefHeight="48.0" prefWidth="121.0" text="بحت" textAlignment="CENTER" textFill="WHITE">
-                                             <graphic>
-                                                <FontIcon iconColor="WHITE" iconLiteral="anto-search" iconSize="31" wrappingWidth="37.0" />
-                                             </graphic>
+                                          <Button id="insert_button" onAction="#searchOnCourseTable" prefHeight="48.0" prefWidth="121.0" text="بحت" textAlignment="CENTER" textFill="WHITE">
+
                                              <HBox.margin>
                                                 <Insets left="30.0" right="30.0" top="10.0" />
                                              </HBox.margin>
-                                          </MFXButton>
+                                          </Button>
                                        </children>
                                     </HBox>
                                     <HBox alignment="CENTER_RIGHT" prefWidth="300.0">
@@ -142,14 +139,12 @@
                                                 <Insets left="5.0" top="10.0" />
                                              </HBox.margin>
                                           </TextField>
-                                          <MFXButton id="insert_button" onAction="#querySearchOnCommitte" prefHeight="48.0" prefWidth="100.0" text="بحت" textAlignment="CENTER" textFill="WHITE">
-                                             <graphic>
-                                                <FontIcon iconColor="WHITE" iconLiteral="anto-search" iconSize="31" wrappingWidth="37.0" />
-                                             </graphic>
+                                          <Button id="insert_button" onAction="#querySearchOnCommitte" prefHeight="48.0" prefWidth="100.0" text="بحت" textAlignment="CENTER" textFill="WHITE">
+
                                              <HBox.margin>
                                                 <Insets left="5.0" top="10.0" />
                                              </HBox.margin>
-                                          </MFXButton>
+                                          </Button>
                                        </children>
                                     </HBox>
                                     <HBox alignment="CENTER_RIGHT" prefWidth="1000.0">
@@ -191,34 +186,28 @@
                                     </HBox>
                                     <HBox alignment="CENTER_RIGHT" prefHeight="50.0" prefWidth="100.0">
                                        <children>
-                                          <MFXButton id="insert_button" onAction="#cleanMonitorsData" prefHeight="43.0" prefWidth="162.0" style="-fx-background-color: red;" text="مسح اللجان" textFill="WHITE">
-                                             <graphic>
-                                                <FontIcon iconColor="WHITE" iconLiteral="antf-close-circle" iconSize="31" textAlignment="CENTER" wrappingWidth="37.0" />
-                                             </graphic>
+                                          <Button id="cancle_button" onAction="#cleanMonitorsData" prefHeight="43.0" prefWidth="162.0" text="مسح اللجان" textFill="WHITE">
+
                                              <opaqueInsets>
                                                 <Insets />
                                              </opaqueInsets>
-                                          </MFXButton>
+                                          </Button>
                                        </children>
                                     </HBox>
                                     <HBox alignment="CENTER_RIGHT" prefWidth="1000.0">
                                        <children>
                                           <HBox alignment="CENTER_RIGHT" prefHeight="87.0" prefWidth="1000.0">
                                              <children>
-                                                <MFXButton id="insert_button" onAction="#cancleAllInput" prefHeight="52.0" prefWidth="170.0" style="-fx-background-color: red; -fx-font-size: 17;" text="ألغاء" textFill="WHITE">
-                                                   <graphic>
-                                                      <FontIcon iconColor="WHITE" iconLiteral="antf-close-circle" iconSize="31" wrappingWidth="37.0" />
-                                                   </graphic>
-                                                </MFXButton>
+                                                <Button id="cancle_button" onAction="#cancleAllInput" prefHeight="52.0" prefWidth="170.0" text="ألغاء" textFill="WHITE">
+
+                                                </Button>
                                                 <HBox prefHeight="60.0" prefWidth="331.0" />
-                                                <MFXButton id="insert_button" onAction="#addPaperMovementRecord" prefHeight="52.0" prefWidth="170.0" style="-fx-font-size: 17;" text="أدخال" textFill="WHITE">
-                                                   <graphic>
-                                                      <FontIcon iconColor="WHITE" iconLiteral="antf-check-circle" iconSize="31" wrappingWidth="37.0" />
-                                                   </graphic>
+                                                <Button id="insert_button" onAction="#addPaperMovementRecord" prefHeight="52.0" prefWidth="170.0" style="-fx-font-size: 17;" text="أدخال" textFill="WHITE">
+
                                                    <HBox.margin>
                                                       <Insets right="40.0" />
                                                    </HBox.margin>
-                                                </MFXButton>
+                                                </Button>
                                              </children>
                                           </HBox>
                                        </children>

@@ -71,6 +71,10 @@ public class showEmployeeController implements Initializable{
     }
     @FXML
     public void getId(MouseEvent value){
+        
+        if(EmployeeTableView.getSelectionModel().getSelectedIndex() < 0){
+            return;
+        }
         Integer index = EmployeeTableView.getSelectionModel().getSelectedIndex();
         IdRow = Id.getCellData(index);
 

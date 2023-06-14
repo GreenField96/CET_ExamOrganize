@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import io.github.palexdev.materialfx.controls.MFXButton?>
-<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
@@ -11,7 +10,6 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
-<?import org.kordamp.ikonli.javafx.FontIcon?>
 
 <AnchorPane fx:id="baseLogin" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.exam2.loginController">
    <children>
@@ -60,26 +58,12 @@
                <bottom>
                   <HBox alignment="CENTER" prefHeight="100.0" prefWidth="567.0" BorderPane.alignment="CENTER">
                      <children>
-                        <MFXButton fx:id="exitButton" onAction="#onClickLogout" prefHeight="60.0" prefWidth="60.0" styleClass="logout_button" text=" " textFill="WHITE">
-                           <graphic>
-                              <FontIcon fx:id="logout2" iconColor="WHITE" iconLiteral="anto-logout" iconSize="30" onKeyPressed="#onClickLogout" textAlignment="CENTER" />
-                           </graphic>
-                           <padding>
-                              <Insets left="10.0" />
-                           </padding>
-                        </MFXButton>
+                        <Button fx:id="exitButton" onAction="#onClickLogout" prefHeight="60.0" prefWidth="115.0" styleClass="logout_button" text="ألغاء" textFill="WHITE" />
                         <VBox prefHeight="200.0" prefWidth="100.0" />
-                        <MFXButton onAction="#onClickLogin" prefHeight="60.0" prefWidth="60.0" styleClass="login_button" text=" " textFill="WHITE">
-                           <graphic>
-                              <FontIcon fx:id="loginButton" iconColor="WHITE" iconLiteral="anto-check-circle" iconSize="30" onKeyPressed="#onClickLogout" textAlignment="CENTER" />
-                           </graphic>
-                           <padding>
-                              <Insets left="10.0" />
-                           </padding>
-                        </MFXButton>
+                        <Button onAction="#onClickLogin" prefHeight="60.0" prefWidth="115.0" styleClass="login_button" text="تسجيل الدخول" textFill="WHITE" />
                      </children>
                   </HBox>
-               </bottom>muةmun
+               </bottom>
             </BorderPane>
          </children>
       </HBox>

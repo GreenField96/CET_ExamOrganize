@@ -66,6 +66,9 @@ public class showCoursesController implements Initializable{
     }
     @FXML
     public void getId(MouseEvent value){
+        if(CoursesTableView.getSelectionModel().getSelectedIndex() < 0){
+            return;
+        }
         Integer index = CoursesTableView.getSelectionModel().getSelectedIndex();
         IdRow = courseId.getCellData(index);
 

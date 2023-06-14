@@ -5,6 +5,11 @@
 	-fx-background-color:  red;
 	-fx-font-family:Verdana, Geneva, Tahoma, sans-serif;
 	-fx-effect: dropshadow(two-pass-box , #FFFF, 3,3,1,4);
+    -fx-font-weight:bold;
+}
+#logout_button:pressed:hover {
+	-fx-background-color: #EEE9DA;
+	-fx-background-radius:40;
 }
 .login_button{
 	-fx-font-size: 15;
@@ -12,6 +17,11 @@
 	-fx-background-color:  #398AB9;
 	-fx-font-family:Verdana, Geneva, Tahoma, sans-serif;
 	-fx-effect: dropshadow(two-pass-box , #FFFF, 3,3,1,4);
+    -fx-font-weight:bold;
+}
+#login_button:pressed:hover {
+	-fx-background-color: #EEE9DA;
+	-fx-background-radius:40;
 }
 #textField{
 	-fx-font-size: 15;
@@ -55,6 +65,10 @@
 	-fx-background-color: #398AB9;
 	-fx-background-radius:20;
 }
+#search_button:pressed:hover {
+	-fx-background-color: #EEE9DA;
+	-fx-background-radius:40;
+}
 #inputFiled{
     -fx-effect: dropshadow(two-pass-box , #FFFF, 5,5,1,5);
 	-fx-border: 1;
@@ -75,7 +89,6 @@
 	-fx-background-color:  #FFFF;
 	-fx-font-family:Verdana, Geneva, Tahoma, sans-serif;
 }
-
 #insert_button{
 	-fx-effect: dropshadow(two-pass-box , #FFFF, 5,5,1,5);
     -fx-border: 1;
@@ -86,8 +99,25 @@
 	-fx-background-color: #6096B4;
 	-fx-background-radius:20;
     -fx-effect: dropshadow(two-pass-box , #FFFF, 5,5,1,5);
+    -fx-font-weight:bold;
 }
 #insert_button:pressed:hover {
+	-fx-background-color: #EEE9DA;
+	-fx-background-radius:40;
+}
+#cancle_button{
+	-fx-effect: dropshadow(two-pass-box , #FFFF, 5,5,1,5);
+    -fx-border: 1;
+    -fx-border-color:#FFFF;
+    -fx-border-radius:20;
+	-fx-font-family:Verdana, Geneva, Tahoma, sans-serif;
+	-fx-font-size: 15;
+    -fx-background-color: red;
+	-fx-background-radius:20;
+    -fx-effect: dropshadow(two-pass-box , #FFFF, 5,5,1,5);
+    -fx-font-weight:bold;
+}
+#cancle_button:pressed:hover {
 	-fx-background-color: #EEE9DA;
 	-fx-background-radius:40;
 }

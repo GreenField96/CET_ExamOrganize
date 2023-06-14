@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import io.github.palexdev.materialfx.controls.MFXButton?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
-<?import org.kordamp.ikonli.javafx.FontIcon?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="base" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="645.0" prefWidth="1300.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.exam2.mainController">
+<AnchorPane fx:id="base" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="645.0" prefWidth="1300.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.exam2.mainController">
    <children>
       <HBox prefHeight="645.0" prefWidth="1300.0">
          <children>
@@ -24,68 +24,70 @@
                         <Insets left="70.0" right="-40.0" top="-30.0" />
                      </VBox.margin>
                   </ImageView>
-                  <MFXButton id="main_button" graphicTextGap="56.0" onAction="#addCommitteStage" prefHeight="60.0" prefWidth="227.0" text="ادخال بيانات لجنة" textFill="WHITE">
-                     <graphic>
-                        <FontIcon iconColor="WHITE" iconLiteral="bi-card-checklist" iconSize="31" wrappingWidth="37.0" />
-                     </graphic>
+                  <Button id="main_button" graphicTextGap="56.0" onAction="#addCommitteStage" prefHeight="60.0" prefWidth="227.0" text="ادخال بيانات لجنة" textAlignment="CENTER" textFill="WHITE">
                      <VBox.margin>
                         <Insets top="-10.0" />
                      </VBox.margin>
-                  </MFXButton>
-                  <MFXButton id="main_button" graphicTextGap="1.0" onAction="#addPaperMovementStageDelivery" prefHeight="60.0" prefWidth="227.0" text="تسليم اوراق الاجابة         " textAlignment="RIGHT" textFill="WHITE">
-                     <graphic>
-                        <FontIcon iconColor="WHITE" iconLiteral="anto-inbox" iconSize="31" wrappingWidth="37.0" />
-                     </graphic>
+                     <padding>
+                        <Insets left="10.0" />
+                     </padding>
+                  </Button>
+                  <Button id="main_button" graphicTextGap="1.0" onAction="#addPaperMovementStageDelivery" prefHeight="60.0" prefWidth="227.0" text="تسليم اوراق الاجابة" textAlignment="CENTER" textFill="WHITE">
+
                      <VBox.margin>
                         <Insets top="10.0" />
                      </VBox.margin>
-                  </MFXButton>
-                  <MFXButton id="main_button" graphicTextGap="1.0" onAction="#addPaperMovementStageRecive" prefHeight="60.0" prefWidth="227.0" text="أستلام اوراق الاجابة         " textAlignment="RIGHT" textFill="WHITE">
-                     <graphic>
-                        <FontIcon iconColor="WHITE" iconLiteral="anto-inbox" iconSize="31" wrappingWidth="37.0" />
-                     </graphic>
+                     <padding>
+                        <Insets left="10.0" />
+                     </padding>
+                  </Button>
+                  <Button id="main_button" graphicTextGap="1.0" onAction="#addPaperMovementStageRecive" prefHeight="60.0" prefWidth="227.0" text="أستلام اوراق الاجابة" textAlignment="CENTER" textFill="WHITE">
+
                      <VBox.margin>
                         <Insets top="10.0" />
                      </VBox.margin>
-                  </MFXButton>
-                  <MFXButton id="search_button" graphicTextGap="59.0" onAction="#manageCoursesStage" prefHeight="60.0" prefWidth="226.0" text="ادارة المواد     " textFill="WHITE">
-                     <graphic>
-                        <FontIcon iconColor="WHITE" iconLiteral="anto-experiment" iconSize="31" wrappingWidth="37.0" />
-                     </graphic>
+                     <padding>
+                        <Insets left="10.0" />
+                     </padding>
+                  </Button>
+                  <Button id="search_button" graphicTextGap="59.0" onAction="#manageCoursesStage" prefHeight="60.0" prefWidth="226.0" text="ادارة المواد" textAlignment="CENTER" textFill="WHITE">
+
                      <VBox.margin>
                         <Insets bottom="10.0" top="10.0" />
                      </VBox.margin>
-                  </MFXButton>
-                  <MFXButton id="search_button" graphicTextGap="8.0" onAction="#showEmployeeStage" prefHeight="60.0" prefWidth="227.0" text="أدارة الموظفين/دكاترة    " textFill="#FFFF">
-                     <graphic>
-                        <FontIcon iconColor="WHITE" iconLiteral="anto-user" iconSize="31" textAlignment="RIGHT" wrappingWidth="37.0" />
-                     </graphic>
+                     <padding>
+                        <Insets left="10.0" />
+                     </padding>
+                  </Button>
+                  <Button id="search_button" graphicTextGap="8.0" onAction="#showEmployeeStage" prefHeight="60.0" prefWidth="227.0" text="أدارة الموظفين/دكاترة" textAlignment="CENTER" textFill="#FFFF">
+
                      <VBox.margin>
                         <Insets bottom="10.0" />
                      </VBox.margin>
-                  </MFXButton>
-                  <MFXButton id="search_button" graphicTextGap="27.0" onAction="#createReportStage" prefHeight="60.0" prefWidth="226.0" text="قائمة أنشاء التقارير    " textFill="#FFFF">
-                     <graphic>
-                        <FontIcon iconColor="WHITE" iconLiteral="antf-printer" iconSize="31" textAlignment="RIGHT" wrappingWidth="37.0" />
-                     </graphic>
+                     <padding>
+                        <Insets left="10.0" />
+                     </padding>
+                  </Button>
+                  <Button id="search_button" graphicTextGap="27.0" onAction="#createReportStage" prefHeight="60.0" prefWidth="226.0" text="قائمة أنشاء التقارير" textAlignment="CENTER" textFill="#FFFF">
+
                      <VBox.margin>
                         <Insets bottom="10.0" />
                      </VBox.margin>
-                  </MFXButton>
+                     <padding>
+                        <Insets left="10.0" />
+                     </padding>
+                  </Button>
                   <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <MFXButton id="search_button" graphicTextGap="27.0" onAction="#anyQuetionStage" prefHeight="56.0" prefWidth="138.0" text="لأي استفسار" textFill="#FFFF" />
-                        <MFXButton onAction="#onClickLogout" prefHeight="60.0" prefWidth="60.0" styleClass="logout_button" text=" " textFill="WHITE">
-                           <graphic>
-                              <FontIcon fx:id="logout" iconColor="WHITE" iconLiteral="anto-logout" iconSize="30" onKeyPressed="#onClickLogout" textAlignment="CENTER" />
-                           </graphic>
-                           <padding>
-                              <Insets left="10.0" />
-                           </padding>
+                        <Button id="search_button" graphicTextGap="27.0" onAction="#anyQuetionStage" prefHeight="56.0" prefWidth="138.0" text="لأي استفسار" textAlignment="CENTER" textFill="#FFFF" />
+                        <Button onAction="#onClickLogout" prefHeight="60.0" prefWidth="60.0" styleClass="logout_button" text="خروج" textAlignment="CENTER" textFill="WHITE">
                            <HBox.margin>
                               <Insets left="10.0" />
                            </HBox.margin>
-                        </MFXButton>
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Button>
                      </children>
                   </HBox>
                </children>

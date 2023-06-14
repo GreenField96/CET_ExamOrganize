@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ArtifactsWorkspaceSettings">
     <artifacts-to-build>
-      <artifact name="exam2:jar" />
+      <artifact name="exam2:jar3" />
     </artifacts-to-build>
   </component>
   <component name="AutoImportSettings">
@@ -10,8 +10,31 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="05bb42eb-d727-4007-94a4-11c0139cc897" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/artifacts/exam2_jar2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/artifacts/exam2_jar3.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/mysql-connector-j-8.0.33.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/protobuf-java-3.21.9.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/exam2/main-view - Copy.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/exam2_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/exam2_jar.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exception_log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/exception_log.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/exam2_jar/exam2.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/exam2_jar/exam2.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/exam2/addCommitteController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/exam2/addCommitteController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/exam2/addPaperMovementDeliveryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/exam2/addPaperMovementDeliveryController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/exam2/addPaperMovementReciveController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/exam2/addPaperMovementReciveController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/exam2/loginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/exam2/loginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/exam2/showCoursesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/exam2/showCoursesController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/exam2/showEmployeeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/exam2/showEmployeeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/META-INF/MANIFEST.MF" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/exam2/addCommitteStage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/exam2/addCommitteStage.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/exam2/addPaperMovementStageDelivery.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/exam2/addPaperMovementStageDelivery.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/exam2/addPaperMovementStageRecive.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/exam2/addPaperMovementStageRecive.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/exam2/loginStage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/exam2/loginStage.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/exam2/main-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/exam2/main-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/exam2/showCoursesStage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/exam2/showCoursesStage.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/exam2/showEmployeeStage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/exam2/showEmployeeStage.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/exam2/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/exam2/style.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,7 +82,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "last_opened_file_path": "C:/PR/CET_ExamOrganize",
+    "last_opened_file_path": "C:/Users/foo/.m2/repository/org/openjfx/javafx-base/19.0.2.1/javafx-base-19.0.2.1.jar",
     "project.structure.last.edited": "Libraries",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.3137931",
@@ -71,9 +94,15 @@
       <recent name="com.example.exam2" />
     </key>
   </component>
+  <component name="RunAnythingCache">
+    <option name="myCommands">
+      <command value="mvn clean install" />
+      <command value="mvn verify" />
+    </option>
+  </component>
   <component name="RunManager">
-    <configuration name="HelloApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.example.exam2.HelloApplication" />
+    <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.example.exam2.App" />
       <module name="exam2" />
       <extension name="coverage">
         <pattern>
@@ -100,7 +129,7 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.HelloApplication" />
+        <item itemvalue="Application.App" />
       </list>
     </recent_temporary>
   </component>

@@ -157,6 +157,9 @@ public class addPaperMovementReciveController implements Initializable {
     @FXML
     public void getCommitteId(MouseEvent value){
 
+        if(committeTableView.getSelectionModel().getSelectedIndex() < 0){
+            return;
+        }
         Integer index = committeTableView.getSelectionModel().getSelectedIndex();
 
         idCommitte = new Label();
@@ -289,6 +292,10 @@ public class addPaperMovementReciveController implements Initializable {
     }
     @FXML
     public void getCourseId(MouseEvent value){
+
+        if(CoursesTableView.getSelectionModel().getSelectedIndex() < 0){
+            return;
+        }
         Integer index = CoursesTableView.getSelectionModel().getSelectedIndex();
 
         courseTextField.setText(courseName.getCellData(index));
