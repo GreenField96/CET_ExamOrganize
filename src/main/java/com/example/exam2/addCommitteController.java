@@ -16,6 +16,7 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -81,8 +82,11 @@ public class addCommitteController implements Initializable{
     private int countHboxItems=0;
     private answerPaperMovementModel paperModel = new answerPaperMovementModel();
     private Alert alert;
+    ArrayList<String> updateGroupsArrayList1 = new ArrayList<>();
+    ArrayList<String> updateSpecificArrayList1 = new ArrayList<>();
 
-     @Override
+
+    @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
         groupNumberChoiceBox.setValue("");
@@ -271,12 +275,20 @@ public class addCommitteController implements Initializable{
                     if (b.equals("اتصالات") | b.equals("تحكم ألي") | b.equals("حاسب ألي")| b.equals("عام") | b.equals("تمهيدي")) {
                         //
                     }else{
-                        groupNumberChoiceBox.getItems().add(b);
+                        updateGroupsArrayList1.add(b);
                     }
                 }
             });
         });
 
+        HashSet removeDuplicated = new HashSet(updateGroupsArrayList1);
+        ArrayList<String> updateGroupsArrayList2 = new ArrayList(removeDuplicated);
+        for (String i : updateGroupsArrayList2)
+            groupNumberChoiceBox.getItems().add(i);
+
+        removeDuplicated.clear();
+        updateGroupsArrayList1.clear();
+        updateGroupsArrayList2.clear();
     }
     @FXML
     public void updateSpecific(){
@@ -288,12 +300,20 @@ public class addCommitteController implements Initializable{
                 if (input instanceof ChoiceBox<?>) {
                     String b = ((ChoiceBox<String>) input).getValue();
                     if (b.equals("اتصالات") | b.equals("تحكم ألي") | b.equals("حاسب ألي")| b.equals("عام") | b.equals("تمهيدي")) {
-                        specificChoiceBox.getItems().add(b);
+                        updateSpecificArrayList1.add(b);
                     }
                 }
             });
         });
 
+        HashSet removeDuplicated = new HashSet(updateSpecificArrayList1);
+        ArrayList<String> updateSpecificArrayList2 = new ArrayList(removeDuplicated);
+        for (String i : updateSpecificArrayList2)
+            specificChoiceBox.getItems().add(i);
+
+        removeDuplicated.clear();
+        updateSpecificArrayList1.clear();
+        updateSpecificArrayList2.clear();
     }
     public int getMonitorIdByName(){
         for (EmployeeTable monitor : MonitorsList){
@@ -446,6 +466,9 @@ public class addCommitteController implements Initializable{
 
          groupNumberChoiceBox.setValue("");
          specificChoiceBox.setValue("");
+
+         updateSpecificArrayList1.clear();
+         updateGroupsArrayList1.clear();
      }
 
 
