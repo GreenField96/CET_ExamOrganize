@@ -82,31 +82,11 @@ public class addCommitteController implements Initializable{
     private answerPaperMovementModel paperModel = new answerPaperMovementModel();
     private Alert alert;
 
-
      @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-        groupNumberChoiceBox.setValue("الاولى");
-        groupNumberChoiceBox.getItems().add("الاولى");
-        groupNumberChoiceBox.getItems().add("التانية");
-        groupNumberChoiceBox.getItems().add("التالتة");
-        groupNumberChoiceBox.getItems().add("الرابعة");
-        groupNumberChoiceBox.getItems().add("الخامسة");
-        groupNumberChoiceBox.getItems().add("السادسة");
-        groupNumberChoiceBox.getItems().add("السابعة");
-        groupNumberChoiceBox.getItems().add("التامنة");
-        groupNumberChoiceBox.getItems().add("التاسعة");
-        groupNumberChoiceBox.getItems().add("العاشرة");
-        groupNumberChoiceBox.getItems().add("الحادية عشرة");
-        groupNumberChoiceBox.getItems().add("اثنا عشر");
-        groupNumberChoiceBox.getItems().add("ثلاثة عشر");
-        groupNumberChoiceBox.getItems().add("أربعة عشر");
-        groupNumberChoiceBox.getItems().add("خمسة عشر");
-        groupNumberChoiceBox.getItems().add("ستة عشر");
-        groupNumberChoiceBox.getItems().add("سبعة عشر");
-        groupNumberChoiceBox.getItems().add("ثمانية عشر");
-        groupNumberChoiceBox.getItems().add("تسعة عشر");
-        groupNumberChoiceBox.getItems().add("عشرون");
+        groupNumberChoiceBox.setValue("");
+        specificChoiceBox.setValue("");
 
         poeriodChoiceBox.setValue("09:00-11:00");
         poeriodChoiceBox.getItems().add("09:00-11:00");
@@ -127,13 +107,6 @@ public class addCommitteController implements Initializable{
         semesterPeriodChoiceBox.getItems().add("صيفي");
 
         MonitorTransportPaperChoiceBox.setValue("اسم الملاحظ");
-
-        specificChoiceBox.setValue("عام");
-        specificChoiceBox.getItems().add("عام");
-        specificChoiceBox.getItems().add("تمهيدي");
-        specificChoiceBox.getItems().add("حاسب ألي");
-        specificChoiceBox.getItems().add("تحكم ألي");
-        specificChoiceBox.getItems().add("اتصالات");
 
         emp = new EmployeeModel();
         Employees = new ArrayList<>();
@@ -239,11 +212,12 @@ public class addCommitteController implements Initializable{
      }
     @FXML
     public void addStudentAbsence(){
-        if(idStudentNnmberTextField.getText().equals("") | nameStudentTextField.getText().equals("")){
-            alert.setContentText("الرجاء ادخال رقم القيد و اسم الطالب");
+        if(idStudentNnmberTextField.getText().equals("") | nameStudentTextField.getText().equals("") | specificChoiceBox.getValue().equals("") | groupNumberChoiceBox.getValue().equals("")){
+            alert.setContentText("الرجاء ادخال رقم القيد و اسم الطالب و المجموعة و التخصص");
             alert.show();
             return;
         }
+
         students = commModel.getStudentAbsence();
         studentName = new Label();
         studentName.setText(idStudentNnmberTextField.getText());
@@ -280,9 +254,46 @@ public class addCommitteController implements Initializable{
 
         idStudentNnmberTextField.setText("");
         nameStudentTextField.setText("");
-        groupNumberChoiceBox.setValue("الاولى");
+        groupNumberChoiceBox.setValue("");
+        specificChoiceBox.setValue("");
         phoneNumberStudentTextField.setText("");
         noteOnStudentTextField.setText("");
+    }
+    @FXML
+    public void updateGroups(){
+        groupNumberChoiceBox.getItems().clear();
+        groupNumberChoiceBox.setValue("");
+
+        groupsForm.getChildren().forEach(HboxGroup -> {
+            ((HBox) HboxGroup).getChildren().forEach(input -> {
+                if (input instanceof ChoiceBox<?>) {
+                    String b = ((ChoiceBox<String>) input).getValue();
+                    if (b.equals("اتصالات") | b.equals("تحكم ألي") | b.equals("حاسب ألي")| b.equals("عام") | b.equals("تمهيدي")) {
+                        //
+                    }else{
+                        groupNumberChoiceBox.getItems().add(b);
+                    }
+                }
+            });
+        });
+
+    }
+    @FXML
+    public void updateSpecific(){
+        specificChoiceBox.getItems().clear();
+        specificChoiceBox.setValue("");
+
+        groupsForm.getChildren().forEach(HboxGroup -> {
+            ((HBox) HboxGroup).getChildren().forEach(input -> {
+                if (input instanceof ChoiceBox<?>) {
+                    String b = ((ChoiceBox<String>) input).getValue();
+                    if (b.equals("اتصالات") | b.equals("تحكم ألي") | b.equals("حاسب ألي")| b.equals("عام") | b.equals("تمهيدي")) {
+                        specificChoiceBox.getItems().add(b);
+                    }
+                }
+            });
+        });
+
     }
     public int getMonitorIdByName(){
         for (EmployeeTable monitor : MonitorsList){
@@ -391,7 +402,6 @@ public class addCommitteController implements Initializable{
          // clear all the input Field & Choice Field
          idStudentNnmberTextField.setText("");
          nameStudentTextField.setText("");
-         groupNumberChoiceBox.setValue("الاولى");
          phoneNumberStudentTextField.setText("");
          noteOnStudentTextField.setText("");
          classNumberTextField.setText("");
@@ -433,7 +443,11 @@ public class addCommitteController implements Initializable{
          arrayHboxTextField.clear();
          arrayHboxSpecificChoiceBox.clear();
          arrayHboxChoice.clear();
+
+         groupNumberChoiceBox.setValue("");
+         specificChoiceBox.setValue("");
      }
+
 
      @FXML
      public void searchOnCourseTable() throws SQLException {

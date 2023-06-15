@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefWidth="1100.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.exam2.addCommitteController">
+<VBox prefWidth="1100.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.exam2.addCommitteController">
    <children>
       <ScrollPane prefWidth="1000.0">
          <content>
@@ -312,7 +312,7 @@
                                     </HBox>
                                     <HBox alignment="CENTER_RIGHT" prefHeight="64.0" prefWidth="373.0">
                                        <children>
-                                          <ChoiceBox id="specificChoiceField" fx:id="specificChoiceBox" prefHeight="31.0" prefWidth="213.0">
+                                          <ChoiceBox id="specificChoiceField" fx:id="specificChoiceBox" onMouseEntered="#updateSpecific" prefHeight="31.0" prefWidth="213.0">
                                              <opaqueInsets>
                                                 <Insets />
                                              </opaqueInsets>
@@ -367,7 +367,7 @@
                                     </HBox>
                                     <HBox alignment="CENTER_RIGHT" prefHeight="70.0" prefWidth="381.0">
                                        <children>
-                                          <ChoiceBox id="specificChoiceField" fx:id="groupNumberChoiceBox" prefHeight="31.0" prefWidth="213.0">
+                                          <ChoiceBox id="specificChoiceField" fx:id="groupNumberChoiceBox" onMouseEntered="#updateGroups" prefHeight="31.0" prefWidth="213.0">
                                              <opaqueInsets>
                                                 <Insets />
                                              </opaqueInsets>
