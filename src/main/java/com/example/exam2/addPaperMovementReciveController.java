@@ -251,15 +251,14 @@ public class addPaperMovementReciveController implements Initializable {
 
         paperModel.store();
 
-//        ButtonType yesButton = new ButtonType("حسنا");
-//        ButtonType noButton = new ButtonType("لا");
-//        alert.setContentText("هل تريد انشاء تقرير؟");
-//        alert.getButtonTypes().setAll(yesButton,noButton);
-//
-//        Optional<ButtonType> resutlAction = alert.showAndWait();
-//        if(resutlAction.get() == yesButton){
+        ButtonType yesButton = new ButtonType("حسنا");
+        ButtonType noButton = new ButtonType("لا");
+        alert.setContentText("هل تريد انشاء تقرير؟");
+        alert.getButtonTypes().setAll(yesButton,noButton);
 
-            for (int i=0; i<countOfRecive;i++) {
+        Optional<ButtonType> resutlAction = alert.showAndWait();
+        if(resutlAction.get() == yesButton) {
+            for (int i = 0; i < countOfRecive; i++) {
                 try {
                     new ProcessBuilder("cmd", "/c", " start https://127.0.0.1/exam_organize/reports/reciveCreateReport.php?Recive_id=" + (paperModel.getLastRecord() - i)).inheritIO().start().waitFor();
                 } catch (InterruptedException e) {
@@ -268,7 +267,7 @@ public class addPaperMovementReciveController implements Initializable {
                     throw new RuntimeException(e);
                 }
             }
-
+        }
 
         cancleAllInput();
     }

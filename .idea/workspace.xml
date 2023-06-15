@@ -12,8 +12,7 @@
     <list default="true" id="05bb42eb-d727-4007-94a4-11c0139cc897" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/exam_jar/exam.v3.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/exam_jar/exam.v3.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/exam_jar/exam2.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/exam2/addCommitteController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/exam2/addCommitteController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/exam2/addPaperMovementReciveController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/exam2/addPaperMovementReciveController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
