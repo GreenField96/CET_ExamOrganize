@@ -128,7 +128,6 @@ public class addCommitteController implements Initializable{
 
         MonitorTransportPaperChoiceBox.setValue("اسم الملاحظ");
 
-
         specificChoiceBox.setValue("عام");
         specificChoiceBox.getItems().add("عام");
         specificChoiceBox.getItems().add("تمهيدي");
@@ -397,7 +396,6 @@ public class addCommitteController implements Initializable{
          noteOnStudentTextField.setText("");
          classNumberTextField.setText("");
 
-
          numberPaperTextField.setText("");
          idNumberTakenVbox1.getChildren().clear();
          idNumberTakenVbox2.getChildren().clear();
@@ -430,6 +428,8 @@ public class addCommitteController implements Initializable{
 
          EmployeeTableView.getItems().clear();
          CoursesTableView.getItems().clear();
+
+         MonitorTransportPaperChoiceBox.setValue("اسم الملاحظ");
          arrayHboxTextField.clear();
          arrayHboxSpecificChoiceBox.clear();
          arrayHboxChoice.clear();
