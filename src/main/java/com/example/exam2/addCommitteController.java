@@ -349,7 +349,7 @@ public class addCommitteController implements Initializable{
                 }
                 if (input instanceof ChoiceBox<?>) {
                     String b = ((ChoiceBox<String>) input).getValue();
-                    if (b == "اتصالات" | b == "تحكم ألي" | b == "حاسب ألي" | b == "عام" | b == "تمهيدي") {
+                    if (b.equals("اتصالات") | b.equals("تحكم ألي") | b.equals("حاسب ألي")| b.equals("عام") | b.equals("تمهيدي")) {
                         arrayHboxSpecificChoiceBox.add(b);
                     }else{
                         arrayHboxChoice.add(b);
@@ -430,7 +430,9 @@ public class addCommitteController implements Initializable{
 
          EmployeeTableView.getItems().clear();
          CoursesTableView.getItems().clear();
-
+         arrayHboxTextField.clear();
+         arrayHboxSpecificChoiceBox.clear();
+         arrayHboxChoice.clear();
      }
 
      @FXML
