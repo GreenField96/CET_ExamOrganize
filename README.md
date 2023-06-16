@@ -16,5 +16,7 @@
 <hr>
 <h3> 1- move to CET_ExamOrganize/Reports/ and copy folder exam_organize/ to C:/xampp/htdocs/  </h3>
 <hr>
-<h3> 2- move to CET_ExamOrganize/out/artifacts & run exam.v3.jar </h3>
+<h3> 2- if you don't have java verison "19.0.2" download it from [ https://www.techspot.com/downloads/7508-java-19.html ] </h3>
+<hr>
+<h3> 3- move to CET_ExamOrganize/out/artifacts & run exam.v3.jar </h3>
 <hr>
