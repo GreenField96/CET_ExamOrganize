@@ -219,6 +219,7 @@ public class addPaperMovementReciveController implements Initializable {
             return;
         }
         // verify
+        countOfRecive = 0;
 
         committeTakenVbox.getChildren().forEach( box -> {
             HBox H = (HBox) box;

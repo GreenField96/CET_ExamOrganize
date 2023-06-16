@@ -3,7 +3,7 @@
 include "../db.php";
 
 $conn = DatabaseConnection::getInstance();
-// $connection->closeConnection();
+
 $result = null;
 
 $year = date("Y");
@@ -23,7 +23,6 @@ if(isset($_POST["room_number"]) & isset($_POST["course_name"]) & isset($_POST["d
     $date_exam = implode("-", $date_exam_convert);
   }
 
-  // echo "date : " . $date_exam;
   $sql = "SELECT " . " committe.id,committe.class,committe.date,committe.course,committe.number_answer_paper,committe.year,committe.periodExam,committe.semester_period,course_name.id as courseId,course_name.courseName,course_name.courseNumber " .
   " FROM committe,course_name WHERE committe.class LIKE '%". $room_number ."%' AND committe.date LIKE '%". $date_exam ."%' AND course_name.courseName LIKE '%". $course_name ."%'  AND committe.year = '". $year ."'  AND committe.periodExam = '". $exam_period ."' AND committe.semester_period LIKE '". $semester_period ."'  AND course_name.id = committe.course";
 
@@ -50,10 +49,7 @@ if(isset($_POST["room_number"]) & isset($_POST["course_name"]) & isset($_POST["d
   <link rel="stylesheet" href="dist/css/bootstrap-datepicker.min.css">
   <script src="dist/js/jquery-3.3.1.min.js"></script>
   <script src="dist/js/bootstrap-datepicker.min.js"></script>
-  
-  <link href = "https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel = "stylesheet">
-      
-
+        
   <link href="fontawesome-6.4.0/css/fontawesome.css" rel="stylesheet">
   <link href="fontawesome-6.4.0/css/brands.css" rel="stylesheet">
   <link href="fontawesome-6.4.0/css/solid.css" rel="stylesheet">
@@ -101,9 +97,7 @@ table.dataTable thead .sorting_desc_disabled:before {
 
         <header class="blog-header py-3">
             <div class="row flex-nowrap justify-content-between align-items-center">
-                <div class="col-4 pt-1">
-                    <!-- <a class="link-secondary" href="#">الإشتراك في النشرة البريدية</a> -->
-                </div>
+                <div class="col-4 pt-1"></div>
                 <div class="col-4 d-flex justify-content-end align-items-center">
                     <a class="link-secondary" href="../index.php" >
                         <span style="padding-right:2px;padding-left:2px;" class="btn btn-sm btn-outline-secondary">الصفحة الرئيسية</span>

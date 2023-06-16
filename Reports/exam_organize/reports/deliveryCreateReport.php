@@ -3,7 +3,7 @@
 include "../db.php";
 
 $conn = DatabaseConnection::getInstance();
-// $connection->closeConnection();
+
 $studentResult = null;
 $deliveryResult = null;
 $employeeResult = null;
@@ -76,15 +76,14 @@ function getDayForDate($newDate){
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.112.5">
     <title>تقرير اللجنة</title>
-<link href="dist/css/bootstrap.rtl.min.css" rel="stylesheet">
+    <link href="dist/css/bootstrap.rtl.min.css" rel="stylesheet">
 
-<style type="text/css" media="print">
-@page {
-    size: auto;   /* auto is the initial value */
-    margin: 1mm 0;  /* this affects the margin in the printer settings */
-}
-
-</style>
+    <style type="text/css" media="print">
+    @page {
+      size: auto;   /* auto is the initial value */
+      margin: 1mm 0;  /* this affects the margin in the printer settings */
+    }
+    </style>
 
 <link href="dist/css/checkout.css" rel="stylesheet">
 
@@ -217,7 +216,7 @@ function getDayForDate($newDate){
 
           <div class="row justify-content-center" style="margin:0px auto;">
             <div class="col-3" style="text-align:center">
-              <label for="firstName" class="form-label">عدد الحضور (<?php echo $attendance ?>)</label>
+              <label for="firstName" class="form-label">عدد الاوراق (<?php echo $attendance ?>)</label>
             </div>
             <div class="col-3" style="text-align:center">
             <label for="firstName" class="form-label">عدد الغياب (<?php echo $absence ?>)</label>

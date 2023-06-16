@@ -186,30 +186,26 @@ function getDayForDate($newDate){
           
           
           <div class="row" style="margin:10px 80px 10px 10px;">
-            <div class="col-9" style="padding:0;margin:10px 0px 10px 0px;">
-            في الوقت الدي نتمنى لكم التوفيق نأمل منكم الاخد بالاعتبار النقاط التالية:
+    
+          <div class="col-9" style="padding:0;margin:10px 0px 10px 0px;">
+          شاكرين سلفا على حسن تعاونكم و نأمل منكم الاخد بالاعتبار النقاط التالية:
            </div>
-           <div class="col-9" style="padding:0;margin:10px 0px 0px 10px;">
-            1 /  تسليم النتائج و اوراق الاجابة في مدة لاتتجاوز تلاتة ايام
+           <div class="col-9" style="padding:0;margin:10px 0px 10px 0px;">
+           1 / مراجعة كراسات الاجابة من الداخل للتأكد من تصحيح جميع جزيئات الاسئلة وجمع درجات الاسئلة ومطابقتها للدرجة الكلية المثبتة على غلاف كراسة الاجابة
            </div>
-           <div class="col-9" style="padding:0;margin:10px 0px 0px 10px;">
-            2 /  يتم توزيع الدرجات كالاتي:
-           </div>
-           <div class="col-9" style="padding:0;margin:10px 0px 0px 10px;">
-           (2.1) 40% من الدرجة لاعمال الفصل مقسمة على الامتحانات النظرية والعملية
-           </div>
-           <div class="col-9" style="padding:0;margin:0px 0px 0px 10px;">
-           (2.2) 60% من الدرجة للامتحان النهائي مقسمة على الامتحانات النظرية والعملية
-           </div>
-           <div class="col-9" style="padding:0;margin:10px 0px 0px 10px;">
-            كما يشترط لنجاح الطالب في اي مقرر الحصول على نسبة 50% من الدرجة المقررة للامتحان النهائي , اي 30 من 60 وفي حالة عدم حصوله على النسبة المطلوبة يعتبر راسبا مهما كانت الدرجة النهائية له
+           <div class="col-9" style="padding:0;margin:10px 0px 10px 0px;">
+           2 / التأكد من تطابق عدد الاوراق المستلمة مع عدد الاوراق المسلمة سابقا
            </div>
            <div class="col-9" style="padding:0;margin:20px 0px 0px 10px;">
            توقيع عضو هيئة التدريس   _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
            </div>
-           <div class="col-9" style="padding:0;margin:20px 0px 0px 10px;font-weight:bold">
+           <div class="col-9" style="padding:0;margin:20px 0px 0px 10px;">
            تم التسليم ل <?php echo $name_he_had ?>
            <?php if($phoneNumber_he_had != ""){echo " / ر.ه " . $phoneNumber_he_had; }?>
+           </div>
+           <div class="col-9" style="padding:0;margin:10px 0px 10px 0px;font-weight:bold;font-size:16px;">
+           و تم التسليم بعد <?php echo intval((strtotime($row["date"]) - strtotime($row["committeDate"]) )/(24*60*60)) ?>/ي
+           من تاريخ اجراء الامتحان النهائي
            </div>
           </div>
 
@@ -217,7 +213,7 @@ function getDayForDate($newDate){
 
           <div class="row justify-content-center" style="margin:0px auto;">
             <div class="col-3" style="text-align:center">
-              <label for="firstName" class="form-label">عدد الحضور (<?php echo $attendance ?>)</label>
+              <label for="firstName" class="form-label">عدد الاوراق (<?php echo $attendance ?>)</label>
             </div>
             <div class="col-3" style="text-align:center">
             <label for="firstName" class="form-label">عدد الغياب (<?php echo $absence ?>)</label>
