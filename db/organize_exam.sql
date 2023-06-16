@@ -72,8 +72,7 @@ CREATE TABLE `committe` (
 CREATE TABLE `course_name` (
   `id` int(11) NOT NULL,
   `courseName` varchar(30) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  `courseNumber` varchar(30) NOT NULL,
-  `course_a` varchar(30) DEFAULT NULL
+  `courseNumber` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
