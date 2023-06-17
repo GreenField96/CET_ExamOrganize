@@ -312,7 +312,7 @@
                                     </HBox>
                                     <HBox alignment="CENTER_RIGHT" prefHeight="64.0" prefWidth="373.0">
                                        <children>
-                                          <ChoiceBox id="specificChoiceField" fx:id="specificChoiceBox" onMouseEntered="#updateSpecific" prefHeight="31.0" prefWidth="213.0">
+                                          <ChoiceBox id="specificChoiceField" fx:id="specificChoiceBox" onMousePressed="#updateSpecific" prefHeight="31.0" prefWidth="213.0">
                                              <opaqueInsets>
                                                 <Insets />
                                              </opaqueInsets>
@@ -367,7 +367,7 @@
                                     </HBox>
                                     <HBox alignment="CENTER_RIGHT" prefHeight="70.0" prefWidth="381.0">
                                        <children>
-                                          <ChoiceBox id="specificChoiceField" fx:id="groupNumberChoiceBox" onMouseEntered="#updateGroups" prefHeight="31.0" prefWidth="213.0">
+                                          <ChoiceBox id="specificChoiceField" fx:id="groupNumberChoiceBox" onMousePressed="#updateGroups" prefHeight="31.0" prefWidth="213.0">
                                              <opaqueInsets>
                                                 <Insets />
                                              </opaqueInsets>
