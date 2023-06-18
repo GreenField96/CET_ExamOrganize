@@ -2,8 +2,10 @@
 
 include "../db.php";
 
+$countStudentEmpty = 8;
+$countMonitorEmpty = 5;
+
 $conn = DatabaseConnection::getInstance();
-// $connection->closeConnection();
 $studentResult = null;
 $monitorsResult = null;
 $committeResult = null;
@@ -193,6 +195,7 @@ function getDayForDate($newDate){
              
                 $count = 1;
                 while($row = $studentResult->fetch_assoc()) {
+                  $countStudentEmpty--;
               ?> 
                 <tr id="CheckName_1">
                         <td><?php echo $count++; ?></td>
@@ -203,10 +206,14 @@ function getDayForDate($newDate){
                         <td><?php echo $row["phone_number"] ?></td>
                     </tr>
              
-             <?php } } 
-             }else{
+             <?php 
+                }
+             }
+            }
+              for($i=0 ;$i < $countStudentEmpty ; $i++){
               ?>
                 <tr id="CheckName_1">
+                        <td><?php echo $count++; ?></td>
                         <td></td>
                         <td></td>
                         <td></td>
@@ -214,7 +221,7 @@ function getDayForDate($newDate){
                         <td></td>
                  </tr>
               <?php
-              }
+              } 
               ?>
              <!-- end-for -->
              
@@ -254,6 +261,7 @@ function getDayForDate($newDate){
                 $count = 1;
                 while($row = $monitorsResult->fetch_assoc()) {	
                     $absence = $row["absence"] != 1 ? "متغيب" : "غير متغيب";
+                    $countMonitorEmpty--;
               ?>      
                 <tr id="CheckName_1">
                         <td><?php echo $count++; ?></td>
@@ -262,19 +270,22 @@ function getDayForDate($newDate){
                         <td><?php echo $absence ?></td>
                         <td></td>
                     </tr>
-             <?php } } 
-             }else{
-              ?>
-                <tr id="CheckName_1">
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                 </tr>
-              <?php
-              }
-              ?>
+             <?php 
+             }
+            } 
+          } 
+              for($i=0 ;$i < $countMonitorEmpty ; $i++){
+                ?>
+                  <tr id="CheckName_1">
+                          <td><?php echo $count++; ?></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                   </tr>
+                <?php
+                } 
+                ?>
              <!-- end-for -->
              
             </div>
