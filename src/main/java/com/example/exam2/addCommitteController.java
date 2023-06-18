@@ -321,14 +321,8 @@ public class addCommitteController implements Initializable{
             if(!l.getText().equals(""))
                 result.addAndGet(Integer.parseInt(l.getText()));
         });
-
         if(numberPaperTextField.getText().equals("") | classNumberTextField.getText().equals("")){
             alert.setContentText("الرجاء ادخال جميع الخانات");
-            alert.show();
-            return;
-        }
-        if(MonitorTransportPaperChoiceBox.getValue().equals("")){
-            alert.setContentText("الرجاء اختيار المراقب المستلم منه اوراق الاجابة");
             alert.show();
             return;
         }
@@ -450,9 +444,9 @@ public class addCommitteController implements Initializable{
 
          EmployeeTableView.getItems().clear();
 
-         MonitorTransportPaperChoiceBox.setValue("اسم الملاحظ");
-         arrayHboxTextField.clear();
+         MonitorTransportPaperChoiceBox.setValue("");
          arrayHboxSpecificChoiceBox.clear();
+         arrayHboxTextField.clear();
          arrayHboxChoice.clear();
 
          groupNumberChoiceBox.setValue("");
