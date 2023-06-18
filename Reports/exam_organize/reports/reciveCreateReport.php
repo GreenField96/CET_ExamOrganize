@@ -8,6 +8,8 @@ $studentResult = null;
 $deliveryResult = null;
 $employeeResult = null;
 
+$countStudentEmpty = 5;
+
 $phoneNumber_he_had = null;
 $name_he_had = null;
 
@@ -257,6 +259,7 @@ function getDayForDate($newDate){
               
                 $count = 1;
                 while($row = $studentResult->fetch_assoc()) {
+                  $countStudentEmpty--;
               ?>       
                 <tr id="CheckName_1">
                         <td><?php echo $count++; ?></td>
@@ -267,17 +270,18 @@ function getDayForDate($newDate){
                     </tr>
              
              <?php } } 
-             }else{
+             }
+             for($i=0 ;$i < $countStudentEmpty ; $i++){
               ?>
                 <tr id="CheckName_1">
-                        <td></td>
+                        <td><?php echo $count++; ?></td>
                         <td></td>
                         <td></td>
                         <td></td>
                         <td></td>
                  </tr>
               <?php
-              }
+             }
               ?>
              <!-- end-for -->
              
