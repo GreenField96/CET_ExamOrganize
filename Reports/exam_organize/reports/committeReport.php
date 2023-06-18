@@ -42,6 +42,7 @@ if(isset($_POST["room_number"]) & isset($_POST["course_name"]) & isset($_POST["d
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.88.1">
     <title> تقرير اللجان </title>
+    <link rel="icon" href="../images/icon.png">
 
 <link href="dist/css/bootstrap.rtl.min.css" rel="stylesheet">
 <link href="dist/css/blog.rtl.css" rel="stylesheet">

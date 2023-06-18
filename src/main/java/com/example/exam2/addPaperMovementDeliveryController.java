@@ -22,7 +22,7 @@ import java.util.ResourceBundle;
 public class addPaperMovementDeliveryController implements Initializable {
     private static final ExceptionLogger log = ExceptionLogger.getInstance();
     @FXML
-    private TextField searchInput,courseTextField,classTextField,searchCourseTextField;
+    private TextField searchInput,courseTextField,classTextField;
     private TextField numberOfPaperTextField;
     @FXML
     private DatePicker dateCommitteReciveDatePicker;
@@ -62,18 +62,9 @@ public class addPaperMovementDeliveryController implements Initializable {
     Label doctorName=new Label(),idCommitte,doctorPhoneNumber=new Label(),periodLabelCommitte,courseCommitte,dateCommitte,numberOfRoomCommitte,groupsCommitte,specificCommitte;
     boolean addChilderen = true ;
     @FXML
-    private ChoiceBox<String> groupNumberChoiceBox,specificChoiceBox,semesterPeriodChoiceBox,yearChoiceBox,poeriodChoiceBox;
+    private ChoiceBox<String> classNameChoiceBox,groupNumberChoiceBox,specificChoiceBox,semesterPeriodChoiceBox,yearChoiceBox,poeriodChoiceBox;
     private String recentId = "";
     private ArrayList<answerPaperMovementTable> answerPaperMovementList = new ArrayList<>();
-    @FXML
-    private TableView<CourseTable> CoursesTableView;
-    @FXML
-    private TableColumn<CourseTable,Integer> courseId;
-    @FXML
-    private TableColumn<CourseTable, String> courseName;
-    @FXML
-    private TableColumn<CourseTable, String> courseNumber;
-    ObservableList<CourseTable> ObservableArrayCourse;
     private ArrayList<CourseTable> Courses = new ArrayList<>();
     private CourseModel courseModel = new CourseModel();
     private ArrayList<EmployeeTable> Employees = new ArrayList<>();
@@ -137,6 +128,8 @@ public class addPaperMovementDeliveryController implements Initializable {
         alert = new Alert(Alert.AlertType.NONE);
         alert.setTitle("خطأ");
         alert.setAlertType(Alert.AlertType.INFORMATION);
+
+        classNameChoiceBox.setValue("");
     }
     @FXML
     public void querySearchOnDoctor() throws SQLException {
@@ -182,7 +175,7 @@ public class addPaperMovementDeliveryController implements Initializable {
     @FXML
     public void querySearchOnCommitte() throws SQLException {
 
-        if(classTextField.getText().equals("") | courseTextField.getText().equals("")){
+        if(classTextField.getText().equals("") | classNameChoiceBox.getValue().equals("")){
             alert.setContentText("الرجاء ادخال جميع الخانات");
             alert.show();
             return;
@@ -190,7 +183,7 @@ public class addPaperMovementDeliveryController implements Initializable {
 
         Committes.clear();
 
-        Committes = comm.selectSpecificData(courseTextField.getText(),groupNumberChoiceBox.getValue(),specificChoiceBox.getValue(),poeriodChoiceBox.getValue(),classTextField.getText(),semesterPeriodChoiceBox.getValue(),yearChoiceBox.getValue(),true);
+        Committes = comm.selectSpecificData(classNameChoiceBox.getValue(),groupNumberChoiceBox.getValue(),specificChoiceBox.getValue(),poeriodChoiceBox.getValue(),classTextField.getText(),semesterPeriodChoiceBox.getValue(),yearChoiceBox.getValue(),true);
 
         idCommitteCol.setCellValueFactory(new PropertyValueFactory<>("IdCol"));
         courseCommitteCol.setCellValueFactory(new PropertyValueFactory<>("courseName"));
@@ -306,7 +299,6 @@ public class addPaperMovementDeliveryController implements Initializable {
 //        ButtonType noButton = new ButtonType("لا");
 //        alert.setContentText("هل تريد انشاء تقرير؟");
 //        alert.getButtonTypes().setAll(yesButton,noButton);
-//
 //        Optional<ButtonType> resutlAction = alert.showAndWait();
 //        if(resutlAction.get() == yesButton){
 
@@ -320,36 +312,24 @@ public class addPaperMovementDeliveryController implements Initializable {
                 }
             }
 
-
         cancleAllInput();
     }
     @FXML
     public void searchOnCourseTable() throws SQLException {
         Courses.clear();
+        classNameChoiceBox.getItems().clear();
 
-        if(searchCourseTextField.getText().equals("")){
+        if(courseTextField.getText().equals("")){
             alert.setContentText("الرجاء ادخال قيمة للبحت");
             alert.show();
             return;
         }
 
-        Courses = courseModel.searchOnTable(searchCourseTextField.getText());
+        Courses = courseModel.searchOnTable(courseTextField.getText());
 
-        courseId.setCellValueFactory(new PropertyValueFactory<>("Id"));
-        courseName.setCellValueFactory(new PropertyValueFactory<>("CourseName"));
-        courseNumber.setCellValueFactory(new PropertyValueFactory<>("CourseNumber"));
-        ObservableArrayCourse =  FXCollections.observableArrayList(Courses);
-        CoursesTableView.setItems(ObservableArrayCourse);
-    }
-    @FXML
-    public void getCourseId(MouseEvent value){
-
-        if(CoursesTableView.getSelectionModel().getSelectedIndex() < 0){
-            return;
-        }
-        Integer index = CoursesTableView.getSelectionModel().getSelectedIndex();
-
-        courseTextField.setText(courseName.getCellData(index));
+        Courses.forEach(course -> {
+            classNameChoiceBox.getItems().add(course.getCourseName());
+        });
 
     }
     @FXML
@@ -368,7 +348,6 @@ public class addPaperMovementDeliveryController implements Initializable {
 
         courseTextField.clear();
 
-        CoursesTableView.getItems().clear();
         committeTableView.getItems().clear();
         EmployeeTableView.getItems().clear();
 

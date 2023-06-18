@@ -36,16 +36,14 @@ public class addCommitteController implements Initializable{
     @FXML
     private DatePicker dateDatePicker;
     @FXML
-    private ChoiceBox<String> groupNumberChoiceBox,poeriodChoiceBox,semesterPeriodChoiceBox,yearChoiceBox,MonitorTransportPaperChoiceBox,specificChoiceBox;
+    private ChoiceBox<String> classNameChoiceBox,groupNumberChoiceBox,poeriodChoiceBox,semesterPeriodChoiceBox,yearChoiceBox,MonitorTransportPaperChoiceBox,specificChoiceBox;
     @FXML
     private TextField classNumberTextField,searchTextField,numberPaperTextField;
     @FXML
     private TextField idStudentNnmberTextField,phoneNumberStudentTextField,nameStudentTextField,searchCourseTextField;
     @FXML
     private TextArea noteOnStudentTextField;
-    private HBox nameChoiceHbox2=new HBox(),nameChoiceHbox3=new HBox(),HboxGroup;
-    @FXML
-    private HBox courseNameTakenHbox;
+    private HBox HboxGroup;
     @FXML
     private VBox idNumberTakenVbox1,idNumberTakenVbox2,idNumberTakenVbox3;
     @FXML
@@ -60,22 +58,10 @@ public class addCommitteController implements Initializable{
     private int counterMonitors=0,counterStudentAbsence = 0;
     public boolean deleteStudentFlag = true;
     public boolean MonitorFlag = false;
-    @FXML
-    private TableView<CourseTable> CoursesTableView;
-    @FXML
-    private TableColumn<CourseTable,Integer> courseId;
-    @FXML
-    private TableColumn<CourseTable, String> courseName;
-    @FXML
-    private TableColumn<CourseTable, String> courseNumber;
-    ObservableList<CourseTable> ObservableArrayCourse;
     private ArrayList<CourseTable> Courses = new ArrayList<>();
-    int IdRow;
-    String NameRow,courseNumberRow;
     private CourseModel courseModel = new CourseModel();
     boolean addChilderen = true;
     private CheckBox checkAbsenceMonitor;
-    public Label courseNameLabel = new Label() , courseNumberLabel = new Label();
     private ArrayList<String> arrayHboxChoice = new ArrayList<>();
     private ArrayList<String> arrayHboxTextField = new ArrayList<>();
     private ArrayList<String> arrayHboxSpecificChoiceBox = new ArrayList<>();
@@ -84,7 +70,7 @@ public class addCommitteController implements Initializable{
     private Alert alert;
     ArrayList<String> updateGroupsArrayList1 = new ArrayList<>();
     ArrayList<String> updateSpecificArrayList1 = new ArrayList<>();
-
+    private int IdRow = -1;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -110,8 +96,6 @@ public class addCommitteController implements Initializable{
         semesterPeriodChoiceBox.getItems().add("خريفي");
         semesterPeriodChoiceBox.getItems().add("صيفي");
 
-        MonitorTransportPaperChoiceBox.setValue("اسم الملاحظ");
-
         emp = new EmployeeModel();
         Employees = new ArrayList<>();
         MonitorsList = new ArrayList<>();
@@ -125,6 +109,9 @@ public class addCommitteController implements Initializable{
          alert = new Alert(Alert.AlertType.NONE);
          alert.setTitle("خطأ");
          alert.setAlertType(Alert.AlertType.INFORMATION);
+
+        classNameChoiceBox.setValue("");
+        MonitorTransportPaperChoiceBox.setValue("");
     }
     @FXML
     public void searchOnEmployeeTable() throws SQLException {
@@ -340,12 +327,12 @@ public class addCommitteController implements Initializable{
             alert.show();
             return;
         }
-        if(MonitorTransportPaperChoiceBox.getValue() == ""){
+        if(MonitorTransportPaperChoiceBox.getValue().equals("")){
             alert.setContentText("الرجاء اختيار المراقب المستلم منه اوراق الاجابة");
             alert.show();
             return;
         }
-        if(courseNameTakenHbox.getChildren().isEmpty()){
+        if(classNameChoiceBox.getValue().equals("")){
             alert.setContentText("الرجاء اختيار المادة");
             alert.show();
             return;
@@ -360,6 +347,12 @@ public class addCommitteController implements Initializable{
             alert.show();
             return;
         }
+
+        Courses.forEach(course -> {
+            if(classNameChoiceBox.getValue().equals(course.getCourseName())){
+                IdRow = course.getId();
+            }
+        });
 
          commModel.insert(new CommitteTable(
                 classNumberTextField.getText(),dateDatePicker.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")),
@@ -399,13 +392,13 @@ public class addCommitteController implements Initializable{
         }
         paperModel.store();
 
-        ButtonType yesButton = new ButtonType("حسنا");
-        ButtonType noButton = new ButtonType("لا");
-        alert.setContentText("هل تريد انشاء تقرير على هده اللجنة؟");
-        alert.getButtonTypes().setAll(yesButton,noButton);
+//        ButtonType yesButton = new ButtonType("حسنا");
+//        ButtonType noButton = new ButtonType("لا");
+//        alert.setContentText("هل تريد انشاء تقرير على هده اللجنة؟");
+//        alert.getButtonTypes().setAll(yesButton,noButton);
+//        Optional<ButtonType> resutlAction = alert.showAndWait();
+//        if(resutlAction.get() == yesButton){
 
-        Optional<ButtonType> resutlAction = alert.showAndWait();
-        if(resutlAction.get() == yesButton){
             try {
                 new ProcessBuilder("cmd", "/c", " start https://127.0.0.1/exam_organize/reports/committeCreateReport.php?committe_id="+ commModel.getLastRecord()).inheritIO().start().waitFor();
             } catch (InterruptedException e) {
@@ -413,7 +406,7 @@ public class addCommitteController implements Initializable{
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
-        }
+
 
         cancleAllInputCommitte();
     }
@@ -441,7 +434,6 @@ public class addCommitteController implements Initializable{
              students.clear();
          }
          addChilderen = true;
-         courseNameTakenHbox.getChildren().clear();
 
          groupsForm.getChildren().forEach(HboxGroup -> {
              ((HBox) HboxGroup).getChildren().clear();
@@ -457,7 +449,6 @@ public class addCommitteController implements Initializable{
          }// create ane block of group CheckList
 
          EmployeeTableView.getItems().clear();
-         CoursesTableView.getItems().clear();
 
          MonitorTransportPaperChoiceBox.setValue("اسم الملاحظ");
          arrayHboxTextField.clear();
@@ -470,11 +461,10 @@ public class addCommitteController implements Initializable{
          updateSpecificArrayList1.clear();
          updateGroupsArrayList1.clear();
      }
-
-
      @FXML
      public void searchOnCourseTable() throws SQLException {
          Courses.clear();
+         classNameChoiceBox.getItems().clear();
 
          if(searchCourseTextField.getText().equals("")){
              alert.setContentText("الرجاء ادخال قيمة للبحت");
@@ -484,35 +474,9 @@ public class addCommitteController implements Initializable{
 
          Courses = courseModel.searchOnTable(searchCourseTextField.getText());
 
-         courseId.setCellValueFactory(new PropertyValueFactory<>("Id"));
-         courseName.setCellValueFactory(new PropertyValueFactory<>("CourseName"));
-         courseNumber.setCellValueFactory(new PropertyValueFactory<>("CourseNumber"));
-         ObservableArrayCourse =  FXCollections.observableArrayList(Courses);
-         CoursesTableView.setItems(ObservableArrayCourse);
-     }
-     @FXML
-     public void getCourseId(MouseEvent value){
-
-         if(CoursesTableView.getSelectionModel().getSelectedIndex() < 0){
-             return;
-         }
-
-         Integer index = CoursesTableView.getSelectionModel().getSelectedIndex();
-         IdRow = courseId.getCellData(index);
-
-         NameRow = courseName.getCellData(index);
-         courseNumberRow = courseNumber.getCellData(index);
-
-         courseNameLabel.setStyle("-fx-opacity:0.8;"+"-fx-border-width:0.5;"+"-fx-border-color:#FFFF;"+"-fx-border-radius:10;"+"-fx-font-size: 15;"+"-fx-alignment:center;"+"-fx-background-radius:10;"+"-fx-background-color:#398AB9;"+"-fx-text-fill: #FFFF;"+"-fx-padding: 1 60 1 60");
-         courseNumberLabel.setStyle("-fx-opacity:0.8;"+"-fx-border-width:0.5;"+"-fx-border-color:#FFFF;"+"-fx-border-radius:10;"+"-fx-font-size: 15;"+"-fx-alignment:center;"+"-fx-background-radius:10;"+"-fx-background-color:#398AB9;"+"-fx-text-fill: #FFFF;"+"-fx-padding: 1 90 1 90");
-         courseNameLabel.setText(NameRow);
-         courseNumberLabel.setText(courseNumberRow);
-
-         if(addChilderen) {
-             addChilderen = false;
-             courseNameTakenHbox.getChildren().add(courseNameLabel);
-             courseNameTakenHbox.getChildren().add(courseNumberLabel);
-         }
+         Courses.forEach(course -> {
+             classNameChoiceBox.getItems().add(course.getCourseName());
+         });
 
      }
 }

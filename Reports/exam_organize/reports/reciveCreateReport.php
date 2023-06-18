@@ -34,9 +34,6 @@ if(isset($_GET["Recive_id"])){
 
   $deliveryResult = $conn->query($sql);
   
-  
-  
-
  }
 
 function getDayForDate($newDate){
@@ -77,8 +74,9 @@ function getDayForDate($newDate){
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.112.5">
-    <title>تقرير اللجنة</title>
-<link href="dist/css/bootstrap.rtl.min.css" rel="stylesheet">
+    <title>تقرير استلام</title>
+    <link rel="icon" href="../images/icon.png">
+    <link href="dist/css/bootstrap.rtl.min.css" rel="stylesheet">
 
 <style type="text/css" media="print">
 @page {

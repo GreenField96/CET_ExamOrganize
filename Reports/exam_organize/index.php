@@ -15,6 +15,7 @@ $connection = DatabaseConnection::getInstance();
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.112.5">
     <title>نظام متابعة سير الامتحانات النهائية</title>
+    <link rel="icon" href="images/icon.png">
 
     <link href="assets/dist/css/bootstrap.rtl.min.css" rel="stylesheet">
 

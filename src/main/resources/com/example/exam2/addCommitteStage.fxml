@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefWidth="1100.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.exam2.addCommitteController">
+<VBox prefWidth="1100.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.exam2.addCommitteController">
    <children>
       <ScrollPane prefWidth="1000.0">
          <content>
@@ -132,7 +132,28 @@
                               </VBox>
                            </children>
                         </HBox>
-                        <HBox alignment="CENTER_RIGHT" prefHeight="20.0" />
+                        <HBox alignment="CENTER_RIGHT" prefWidth="200.0">
+                           <children>
+                              <ChoiceBox id="specificChoiceField" fx:id="classNameChoiceBox" onMousePressed="#searchOnCourseTable" prefHeight="31.0" prefWidth="213.0">
+                                 <opaqueInsets>
+                                    <Insets />
+                                 </opaqueInsets>
+                              </ChoiceBox>
+                              <TextField id="inputFiled" fx:id="searchCourseTextField" alignment="CENTER_RIGHT" prefHeight="41.0" prefWidth="300.0" promptText="بحت بأسم المادة او الرقم">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets left="10.0" right="10.0" />
+                                 </HBox.margin>
+                              </TextField>
+                              <Label id="textField" prefHeight="41.0" prefWidth="113.0" style="-fx-alignment: center;" text="اسم المادة" textAlignment="CENTER" textFill="WHITE" />
+                           </children>
+                           <VBox.margin>
+                              <Insets bottom="20.0" top="20.0" />
+                           </VBox.margin>
+                        </HBox>
+                        <HBox alignment="CENTER_RIGHT" prefHeight="20.0" prefWidth="300.0" />
                         <HBox alignment="CENTER_RIGHT" prefWidth="1000.0">
                            <children>
                               <VBox fx:id="groupsForm" alignment="CENTER_RIGHT" fillWidth="false" prefWidth="900.0">
@@ -150,44 +171,6 @@
                                     <Insets right="40.0" />
                                  </HBox.margin>
                               </Button>
-                           </children>
-                        </HBox>
-                        <HBox alignment="CENTER_RIGHT" prefHeight="20.0" />
-                        <HBox alignment="CENTER_RIGHT" prefWidth="200.0">
-                           <children>
-                              <TextField id="inputFiled" fx:id="searchCourseTextField" alignment="CENTER_RIGHT" prefHeight="41.0" prefWidth="300.0" promptText="بحت بأسم المادة او الرقم">
-                                 <font>
-                                    <Font size="15.0" />
-                                 </font>
-                                 <HBox.margin>
-                                    <Insets bottom="10.0" top="20.0" />
-                                 </HBox.margin>
-                              </TextField>
-                              <Button id="insert_button" onAction="#searchOnCourseTable" prefHeight="48.0" prefWidth="121.0" text="بحت" textAlignment="CENTER" textFill="WHITE">
-
-                                 <HBox.margin>
-                                    <Insets left="30.0" right="30.0" top="10.0" />
-                                 </HBox.margin>
-                              </Button>
-                           </children>
-                        </HBox>
-                        <HBox alignment="CENTER_RIGHT" prefWidth="300.0">
-                           <children>
-                              <VBox prefHeight="119.0" prefWidth="500.0">
-                                 <children>
-                                    <TableView fx:id="CoursesTableView" onMouseClicked="#getCourseId" prefHeight="91.0">
-                                       <columns>
-                                          <TableColumn id="ColumnTable" fx:id="courseNumber" prefWidth="180.0" text="رقم المادة" />
-                                          <TableColumn id="ColumnTable" fx:id="courseName" prefWidth="215.0" text="اسم المادة" />
-                                          <TableColumn id="ColumnTable" fx:id="courseId" prefWidth="94.0" text="#" />
-                                       </columns>
-                                       <VBox.margin>
-                                          <Insets left="5.0" right="5.0" />
-                                       </VBox.margin>
-                                    </TableView>
-                                    <HBox fx:id="courseNameTakenHbox" alignment="CENTER" prefHeight="30.0" />
-                                 </children>
-                              </VBox>
                            </children>
                         </HBox>
                         <HBox alignment="CENTER_RIGHT" prefWidth="200.0">

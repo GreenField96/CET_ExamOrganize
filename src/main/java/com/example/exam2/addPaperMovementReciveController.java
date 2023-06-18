@@ -51,21 +51,10 @@ public class addPaperMovementReciveController implements Initializable {
     HBox committeTakenHboxChild;
     Label idCommitte,periodLabelCommitte,doctorReciveCommitte,specificCommitte,courseCommitte,dateCommitte,numberOfRoomCommitte,groupsCommitte;
     @FXML
-    private ChoiceBox<String> groupNumberChoiceBox,specificChoiceBox,semesterPeriodChoiceBox,yearChoiceBox,poeriodChoiceBox;
-    @FXML
-    private TextField searchCourseTextField;
+    private ChoiceBox<String> classNameChoiceBox,groupNumberChoiceBox,specificChoiceBox,semesterPeriodChoiceBox,yearChoiceBox,poeriodChoiceBox;
     private TextField numberOfPaperTextField;
     private String recentId;
     private ArrayList<answerPaperMovementTable> answerPaperMovementList = new ArrayList<>();
-    @FXML
-    private TableView<CourseTable> CoursesTableView;
-    @FXML
-    private TableColumn<CourseTable,Integer> courseId;
-    @FXML
-    private TableColumn<CourseTable, String> courseName;
-    @FXML
-    private TableColumn<CourseTable, String> courseNumber;
-    ObservableList<CourseTable> ObservableArrayCourse;
     private ArrayList<CourseTable> Courses = new ArrayList<>();
     private CourseModel courseModel = new CourseModel();
     private ArrayList<CommitteTable> Committes = new ArrayList<>();
@@ -127,11 +116,13 @@ public class addPaperMovementReciveController implements Initializable {
         alert = new Alert(Alert.AlertType.NONE);
         alert.setTitle("خطأ");
         alert.setAlertType(Alert.AlertType.INFORMATION);
+
+        classNameChoiceBox.setValue("");
     }
     @FXML
     public void querySearchOnCommitte() throws SQLException {
 
-        if(classTextField.getText().equals("") | courseTextField.getText().equals("")){
+        if(classTextField.getText().equals("") | classNameChoiceBox.getValue().equals("")){
             alert.setContentText("الرجاء ادخال جميع الخانات");
             alert.show();
             return;
@@ -139,7 +130,7 @@ public class addPaperMovementReciveController implements Initializable {
 
         Committes.clear();
 
-        Committes = comm.selectSpecificData(courseTextField.getText(),groupNumberChoiceBox.getValue(),specificChoiceBox.getValue(),poeriodChoiceBox.getValue(),classTextField.getText(),semesterPeriodChoiceBox.getValue(),yearChoiceBox.getValue(),false);
+        Committes = comm.selectSpecificData(classNameChoiceBox.getValue(),groupNumberChoiceBox.getValue(),specificChoiceBox.getValue(),poeriodChoiceBox.getValue(),classTextField.getText(),semesterPeriodChoiceBox.getValue(),yearChoiceBox.getValue(),false);
 
         idCommitteCol.setCellValueFactory(new PropertyValueFactory<>("IdCol"));
         doctorReciveCommitteCol.setCellValueFactory(new PropertyValueFactory<>("DoctorName"));
@@ -252,13 +243,13 @@ public class addPaperMovementReciveController implements Initializable {
 
         paperModel.store();
 
-        ButtonType yesButton = new ButtonType("حسنا");
-        ButtonType noButton = new ButtonType("لا");
-        alert.setContentText("هل تريد انشاء تقرير؟");
-        alert.getButtonTypes().setAll(yesButton,noButton);
+//        ButtonType yesButton = new ButtonType("حسنا");
+//        ButtonType noButton = new ButtonType("لا");
+//        alert.setContentText("هل تريد انشاء تقرير؟");
+//        alert.getButtonTypes().setAll(yesButton,noButton);
+//        Optional<ButtonType> resutlAction = alert.showAndWait();
+//        if(resutlAction.get() == yesButton) {
 
-        Optional<ButtonType> resutlAction = alert.showAndWait();
-        if(resutlAction.get() == yesButton) {
             for (int i = 0; i < countOfRecive; i++) {
                 try {
                     new ProcessBuilder("cmd", "/c", " start https://127.0.0.1/exam_organize/reports/reciveCreateReport.php?Recive_id=" + (paperModel.getLastRecord() - i)).inheritIO().start().waitFor();
@@ -268,37 +259,26 @@ public class addPaperMovementReciveController implements Initializable {
                     throw new RuntimeException(e);
                 }
             }
-        }
 
         cancleAllInput();
     }
     @FXML
     public void searchOnCourseTable() throws SQLException {
         Courses.clear();
+        classNameChoiceBox.getItems().clear();
 
-        if(searchCourseTextField.getText().equals("")){
+        if(courseTextField.getText().equals("")){
             alert.setContentText("الرجاء ادخال قيمة للبحت");
             alert.show();
             return;
         }
 
-        Courses = courseModel.searchOnTable(searchCourseTextField.getText());
+        Courses = courseModel.searchOnTable(courseTextField.getText());
 
-        courseId.setCellValueFactory(new PropertyValueFactory<>("Id"));
-        courseName.setCellValueFactory(new PropertyValueFactory<>("CourseName"));
-        courseNumber.setCellValueFactory(new PropertyValueFactory<>("CourseNumber"));
-        ObservableArrayCourse =  FXCollections.observableArrayList(Courses);
-        CoursesTableView.setItems(ObservableArrayCourse);
-    }
-    @FXML
-    public void getCourseId(MouseEvent value){
+        Courses.forEach(course -> {
+            classNameChoiceBox.getItems().add(course.getCourseName());
+        });
 
-        if(CoursesTableView.getSelectionModel().getSelectedIndex() < 0){
-            return;
-        }
-        Integer index = CoursesTableView.getSelectionModel().getSelectedIndex();
-
-        courseTextField.setText(courseName.getCellData(index));
     }
     @FXML
     public void cleanMonitorsData(){
@@ -313,7 +293,6 @@ public class addPaperMovementReciveController implements Initializable {
 
         courseTextField.clear();
 
-        CoursesTableView.getItems().clear();
         committeTableView.getItems().clear();
     }
 }
