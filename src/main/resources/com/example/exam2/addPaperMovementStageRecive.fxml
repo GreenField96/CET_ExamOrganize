@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox fx:id="mainStage" prefWidth="1100.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.exam2.addPaperMovementReciveController">
+<VBox fx:id="mainStage" prefWidth="1100.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.exam2.addPaperMovementReciveController">
    <children>
       <TabPane prefHeight="800.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE">
          <tabs>

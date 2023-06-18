@@ -318,6 +318,7 @@ public class addPaperMovementDeliveryController implements Initializable {
     public void searchOnCourseTable() throws SQLException {
         Courses.clear();
         classNameChoiceBox.getItems().clear();
+        classNameChoiceBox.setValue("");
 
         if(courseTextField.getText().equals("")){
             alert.setContentText("الرجاء ادخال قيمة للبحت");

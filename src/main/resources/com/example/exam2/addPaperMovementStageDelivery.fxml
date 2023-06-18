@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox fx:id="mainStage" prefWidth="1100.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.exam2.addPaperMovementDeliveryController">
+<VBox fx:id="mainStage" prefWidth="1100.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.exam2.addPaperMovementDeliveryController">
    <children>
       <TabPane prefHeight="800.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
@@ -86,7 +86,7 @@
                                           <Label id="textField" prefHeight="41.0" prefWidth="113.0" style="-fx-alignment: center;" text="اسم المادة" textAlignment="CENTER" textFill="WHITE" />
                                        </children>
                                        <VBox.margin>
-                                          <Insets bottom="30.0" />
+                                          <Insets bottom="30.0" top="20.0" />
                                        </VBox.margin>
                                     </HBox>
                                     <HBox alignment="CENTER_RIGHT" prefHeight="47.0" prefWidth="1000.0">

@@ -459,6 +459,7 @@ public class addCommitteController implements Initializable{
      public void searchOnCourseTable() throws SQLException {
          Courses.clear();
          classNameChoiceBox.getItems().clear();
+         classNameChoiceBox.setValue("");
 
          if(searchCourseTextField.getText().equals("")){
              alert.setContentText("الرجاء ادخال قيمة للبحت");
