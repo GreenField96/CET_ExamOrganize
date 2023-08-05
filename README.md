@@ -21,5 +21,5 @@
 <h3> 3- move to CET_ExamOrganize/out/artifacts & run exam.v3.jar </h3>
 <hr>
 <h3> Describe Database by ERD</h3>
-<img src="ERD.V3.png" width="128"/>
+<img src="ERD.V3.png" />
 <hr>
